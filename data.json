@@ -324,7 +324,7 @@
   "months": {
     "2026-05": {
       "label": "截止5月",
-      "updateTime": "2026-06-12",
+      "updateTime": "2026-06-30",
       "works": [
         {
           "category": "跨项目帮扶-主动支持",
@@ -332,19 +332,11 @@
           "items": [
             {
               "desc": "AI材质识别SKILL训练，华泰金融石材10种AI识别采集验证",
-              "result": "已完成",
-              "status": "done",
+              "result": "未完成",
+              "status": "doing",
               "person": "余XH",
               "time": "2-5月",
               "ref": "a1"
-            },
-            {
-              "desc": "宝地广场部分楼层卫生间材质清单采集",
-              "result": "部分完成，需扩大到所有项目点",
-              "status": "doing",
-              "person": "张YQ/郭LB/马QJ",
-              "time": "5月",
-              "ref": "a2"
             },
             {
               "desc": "宝地广场部分楼层卫生间污渍清单采集",
@@ -353,54 +345,6 @@
               "person": "张YQ/郭LB/马QJ",
               "time": "5月",
               "ref": "a4"
-            },
-            {
-              "desc": "材质分析，设置清洁属性并归类",
-              "result": "未启动",
-              "status": "todo",
-              "person": "鲍YM",
-              "time": "-",
-              "ref": "a3"
-            },
-            {
-              "desc": "源头减量污渍再梳理",
-              "result": "未启动",
-              "status": "todo",
-              "person": "张Z",
-              "time": "-",
-              "ref": "a5"
-            },
-            {
-              "desc": "AI建模组合库导入清洁方式生成工作模型",
-              "result": "未启动",
-              "status": "todo",
-              "person": "鲍YM/龙虾小组",
-              "time": "-",
-              "ref": "a6"
-            },
-            {
-              "desc": "培训一线管理人员应用+复盘反馈",
-              "result": "未启动",
-              "status": "todo",
-              "person": "鲍YM",
-              "time": "-",
-              "ref": "a7"
-            },
-            {
-              "desc": "满意调研阶段1：AI推演基础版本1.0",
-              "result": "未启动",
-              "status": "todo",
-              "person": "鲍YM",
-              "time": "-",
-              "ref": "a16"
-            },
-            {
-              "desc": "满意调研阶段2：现场多维验证+修改2.0",
-              "result": "未启动",
-              "status": "todo",
-              "person": "鲍YM",
-              "time": "-",
-              "ref": "a17"
             }
           ]
         },
@@ -483,22 +427,6 @@
               "person": "李H",
               "time": "4月",
               "ref": "a15"
-            },
-            {
-              "desc": "满意调研阶段3：培训普及+抽查",
-              "result": "未启动",
-              "status": "todo",
-              "person": "鲍YM",
-              "time": "-",
-              "ref": "a18"
-            },
-            {
-              "desc": "满意调研阶段4：工作流优化+半自动采集系统",
-              "result": "未启动",
-              "status": "todo",
-              "person": "鲍YM",
-              "time": "-",
-              "ref": "a19"
             }
           ]
         }
@@ -510,10 +438,11 @@
           "std": "待定",
           "deadline": "2026-05-29",
           "claimDate": "2026-04-11",
-          "status": "doing",
+          "status": "done",
           "claimer": "郭LB/马QJ/张YQ",
           "delivery": "已提交交付链接",
-          "overdue": true
+          "overdue": true,
+          "result": "已完成"
         },
         {
           "id": "c2",
@@ -523,7 +452,8 @@
           "claimDate": "2026-04-21",
           "status": "doing",
           "claimer": "余XH",
-          "delivery": ""
+          "delivery": "",
+          "note": "待反馈（1次/月）"
         },
         {
           "id": "c3",
@@ -533,9 +463,15 @@
           "claimDate": "2026-06-01",
           "status": "doing",
           "claimer": "余XH",
-          "delivery": ""
+          "delivery": "",
+          "note": "待反馈（1次/月）"
         }
-      ]
+      ],
+      "summary": {
+        "total": 10,
+        "done": 6,
+        "doing": 4
+      }
     }
   },
   "bonus": {
