@@ -1,5 +1,5 @@
 {
-  "currentMonth": "2026-05",
+  "currentMonth": "2026-06",
   "ogsmt": [
     {
       "id": "big1",
@@ -450,6 +450,87 @@
         "done": 5,
         "doing": 3
       }
+    },
+    "2026-06": {
+      "label": "截止6月",
+      "updateTime": "2026-06-30",
+      "works": [
+        {
+          "category": "新产品测试",
+          "catKey": "newtest",
+          "items": [
+            {
+              "desc": "第一批新品测试",
+              "result": "测试结果及时反馈（至少1次/月）",
+              "status": "doing",
+              "person": "余XH",
+              "time": "6月",
+              "ref": "",
+              "note": "已发布邀请"
+            }
+          ]
+        },
+        {
+          "category": "使用者满意",
+          "catKey": "satisfaction",
+          "items": [
+            {
+              "desc": "基于人性梳理使用者感受的自然表达规律1.0版本：用AI推演得出基础版本",
+              "result": "",
+              "status": "done",
+              "person": "鲍YM",
+              "time": "6月",
+              "ref": "a16"
+            }
+          ]
+        },
+        {
+          "category": "建立技术库",
+          "catKey": "techlib",
+          "items": [
+            {
+              "desc": "建立各项目点材质库：1-3个基础项目手搓完成",
+              "result": "",
+              "status": "done",
+              "person": "张Z",
+              "time": "6月",
+              "ref": "a1"
+            }
+          ]
+        },
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "建立测试新品库，系统自动每周更新10-30个",
+              "result": "",
+              "status": "done",
+              "person": "曹MZ",
+              "time": "持续",
+              "ref": "a8"
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "捷尼士 & 皓天 两款清洁剂对比测试",
+          "std": "测试结果及时反馈",
+          "deadline": "2026-07-30",
+          "claimDate": "2026-06-17",
+          "status": "doing",
+          "claimer": "李H",
+          "delivery": "",
+          "note": "7/30日前反馈"
+        }
+      ],
+      "summary": {
+        "total": 5,
+        "done": 3,
+        "doing": 2
+      }
     }
   },
   "bonus": {
@@ -549,6 +630,6 @@
       ]
     }
   },
-  "lastUpdated": "2026-06-30T22:33:00+08:00",
+  "lastUpdated": "2026-06-30T23:30:00+08:00",
   "updatedBy": "Schumann"
 }
