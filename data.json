@@ -323,7 +323,7 @@
   ],
   "months": {
     "2026-05": {
-      "label": "截止5月",
+      "label": "5月",
       "updateTime": "2026-06-30",
       "works": [
         {
@@ -337,14 +337,6 @@
               "person": "曹MZ",
               "time": "持续",
               "ref": "a8"
-            },
-            {
-              "desc": "发布第一批新品测试清单和人员邀请",
-              "result": "已发布，第一批测品进行中",
-              "status": "doing",
-              "person": "余XH",
-              "time": "4-5月",
-              "ref": "a9"
             },
             {
               "desc": "金鹰系列产品测试",
@@ -446,13 +438,13 @@
         }
       ],
       "summary": {
-        "total": 8,
-        "done": 5,
+        "total": 10,
+        "done": 7,
         "doing": 3
       }
     },
     "2026-06": {
-      "label": "截止6月",
+      "label": "6月",
       "updateTime": "2026-06-30",
       "works": [
         {
