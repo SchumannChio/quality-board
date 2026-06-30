@@ -327,29 +327,7 @@
       "updateTime": "2026-06-30",
       "works": [
         {
-          "category": "跨项目帮扶-主动支持",
-          "catKey": "help",
-          "items": [
-            {
-              "desc": "AI材质识别SKILL训练，华泰金融石材10种AI识别采集验证",
-              "result": "未完成",
-              "status": "doing",
-              "person": "余XH",
-              "time": "2-5月",
-              "ref": "a1"
-            },
-            {
-              "desc": "宝地广场部分楼层卫生间污渍清单采集",
-              "result": "部分完成，仅1个项目",
-              "status": "doing",
-              "person": "张YQ/郭LB/马QJ",
-              "time": "5月",
-              "ref": "a4"
-            }
-          ]
-        },
-        {
-          "category": "新产品/技术",
+          "category": "新产品/技术/方法测试",
           "catKey": "tech",
           "items": [
             {
@@ -465,12 +443,23 @@
           "claimer": "余XH",
           "delivery": "",
           "note": "待反馈（1次/月）"
+        },
+        {
+          "id": "c4",
+          "desc": "宝地广场部分楼层卫生间污渍清单采集",
+          "std": "5个项目点同步采集",
+          "deadline": "2026-06-30",
+          "claimDate": "2026-05-01",
+          "status": "doing",
+          "claimer": "张YQ/郭LB/马QJ",
+          "delivery": "",
+          "note": "部分完成，仅1个项目"
         }
       ],
       "summary": {
-        "total": 10,
-        "done": 6,
-        "doing": 4
+        "total": 8,
+        "done": 5,
+        "doing": 3
       }
     }
   },
@@ -571,6 +560,6 @@
       ]
     }
   },
-  "lastUpdated": "2026-06-30T18:50:00+08:00",
+  "lastUpdated": "2026-06-30T22:33:00+08:00",
   "updatedBy": "Schumann"
 }
