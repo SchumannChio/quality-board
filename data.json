@@ -222,25 +222,6 @@
   ],
   "risks": [
     {
-      "id": "r1",
-      "title": "鲍YM 6项任务全部未启动",
-      "level": "extreme",
-      "impact": "材质分析+组合方案+满意调研全线延期",
-      "actions": [
-        "6月集中攻满意调研1.0+材质分析启动",
-        "7月攻组合方案2.0"
-      ],
-      "owner": "鲍YM+部门协调",
-      "refActions": [
-        "a3",
-        "a6",
-        "a7",
-        "a16",
-        "a17",
-        "a18"
-      ]
-    },
-    {
       "id": "r2",
       "title": "污渍库6/30截止，仅宝地部分完成",
       "level": "high",
@@ -253,20 +234,6 @@
       "refActions": [
         "a4",
         "a5"
-      ]
-    },
-    {
-      "id": "r3",
-      "title": "材质库手搓6/30截止，进度5%",
-      "level": "high",
-      "impact": "手搓未完成无法推广",
-      "actions": [
-        "锁定2个基础项目集中手搓",
-        "6月15日前完成第1个"
-      ],
-      "owner": "张Z",
-      "refActions": [
-        "a1"
       ]
     },
     {
@@ -283,42 +250,6 @@
         "a2",
         "a4"
       ]
-    },
-    {
-      "id": "r5",
-      "title": "Q1季度申报是否已完成未知",
-      "level": "mid",
-      "impact": "影响奖金发放依据",
-      "actions": [
-        "确认Q1申报状态",
-        "准备Q2申报(7月前)"
-      ],
-      "owner": "曹MZ",
-      "refActions": []
-    },
-    {
-      "id": "r6",
-      "title": "月度汇总6/10已过未执行",
-      "level": "mid",
-      "impact": "缺少进度跟踪闭环",
-      "actions": [
-        "补做5月进度汇总",
-        "建立自动提醒"
-      ],
-      "owner": "曹MZ",
-      "refActions": []
-    },
-    {
-      "id": "r7",
-      "title": "认领看板仅3条 vs OGSMT 10项",
-      "level": "mid",
-      "impact": "7项无跟踪闭环",
-      "actions": [
-        "将OGSMT全部待办上认领看板",
-        "建立定期更新机制"
-      ],
-      "owner": "部门负责人",
-      "refActions": []
     }
   ],
   "months": {
@@ -438,91 +369,91 @@
         }
       ],
       "summary": {
-        "total": 7,
-        "done": 5,
+        "total": 10,
+        "done": 7,
+        "doing": 3
+      }
+    },
+    "2026-06": {
+      "label": "6月",
+      "updateTime": "2026-06-30",
+      "works": [
+        {
+          "category": "新产品测试",
+          "catKey": "newtest",
+          "items": [
+            {
+              "desc": "第一批新品测试",
+              "result": "测试结果及时反馈（至少1次/月）",
+              "status": "doing",
+              "person": "余XH",
+              "time": "6月",
+              "ref": "",
+              "note": "已发布邀请"
+            }
+          ]
+        },
+        {
+          "category": "使用者满意",
+          "catKey": "satisfaction",
+          "items": [
+            {
+              "desc": "基于人性梳理使用者感受的自然表达规律1.0版本：用AI推演得出基础版本",
+              "result": "",
+              "status": "done",
+              "person": "鲍YM",
+              "time": "6月",
+              "ref": "a16"
+            }
+          ]
+        },
+        {
+          "category": "建立技术库",
+          "catKey": "techlib",
+          "items": [
+            {
+              "desc": "建立各项目点材质库+污渍库：1-3个基础项目手搓完成",
+              "result": "",
+              "status": "done",
+              "person": "张Z",
+              "time": "6月",
+              "ref": "a1"
+            }
+          ]
+        },
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "建立测试新品库，系统自动每周更新10-30个",
+              "result": "",
+              "status": "done",
+              "person": "曹MZ",
+              "time": "持续",
+              "ref": "a8"
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "捷尼士 & 皓天 两款清洁剂对比测试",
+          "std": "测试结果及时反馈",
+          "deadline": "2026-07-30",
+          "claimDate": "2026-06-17",
+          "status": "doing",
+          "claimer": "李H",
+          "delivery": "",
+          "note": "7/30日前反馈"
+        }
+      ],
+      "summary": {
+        "total": 5,
+        "done": 3,
         "doing": 2
       }
-    }
-  },
-  "2026-06": {
-    "label": "6月",
-    "updateTime": "2026-06-30",
-    "works": [
-      {
-        "category": "新产品测试",
-        "catKey": "newtest",
-        "items": [
-          {
-            "desc": "第一批新品测试",
-            "result": "测试结果及时反馈（至少1次/月）",
-            "status": "doing",
-            "person": "余XH",
-            "time": "6月",
-            "ref": "",
-            "note": "已发布邀请"
-          }
-        ]
-      },
-      {
-        "category": "使用者满意",
-        "catKey": "satisfaction",
-        "items": [
-          {
-            "desc": "基于人性梳理使用者感受的自然表达规律1.0版本：用AI推演得出基础版本",
-            "result": "",
-            "status": "done",
-            "person": "鲍YM",
-            "time": "6月",
-            "ref": "a16"
-          }
-        ]
-      },
-      {
-        "category": "建立技术库",
-        "catKey": "techlib",
-        "items": [
-          {
-            "desc": "建立各项目点材质库：1-3个基础项目手搓完成",
-            "result": "",
-            "status": "done",
-            "person": "张Z",
-            "time": "6月",
-            "ref": "a1"
-          }
-        ]
-      },
-      {
-        "category": "新产品/技术/方法测试",
-        "catKey": "tech",
-        "items": [
-          {
-            "desc": "建立测试新品库，系统自动每周更新10-30个",
-            "result": "",
-            "status": "done",
-            "person": "曹MZ",
-            "time": "持续",
-            "ref": "a8"
-          }
-        ]
-      }
-    ],
-    "claims": [
-      {
-        "id": "c1",
-        "desc": "捷尼士 & 皓天 两款清洁剂对比测试",
-        "std": "测试结果及时反馈",
-        "deadline": "2026-07-30",
-        "claimDate": "2026-06-17",
-        "status": "doing",
-        "claimer": "李H",
-        "delivery": "",
-        "note": "7/30日前反馈"
-      }
-    ],
-    "summary": {
-      "total": 5,
-      "done": 3,
-      "doing": 2
     }
   },
   "bonus": {
@@ -621,5 +552,7 @@
         }
       ]
     }
-  }
+  },
+  "lastUpdated": "2026-07-01T00:09:00+08:00",
+  "updatedBy": "Schumann"
 }
