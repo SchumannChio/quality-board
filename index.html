@@ -17,14 +17,23 @@
   --radius:12px;--radius-sm:8px;--radius-xs:6px;
   --shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow:0 2px 12px rgba(0,0,0,.08);
   --transition:all .25s cubic-bezier(.4,0,.2,1);
-  --cat-help:#e17055;--cat-tech:#00b894;--cat-support:#6c5ce7;--cat-optim:#0984e3
+  --cat-help:#e17055;--cat-tech:#00b894;--cat-support:#6c5ce7;--cat-optim:#0984e3;
+  /* Bonus category colors */
+  --bonus-dev:linear-gradient(135deg,#2e75b6,#1a5490);
+  --bonus-newtech:linear-gradient(135deg,#6c5ce7,#5a4bd1);
+  --bonus-support:linear-gradient(135deg,#00b894,#00997a);
+  --bonus-effect:linear-gradient(135deg,#e17055,#c0513a);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;padding-bottom:64px;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;padding-bottom:70px;-webkit-font-smoothing:antialiased}
 .header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,var(--primary),var(--primary-light));padding:0 16px;box-shadow:0 2px 12px rgba(0,0,0,.15)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:50px}
 .header h1{font-size:17px;font-weight:600;color:#fff}
+.header-right{display:flex;align-items:center;gap:8px}
 .header-right span{background:rgba(255,255,255,.18);color:#fff;padding:4px 12px;border-radius:20px;font-size:12px}
+.admin-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 10px;border-radius:16px;font-size:11px;cursor:pointer;transition:var(--transition)}
+.admin-btn:hover{background:rgba(255,255,255,.25)}
+.admin-btn.active{background:var(--success);border-color:var(--success)}
 .content{padding:12px 16px;max-width:640px;margin:0 auto}
 .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:12px}
 .card-body{padding:16px}
@@ -33,6 +42,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .hero{border-radius:var(--radius);padding:20px 18px;margin-bottom:16px;box-shadow:var(--shadow);color:#fff}
 .hero-blue{background:linear-gradient(135deg,var(--primary),#1e4a73)}
 .hero-green{background:linear-gradient(135deg,#2d6a4f,#40916c)}
+.hero-orange{background:linear-gradient(135deg,#d4780a,#b8670a)}
 .hero .h-label{font-size:12px;opacity:.7;margin-bottom:2px}
 .hero .h-title{font-size:18px;font-weight:700;margin-bottom:6px}
 .hero .h-sub{font-size:13px;opacity:.85;line-height:1.5;margin-bottom:14px}
@@ -70,6 +80,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .b-ref{background:var(--accent-pale);color:var(--accent);cursor:pointer}
 .b-ref:active{opacity:.7}
 
+/* Status badges for edit mode */
+.b-status{cursor:pointer;transition:var(--transition);border:2px solid transparent}
+.b-status:hover{border-color:var(--accent);transform:scale(1.05)}
+.b-status-0{background:var(--gray-200);color:var(--gray-500)}
+.b-status-1{background:var(--warning-pale);color:var(--warning)}
+.b-status-2{background:var(--success-pale);color:var(--success)}
+.b-status-3{background:var(--accent-pale);color:var(--accent)}
+.b-status-4{background:var(--danger-pale);color:var(--danger)}
+
 /* ===== OGSMT VIEW ===== */
 .og-big{border-left:4px solid var(--accent);margin-bottom:14px;border-radius:var(--radius);overflow:hidden}
 .og-big.e2{border-left-color:var(--warning)}
@@ -90,6 +109,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .og-act:last-child{border-bottom:none}
 .og-ck{flex-shrink:0;margin-top:3px}
 .og-ck input[type=checkbox]{width:18px;height:18px;accent-color:var(--success);cursor:pointer}
+.og-ck input[type=checkbox:disabled]{opacity:.5;cursor:not-allowed}
 .og-act-info{flex:1;min-width:0}
 .og-act-name{font-size:13px;font-weight:500;line-height:1.4}
 .og-act-meta{font-size:11px;color:var(--text-sec);margin-top:3px;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
@@ -114,6 +134,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .action-check{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:1px solid var(--gray-100)}
 .action-check:last-of-type{border-bottom:none}
 .action-check input[type=checkbox]{width:18px;height:18px;margin-top:1px;accent-color:var(--accent);flex-shrink:0;cursor:pointer}
+.action-check input[type=checkbox:disabled]{opacity:.5;cursor:not-allowed}
 .action-check label{font-size:13px;flex:1;cursor:pointer}
 .action-check label.checked{text-decoration:line-through;color:var(--gray-500)}
 .claim-row{display:flex;gap:8px;margin-top:6px}
@@ -145,28 +166,118 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .cat-count{font-size:12px;color:var(--text-sec)}
 .cat-item{padding:12px 16px;border-bottom:1px solid var(--gray-100);display:flex;align-items:flex-start;gap:10px}
 .cat-item:last-child{border-bottom:none}
-.ci-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0}
+.ci-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0;cursor:default}
 .ci-dot.done{background:var(--success)}
 .ci-dot.doing{background:var(--warning)}
 .ci-dot.todo{background:var(--gray-300)}
+.ci-dot.ref{background:var(--accent)}
+.ci-dot.wait{background:#f0ad4e}
+.ci-dot.pause{background:var(--danger)}
+.ci-dot.editable{cursor:pointer;border:2px solid var(--gray-500)}
+.ci-dot.editable:hover{border-color:var(--accent);transform:scale(1.2)}
 .ci-info{flex:1;min-width:0}
 .ci-name{font-size:13px;font-weight:500;line-height:1.4}
 .ci-result{font-size:12px;color:var(--text-sec);margin-top:2px;line-height:1.4}
 .ci-meta{font-size:11px;color:var(--text-sec);margin-top:3px;display:flex;flex-wrap:wrap;gap:3px 6px;align-items:center}
 
+/* ===== BONUS RULES VIEW ===== */
+.bonus-hero{border-radius:var(--radius);padding:20px 18px;margin-bottom:16px;box-shadow:var(--shadow);color:#fff;background:linear-gradient(135deg,#1a3a5c,#2c5f8a)}
+.bonus-pie{display:flex;align-items:center;gap:16px;margin-top:12px}
+.bonus-pie-chart{position:relative;width:100px;height:100px;flex-shrink:0}
+.bonus-pie-ring{width:100%;height:100%;border-radius:50%;background:conic-gradient(var(--cat-dev) 0deg 216deg,var(--cat-support) 216deg 288deg,var(--bonus-support) 288deg 360deg);position:relative}
+.bonus-pie-inner{position:absolute;top:20%;left:20%;width:60%;height:60%;background:var(--card);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--primary)}
+.bonus-legend{flex:1}
+.bonus-legend-item{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px}
+.bonus-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.bonus-legend-dot.dev{background:var(--cat-dev)}
+.bonus-legend-dot.newtech{background:var(--cat-support)}
+.bonus-legend-dot.support{background:var(--bonus-support)}
+.bonus-legend-dot.effect{background:var(--bonus-effect)}
+.bonus-legend-amount{font-weight:700;margin-left:auto}
+
+.bonus-category{margin-bottom:12px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.bonus-cat-header{padding:14px 16px;color:#fff;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.bonus-cat-header:active{opacity:.9}
+.bonus-cat-header.dev{background:var(--cat-dev)}
+.bonus-cat-header.newtech{background:var(--cat-support)}
+.bonus-cat-header.support{background:var(--bonus-support)}
+.bonus-cat-header.effect{background:var(--bonus-effect)}
+.bonus-cat-title{font-size:15px;font-weight:600}
+.bonus-cat-meta{font-size:12px;opacity:.8;margin-top:2px}
+.bonus-cat-amount{font-size:18px;font-weight:700;text-align:right}
+.bonus-cat-amount small{font-size:11px;opacity:.8;display:block}
+.bonus-cat-arrow{font-size:16px;margin-left:8px;transition:var(--transition)}
+.bonus-cat-arrow.open{transform:rotate(180deg)}
+
+.bonus-cat-body{background:var(--card);padding:12px 16px}
+.bonus-sub-item{padding:10px 0;border-bottom:1px solid var(--gray-100)}
+.bonus-sub-item:last-child{border-bottom:none}
+.bonus-sub-header{display:flex;justify-content:space-between;align-items:center;padding:6px 0;cursor:pointer}
+.bonus-sub-header:active{background:var(--gray-50)}
+.bonus-sub-name{font-size:13px;font-weight:600;color:var(--text)}
+.bonus-sub-amount{font-size:12px;color:var(--accent);font-weight:500}
+.bonus-sub-body{padding:8px 0 8px 12px;border-left:2px solid var(--gray-200);margin-left:4px}
+.bonus-sub-detail{padding:6px 0;font-size:12px;color:var(--text-sec)}
+.bonus-sub-detail-name{font-weight:500;color:var(--text);margin-bottom:2px}
+
+.bonus-progress-item{margin-bottom:10px}
+.bonus-progress-header{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.bonus-progress-bar{height:8px;background:var(--gray-200);border-radius:4px;overflow:hidden}
+.bonus-progress-fill{height:100%;border-radius:4px;transition:width .6s}
+
+/* Rules & Penalty */
+.bonus-rules{margin-top:16px}
+.bonus-rules-title{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.bonus-rules-title span{font-size:12px;color:var(--text-sec);font-weight:400}
+.bonus-rule-item{display:flex;gap:8px;padding:8px 0;border-bottom:1px dashed var(--gray-200);font-size:12px}
+.bonus-rule-item:last-child{border-bottom:none}
+.bonus-rule-num{width:18px;height:18px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.bonus-rule-text{flex:1;line-height:1.5}
+.bonus-penalty-item{display:flex;gap:8px;padding:8px 0;border-bottom:1px dashed var(--gray-200);font-size:12px}
+.bonus-penalty-item:last-child{border-bottom:none}
+.bonus-penalty-num{width:18px;height:18px;background:var(--danger);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.bonus-penalty-text{flex:1;line-height:1.5}
+.bonus-penalty-arrow{color:var(--danger);font-weight:600}
+
 /* ===== MODAL ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;justify-content:center}
 .modal-overlay.show{display:flex}
-.modal{background:var(--card);border-radius:var(--radius) var(--radius) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;animation:slideUp .3s ease}
+.modal{background:var(--card);border-radius:var(--radius) var(--radius) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;animation:slideUp .3s ease;max-height:90vh;overflow-y:auto}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .modal h3{font-size:17px;font-weight:600;margin-bottom:16px}
 .modal label{display:block;font-size:12px;color:var(--text-sec);font-weight:500;margin-bottom:4px;margin-top:14px}
 .modal input{width:100%;border:1px solid var(--gray-300);border-radius:var(--radius-xs);padding:10px 12px;font-size:14px;font-family:inherit}
 .modal input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-pale)}
+.modal select{width:100%;border:1px solid var(--gray-300);border-radius:var(--radius-xs);padding:10px 12px;font-size:14px;font-family:inherit;background:#fff;appearance:none;-webkit-appearance:none}
+.modal select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-pale)}
 .modal-btns{display:flex;gap:10px;margin-top:20px}
 .modal-btns button{flex:1;padding:12px;border:none;border-radius:var(--radius-sm);font-size:14px;cursor:pointer;font-weight:500}
 .modal-btns .btn-cancel{background:var(--gray-100);color:var(--gray-700)}
 .modal-btns .btn-confirm{background:var(--accent);color:#fff}
+
+/* Status picker modal */
+.status-picker{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:16px}
+.status-option{padding:10px 4px;text-align:center;border-radius:var(--radius-sm);cursor:pointer;border:2px solid transparent;transition:var(--transition)}
+.status-option:hover{border-color:var(--accent)}
+.status-option.selected{border-color:var(--text);background:var(--gray-50)}
+.status-option .so-dot{width:16px;height:16px;border-radius:50%;margin:0 auto 4px}
+.status-option .so-label{font-size:11px;font-weight:500}
+
+/* Admin config panel */
+.admin-config-card{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:12px}
+.admin-config-title{font-size:15px;font-weight:600;margin-bottom:16px;color:var(--primary)}
+.admin-config-row{margin-bottom:14px}
+.admin-config-row label{font-size:12px;color:var(--text-sec);margin-bottom:4px;display:block}
+.admin-config-row input{width:100%;border:1px solid var(--gray-300);border-radius:var(--radius-xs);padding:10px 12px;font-size:14px}
+.admin-config-row input:focus{border-color:var(--accent);outline:none}
+.admin-config-hint{font-size:11px;color:var(--text-sec);margin-top:4px;line-height:1.4}
+.admin-config-save{display:flex;gap:10px;margin-top:16px}
+.admin-config-save button{flex:1;padding:12px;border:none;border-radius:var(--radius-sm);font-size:14px;cursor:pointer;font-weight:500}
+.admin-config-save .btn-save{background:var(--success);color:#fff}
+.admin-config-save .btn-test{background:var(--accent);color:#fff}
+
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--text);color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:300;animation:fadeInUp .3s ease}
+@keyframes fadeInUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
 /* ===== BOTTOM NAV ===== */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);display:flex;border-top:1px solid var(--gray-200);z-index:100;box-shadow:0 -1px 8px rgba(0,0,0,.06);padding-bottom:env(safe-area-inset-bottom)}
@@ -174,6 +285,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .bottom-nav button.active{color:var(--accent)}
 .bottom-nav button.active::before{content:'';position:absolute;top:0;left:25%;right:25%;height:2px;background:var(--accent);border-radius:0 0 2px 2px}
 .bottom-nav .nav-icon{font-size:20px;line-height:1}
+.bottom-nav .nav-badge{position:absolute;top:2px;right:20%;background:var(--danger);color:#fff;width:14px;height:14px;border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center}
 
 /* ===== UTILS ===== */
 .empty-state{text-align:center;padding:40px 20px;color:var(--gray-500);font-size:13px}
@@ -181,8 +293,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .btn-export{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--accent);background:transparent;color:var(--accent);padding:8px 18px;border-radius:var(--radius-sm);font-size:13px;cursor:pointer;font-weight:500;transition:var(--transition)}
 .btn-export:hover{background:var(--accent);color:#fff}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;border:none;background:var(--accent);color:#fff;padding:10px 20px;border-radius:var(--radius-sm);font-size:14px;cursor:pointer;font-weight:500;transition:var(--transition)}
+.btn-primary:active{opacity:.9}
 
-@media(max-width:360px){.hero-stats.c4,.hero-stats.c5{grid-template-columns:repeat(2,1fr)}.pl-grid{grid-template-columns:1fr}}
+/* Loading state */
+.loading-spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--gray-200);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-overlay{position:fixed;inset:0;background:rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;z-index:250;flex-direction:column;gap:12px}
+.loading-overlay .loading-text{font-size:13px;color:var(--text-sec)}
+
+@media(max-width:360px){.hero-stats.c4,.hero-stats.c5{grid-template-columns:repeat(2,1fr)}.pl-grid{grid-template-columns:1fr}.bonus-pie{flex-direction:column}.bonus-legend{width:100%}}
 </style>
 </head>
 <body>
@@ -190,7 +310,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 <div class="header">
   <div class="header-inner">
     <h1>品质部工作看板</h1>
-    <div class="header-right"><span id="monthTag"></span></div>
+    <div class="header-right">
+      <span id="monthTag"></span>
+      <button class="admin-btn" id="adminBtn" onclick="toggleAdminMode()">管理模式</button>
+    </div>
   </div>
 </div>
 <div class="content" id="main"></div>
@@ -198,8 +321,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 <div class="bottom-nav">
   <button class="active" data-tab="ogsmt" onclick="navTo('ogsmt')"><span class="nav-icon">&#9878;</span>年度计划</button>
   <button data-tab="monthly" onclick="navTo('monthly')"><span class="nav-icon">&#128200;</span>月度汇总</button>
+  <button data-tab="bonus" onclick="navTo('bonus')"><span class="nav-icon">&#9733;</span>奖金规则</button>
 </div>
 
+<!-- Add task modal -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <h3>新增待办任务</h3>
@@ -213,412 +338,796 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
   </div>
 </div>
 
+<!-- Status picker modal -->
+<div class="modal-overlay" id="statusModal">
+  <div class="modal">
+    <h3 id="statusModalTitle">选择状态</h3>
+    <div class="status-picker" id="statusPicker"></div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeStatusModal()">取消</button>
+      <button class="btn-confirm" onclick="confirmStatusChange()">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- Admin config modal -->
+<div class="modal-overlay" id="adminModal">
+  <div class="modal">
+    <h3>管理模式配置</h3>
+    <div class="admin-config-row">
+      <label>GitHub 用户名 (Owner)</label>
+      <input id="cfgOwner" placeholder="如: username">
+      <div class="admin-config-hint">仓库所有者的GitHub用户名</div>
+    </div>
+    <div class="admin-config-row">
+      <label>仓库名称 (Repo)</label>
+      <input id="cfgRepo" placeholder="如: quality-board">
+      <div class="admin-config-hint">存放data.json的仓库名，需Public或已配置访问权限</div>
+    </div>
+    <div class="admin-config-row">
+      <label>分支名称 (Branch)</label>
+      <input id="cfgBranch" placeholder="如: main" value="main">
+    </div>
+    <div class="admin-config-row">
+      <label>Personal Access Token (PAT)</label>
+      <input id="cfgToken" type="password" placeholder="ghp_xxxxxxxxxxxx">
+      <div class="admin-config-hint">用于写入data.json，需repo权限。Token仅存储在本地浏览器，不会发送至第三方。</div>
+    </div>
+    <div class="admin-config-save">
+      <button class="btn-test" onclick="testGitHubConfig()">测试连接</button>
+      <button class="btn-save" onclick="saveGitHubConfig()">保存配置</button>
+    </div>
+    <div id="adminConfigStatus" style="margin-top:12px;font-size:12px;text-align:center"></div>
+  </div>
+</div>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loadingOverlay" style="display:none">
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loadingText">加载数据中...</div>
+</div>
+
 <script>
-// ==================== DATA ====================
-const DATA={
-  currentMonth:"2026-05",
-  ogsmt:[
+// ==================== CONSTANTS ====================
+const STATUS_MAP = {
+  0: { label: '未开始', color: '#868e96', class: 'b-status-0' },
+  1: { label: '进行中', color: '#d4780a', class: 'b-status-1' },
+  2: { label: '已完成', color: '#2d7d46', class: 'b-status-2' },
+  3: { label: '待反馈', color: '#2e75b6', class: 'b-status-3' },
+  4: { label: '暂缓', color: '#b91c1c', class: 'b-status-4' }
+};
+const STATUS_KEY_MAP = { 'todo': 0, 'doing': 1, 'done': 2, 'ref': 3, 'pause': 4 };
+
+// ==================== DEFAULT DATA ====================
+const DEFAULT_DATA = {
+  currentMonth: "2026-05",
+  ogsmt: [
     {
-      id:"big1",title:"大事一",full:"大事一：提升品质效率（技术支持+新产品/新技术）",
-      goal:"通过技术支持和新技术应用，提升品质工作效率",
-      strategies:[
-        {id:"s1",name:"建立技术库-材质库",target:"完成全部项目材质库建设",actions:[
-          {id:"a1",name:"AI材质识别SKILL训练+1-3个项目手搓",person:"余XH",deadline:"8/30(手搓6/30)",risk:"high",riskNote:"手搓仅剩18天，需加速"},
-          {id:"a2",name:"带领1-5人完成所有项目材质库",person:"张YQ/郭LB/马QJ",deadline:"8/30",risk:"high"},
-          {id:"a3",name:"分析材质，设置清洁属性并归类",person:"鲍YM",deadline:"8月底",risk:"mid",riskNote:"依赖材质库收集完成"}
+      id: "big1", title: "大事一", full: "大事一：提升品质效率（技术支持+新产品/新技术）",
+      goal: "通过技术支持和新技术应用，提升品质工作效率",
+      strategies: [
+        {id: "s1", name: "建立技术库-材质库", target: "完成全部项目材质库建设", actions: [
+          {id: "a1", name: "AI材质识别SKILL训练+1-3个项目手搓", person: "余XH", deadline: "8/30(手搓6/30)", risk: "high", riskNote: "手搓仅剩18天，需加速"},
+          {id: "a2", name: "带领1-5人完成所有项目材质库", person: "张YQ/郭LB/马QJ", deadline: "8/30", risk: "high"},
+          {id: "a3", name: "分析材质，设置清洁属性并归类", person: "鲍YM", deadline: "8月底", risk: "mid", riskNote: "依赖材质库收集完成"}
         ]},
-        {id:"s2",name:"建立技术库-污渍库",target:"完成污渍库汇总与源头减量",actions:[
-          {id:"a4",name:"收集清洁工作内容推导污渍并汇总",person:"张YQ/郭LB/马QJ",deadline:"6/30",risk:"high",riskNote:"截止仅剩18天，仅1个项目"},
-          {id:"a5",name:"可源头减量污渍再梳理",person:"张Z",deadline:"6/30",risk:"high",riskNote:"依赖污渍汇总完成"}
+        {id: "s2", name: "建立技术库-污渍库", target: "完成污渍库汇总与源头减量", actions: [
+          {id: "a4", name: "收集清洁工作内容推导污渍并汇总", person: "张YQ/郭LB/马QJ", deadline: "6/30", risk: "high", riskNote: "截止仅剩18天，仅1个项目"},
+          {id: "a5", name: "可源头减量污渍再梳理", person: "张Z", deadline: "6/30", risk: "high", riskNote: "依赖污渍汇总完成"}
         ]},
-        {id:"s3",name:"建立技术库-二库组合",target:"AI建模组合库，生成清洁工作模型，有效率>=80%",actions:[
-          {id:"a6",name:"AI建模组合库导入清洁方式生成工作模型",person:"鲍YM/龙虾小组",deadline:"9月底",risk:"mid",riskNote:"依赖材质库+污渍库"}
+        {id: "s3", name: "建立技术库-二库组合", target: "AI建模组合库，生成清洁工作模型，有效率>=80%", actions: [
+          {id: "a6", name: "AI建模组合库导入清洁方式生成工作模型", person: "鲍YM/龙虾小组", deadline: "9月底", risk: "mid", riskNote: "依赖材质库+污渍库"}
         ]},
-        {id:"s4",name:"建立技术库-培训辅导",target:"一线管理人员应用培训+复盘反馈",actions:[
-          {id:"a7",name:"培训一线管理人员应用+复盘反馈",person:"鲍YM",deadline:"10月底",risk:"low",riskNote:"依赖二库组合完成"}
+        {id: "s4", name: "建立技术库-培训辅导", target: "一线管理人员应用培训+复盘反馈", actions: [
+          {id: "a7", name: "培训一线管理人员应用+复盘反馈", person: "鲍YM", deadline: "10月底", risk: "low", riskNote: "依赖二库组合完成"}
         ]},
-        {id:"s5",name:"新产品测试",target:"持续测试新品，每周新增10-30个，推广落地",actions:[
-          {id:"a8",name:"建立测试新品库每周新增10-30个",person:"曹MZ",deadline:"每周一",risk:"low"},
-          {id:"a9",name:"发布测试清单+参与邀请",person:"余XH",deadline:"全年",risk:"low"},
-          {id:"a10",name:"金鹰系列产品测试",person:"余XH",deadline:"年底",risk:"low",riskNote:"需关注采纳+成本量化"},
-          {id:"a11",name:"玻璃清洁机器人测试",person:"余XH",deadline:"-",risk:"low",riskNote:"需跟进推广采纳"},
-          {id:"a12",name:"玻璃镜面/石材台面工具试验",person:"张YQ",deadline:"-",risk:"low",riskNote:"需跟进推广采纳"}
+        {id: "s5", name: "新产品测试", target: "持续测试新品，每周新增10-30个，推广落地", actions: [
+          {id: "a8", name: "建立测试新品库每周新增10-30个", person: "曹MZ", deadline: "每周一", risk: "low"},
+          {id: "a9", name: "发布测试清单+参与邀请", person: "余XH", deadline: "全年", risk: "low"},
+          {id: "a10", name: "金鹰系列产品测试", person: "余XH", deadline: "年底", risk: "low", riskNote: "需关注采纳+成本量化"},
+          {id: "a11", name: "玻璃清洁机器人测试", person: "余XH", deadline: "-", risk: "low", riskNote: "需跟进推广采纳"},
+          {id: "a12", name: "玻璃镜面/石材台面工具试验", person: "张YQ", deadline: "-", risk: "low", riskNote: "需跟进推广采纳"}
         ]},
-        {id:"s6",name:"技术支持-被动支援",target:"响应项目现场技术支援需求",actions:[
-          {id:"a13",name:"宝地广场车库顶部胶痕现场指导",person:"郭LB",deadline:"-",risk:"low"}
+        {id: "s6", name: "技术支持-被动支援", target: "响应项目现场技术支援需求", actions: [
+          {id: "a13", name: "宝地广场车库顶部胶痕现场指导", person: "郭LB", deadline: "-", risk: "low"}
         ]},
-        {id:"s7",name:"本项目优化提升",target:"所在项目品质优化与提升",actions:[
-          {id:"a14",name:"启园大堂人造石地面返碱处理",person:"李H",deadline:"-",risk:"low"},
-          {id:"a15",name:"外围麻石台阶防护处理",person:"李H",deadline:"-",risk:"low"}
+        {id: "s7", name: "本项目优化提升", target: "所在项目品质优化与提升", actions: [
+          {id: "a14", name: "启园大堂人造石地面返碱处理", person: "李H", deadline: "-", risk: "low"},
+          {id: "a15", name: "外围麻石台阶防护处理", person: "李H", deadline: "-", risk: "low"}
         ]}
       ]
     },
     {
-      id:"big2",title:"大事二",full:"大事二：使用者满意调研",
-      goal:"基于人性梳理使用者感受，建立满意度调研体系",
-      strategies:[
-        {id:"s8",name:"基于人性梳理使用者感受",target:"完成满意调研4个阶段，建立工作流优化+半自动采集系统",actions:[
-          {id:"a16",name:"阶段1：AI推演基础版本1.0",person:"鲍YM",deadline:"6/30",risk:"high",riskNote:"截止仅剩18天"},
-          {id:"a17",name:"阶段2：现场多维验证+修改2.0",person:"鲍YM",deadline:"8/30",risk:"mid",riskNote:"依赖1.0完成"},
-          {id:"a18",name:"阶段3：培训普及+抽查",person:"鲍YM",deadline:"12/31",risk:"low",riskNote:"依赖2.0完成"},
-          {id:"a19",name:"阶段4：工作流优化+半自动采集系统",person:"鲍YM",deadline:"长期",risk:"mid",riskNote:"策略'没想好'部分待拆解"}
+      id: "big2", title: "大事二", full: "大事二：使用者满意调研",
+      goal: "基于人性梳理使用者感受，建立满意度调研体系",
+      strategies: [
+        {id: "s8", name: "基于人性梳理使用者感受", target: "完成满意调研4个阶段，建立工作流优化+半自动采集系统", actions: [
+          {id: "a16", name: "阶段1：AI推演基础版本1.0", person: "鲍YM", deadline: "6/30", risk: "high", riskNote: "截止仅剩18天"},
+          {id: "a17", name: "阶段2：现场多维验证+修改2.0", person: "鲍YM", deadline: "8/30", risk: "mid", riskNote: "依赖1.0完成"},
+          {id: "a18", name: "阶段3：培训普及+抽查", person: "鲍YM", deadline: "12/31", risk: "low", riskNote: "依赖2.0完成"},
+          {id: "a19", name: "阶段4：工作流优化+半自动采集系统", person: "鲍YM", deadline: "长期", risk: "mid", riskNote: "策略'没想好'部分待拆解"}
         ]}
       ]
     }
   ],
-  risks:[
-    {id:"r1",title:"鲍YM 6项任务全部未启动",level:"extreme",impact:"材质分析+组合方案+满意调研全线延期",actions:["6月集中攻满意调研1.0+材质分析启动","7月攻组合方案2.0"],owner:"鲍YM+部门协调",refActions:["a3","a6","a7","a16","a17","a18"]},
-    {id:"r2",title:"污渍库6/30截止，仅宝地部分完成",level:"high",impact:"影响后续组合方案和培训",actions:["扩大到3-5个项目点同步采集","明确每日采集量目标"],owner:"张Z",refActions:["a4","a5"]},
-    {id:"r3",title:"材质库手搓6/30截止，进度5%",level:"high",impact:"手搓未完成无法推广",actions:["锁定2个基础项目集中手搓","6月15日前完成第1个"],owner:"张Z",refActions:["a1"]},
-    {id:"r4",title:"宝地材质+污渍已超时13天",level:"high",impact:"认领看板信用+奖金申报",actions:["立即组织交付评审","确认完成/补充完善/延期"],owner:"部门负责人",refActions:["a2","a4"]},
-    {id:"r5",title:"Q1季度申报是否已完成未知",level:"mid",impact:"影响奖金发放依据",actions:["确认Q1申报状态","准备Q2申报(7月前)"],owner:"曹MZ",refActions:[]},
-    {id:"r6",title:"月度汇总6/10已过未执行",level:"mid",impact:"缺少进度跟踪闭环",actions:["补做5月进度汇总","建立自动提醒"],owner:"曹MZ",refActions:[]},
-    {id:"r7",title:"认领看板仅3条 vs OGSMT 10项",level:"mid",impact:"7项无跟踪闭环",actions:["将OGSMT全部待办上认领看板","建立定期更新机制"],owner:"部门负责人",refActions:[]}
+  risks: [
+    {id: "r1", title: "鲍YM 6项任务全部未启动", level: "extreme", impact: "材质分析+组合方案+满意调研全线延期", actions: ["6月集中攻满意调研1.0+材质分析启动", "7月攻组合方案2.0"], owner: "鲍YM+部门协调", refActions: ["a3", "a6", "a7", "a16", "a17", "a18"]},
+    {id: "r2", title: "污渍库6/30截止，仅宝地部分完成", level: "high", impact: "影响后续组合方案和培训", actions: ["扩大到3-5个项目点同步采集", "明确每日采集量目标"], owner: "张Z", refActions: ["a4", "a5"]},
+    {id: "r3", title: "材质库手搓6/30截止，进度5%", level: "high", impact: "手搓未完成无法推广", actions: ["锁定2个基础项目集中手搓", "6月15日前完成第1个"], owner: "张Z", refActions: ["a1"]},
+    {id: "r4", title: "宝地材质+污渍已超时13天", level: "high", impact: "认领看板信用+奖金申报", actions: ["立即组织交付评审", "确认完成/补充完善/延期"], owner: "部门负责人", refActions: ["a2", "a4"]},
+    {id: "r5", title: "Q1季度申报是否已完成未知", level: "mid", impact: "影响奖金发放依据", actions: ["确认Q1申报状态", "准备Q2申报(7月前)"], owner: "曹MZ", refActions: []},
+    {id: "r6", title: "月度汇总6/10已过未执行", level: "mid", impact: "缺少进度跟踪闭环", actions: ["补做5月进度汇总", "建立自动提醒"], owner: "曹MZ", refActions: []},
+    {id: "r7", title: "认领看板仅3条 vs OGSMT 10项", level: "mid", impact: "7项无跟踪闭环", actions: ["将OGSMT全部待办上认领看板", "建立定期更新机制"], owner: "部门负责人", refActions: []}
   ],
-  months:{
-    "2026-05":{
-      label:"截止5月",updateTime:"2026-06-12",
-      works:[
-        {category:"跨项目帮扶-主动支持",catKey:"help",items:[
-          {desc:"AI材质识别SKILL训练，华泰金融石材10种AI识别采集验证",result:"已完成",status:"done",person:"余XH",time:"2-5月",ref:"a1"},
-          {desc:"宝地广场部分楼层卫生间材质清单采集",result:"部分完成，需扩大到所有项目点",status:"doing",person:"张YQ/郭LB/马QJ",time:"5月",ref:"a2"},
-          {desc:"宝地广场部分楼层卫生间污渍清单采集",result:"部分完成，仅1个项目",status:"doing",person:"张YQ/郭LB/马QJ",time:"5月",ref:"a4"},
-          {desc:"材质分析，设置清洁属性并归类",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a3"},
-          {desc:"源头减量污渍再梳理",result:"未启动",status:"todo",person:"张Z",time:"-",ref:"a5"},
-          {desc:"AI建模组合库导入清洁方式生成工作模型",result:"未启动",status:"todo",person:"鲍YM/龙虾小组",time:"-",ref:"a6"},
-          {desc:"培训一线管理人员应用+复盘反馈",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a7"},
-          {desc:"满意调研阶段1：AI推演基础版本1.0",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a16"},
-          {desc:"满意调研阶段2：现场多维验证+修改2.0",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a17"}
+  months: {
+    "2026-05": {
+      label: "截止5月", updateTime: "2026-06-12",
+      works: [
+        {category: "跨项目帮扶-主动支持", catKey: "help", items: [
+          {desc: "AI材质识别SKILL训练，华泰金融石材10种AI识别采集验证", result: "已完成", status: "done", person: "余XH", time: "2-5月", ref: "a1"},
+          {desc: "宝地广场部分楼层卫生间材质清单采集", result: "部分完成，需扩大到所有项目点", status: "doing", person: "张YQ/郭LB/马QJ", time: "5月", ref: "a2"},
+          {desc: "宝地广场部分楼层卫生间污渍清单采集", result: "部分完成，仅1个项目", status: "doing", person: "张YQ/郭LB/马QJ", time: "5月", ref: "a4"},
+          {desc: "材质分析，设置清洁属性并归类", result: "未启动", status: "todo", person: "鲍YM", time: "-", ref: "a3"},
+          {desc: "源头减量污渍再梳理", result: "未启动", status: "todo", person: "张Z", time: "-", ref: "a5"},
+          {desc: "AI建模组合库导入清洁方式生成工作模型", result: "未启动", status: "todo", person: "鲍YM/龙虾小组", time: "-", ref: "a6"},
+          {desc: "培训一线管理人员应用+复盘反馈", result: "未启动", status: "todo", person: "鲍YM", time: "-", ref: "a7"},
+          {desc: "满意调研阶段1：AI推演基础版本1.0", result: "未启动", status: "todo", person: "鲍YM", time: "-", ref: "a16"},
+          {desc: "满意调研阶段2：现场多维验证+修改2.0", result: "未启动", status: "todo", person: "鲍YM", time: "-", ref: "a17"}
         ]},
-        {category:"新产品/技术",catKey:"tech",items:[
-          {desc:"建立测试新品库，系统自动每周更新10-30个",result:"已建立，系统自动运行",status:"done",person:"曹MZ",time:"持续",ref:"a8"},
-          {desc:"发布第一批新品测试清单和人员邀请",result:"已发布，第一批测品进行中",status:"doing",person:"余XH",time:"4-5月",ref:"a9"},
-          {desc:"金鹰系列产品测试",result:"测试中，结果待反馈",status:"doing",person:"余XH",time:"5月",ref:"a10"},
-          {desc:"玻璃清洁机器人测试",result:"已完成，高楼层窗外1m2约6分钟",status:"done",person:"余XH",time:"5月",ref:"a11"},
-          {desc:"玻璃镜面/石材台面工具试验",result:"已完成",status:"done",person:"张YQ",time:"5月",ref:"a12"}
+        {category: "新产品/技术", catKey: "tech", items: [
+          {desc: "建立测试新品库，系统自动每周更新10-30个", result: "已建立，系统自动运行", status: "done", person: "曹MZ", time: "持续", ref: "a8"},
+          {desc: "发布第一批新品测试清单和人员邀请", result: "已发布，第一批测品进行中", status: "doing", person: "余XH", time: "4-5月", ref: "a9"},
+          {desc: "金鹰系列产品测试", result: "测试中，结果待反馈", status: "doing", person: "余XH", time: "5月", ref: "a10"},
+          {desc: "玻璃清洁机器人测试", result: "已完成，高楼层窗外1m2约6分钟", status: "done", person: "余XH", time: "5月", ref: "a11"},
+          {desc: "玻璃镜面/石材台面工具试验", result: "已完成", status: "done", person: "张YQ", time: "5月", ref: "a12"}
         ]},
-        {category:"技术支持",catKey:"support",items:[
-          {desc:"宝地广场车库顶部胶痕现场指导",result:"已完成，胶痕明显淡化",status:"done",person:"郭LB",time:"5月",ref:"a13"}
+        {category: "技术支持", catKey: "support", items: [
+          {desc: "宝地广场车库顶部胶痕现场指导", result: "已完成，胶痕明显淡化", status: "done", person: "郭LB", time: "5月", ref: "a13"}
         ]},
-        {category:"本项目优化提升",catKey:"optim",items:[
-          {desc:"启园大堂人造石地面返碱处理",result:"已完成",status:"done",person:"李H",time:"4月",ref:"a14"},
-          {desc:"外围麻石台阶防护处理",result:"已完成",status:"done",person:"李H",time:"4月",ref:"a15"},
-          {desc:"满意调研阶段3：培训普及+抽查",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a18"},
-          {desc:"满意调研阶段4：工作流优化+半自动采集系统",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a19"}
+        {category: "本项目优化提升", catKey: "optim", items: [
+          {desc: "启园大堂人造石地面返碱处理", result: "已完成", status: "done", person: "李H", time: "4月", ref: "a14"},
+          {desc: "外围麻石台阶防护处理", result: "已完成", status: "done", person: "李H", time: "4月", ref: "a15"},
+          {desc: "满意调研阶段3：培训普及+抽查", result: "未启动", status: "todo", person: "鲍YM", time: "-", ref: "a18"},
+          {desc: "满意调研阶段4：工作流优化+半自动采集系统", result: "未启动", status: "todo", person: "鲍YM", time: "-", ref: "a19"}
         ]}
       ],
-      claims:[
-        {id:"c1",desc:"协助宝地广场智慧清洁项目完成材质辨识和污渍辨识",std:"待定",deadline:"2026-05-29",claimDate:"2026-04-11",status:"doing",claimer:"郭LB/马QJ/张YQ",delivery:"已提交交付链接",overdue:true},
-        {id:"c2",desc:"金鹰工具的测试与推广",std:"找到符合需求的工具，推广到项目落地使用",deadline:"2026-12-31",claimDate:"2026-04-21",status:"doing",claimer:"余XH",delivery:""},
-        {id:"c3",desc:"新产品测试",std:"应用跟进，结果及时反馈",deadline:"2026-12-31",claimDate:"2026-06-01",status:"doing",claimer:"余XH",delivery:""}
+      claims: [
+        {id: "c1", desc: "协助宝地广场智慧清洁项目完成材质辨识和污渍辨识", std: "待定", deadline: "2026-05-29", claimDate: "2026-04-11", status: "doing", claimer: "郭LB/马QJ/张YQ", delivery: "已提交交付链接", overdue: true},
+        {id: "c2", desc: "金鹰工具的测试与推广", std: "找到符合需求的工具，推广到项目落地使用", deadline: "2026-12-31", claimDate: "2026-04-21", status: "doing", claimer: "余XH", delivery: ""},
+        {id: "c3", desc: "新产品测试", std: "应用跟进，结果及时反馈", deadline: "2026-12-31", claimDate: "2026-06-01", status: "doing", claimer: "余XH", delivery: ""}
+      ]
+    }
+  },
+  bonus: {
+    "2026": {
+      year: "2026",
+      title: "品质部2026年度奖金发放规则 V1.0",
+      totalPackage: "5万元",
+      effectiveDate: "2026年1月1日",
+      categories: [
+        {
+          name: "研发奖",
+          weight: "60%",
+          amount: "3万元",
+          color: "dev",
+          children: [
+            {
+              name: "技术支持",
+              weight: "60%",
+              amount: "1.8万元（占研发奖）",
+              subChildren: [
+                {name: "跨项目帮扶-被动支援", weight: "50%", amount: "1.2万元", desc: "其他部门/项目点有技术问题，给予支持并解决"},
+                {name: "跨项目帮扶-主动支持", weight: "30%", amount: "0.72万元", desc: "主动发现其他项目问题，给出解决方法并被采纳"},
+                {name: "跨项目帮扶-客户增加需求", weight: "20%", amount: "0.48万元", desc: "客户要求品质部协助解决，并得到客户认可"}
+              ]
+            },
+            {
+              name: "本项目优化提升",
+              weight: "20%",
+              amount: "0.6万元",
+              desc: "所在项目品质优化与提升"
+            }
+          ]
+        },
+        {
+          name: "研发奖（新产品/新技术引进）",
+          weight: "20%",
+          amount: "1万元",
+          color: "newtech",
+          desc: "成功引入新技术、新工具、新方法并被公司采纳"
+        },
+        {
+          name: "配合奖",
+          weight: "20%",
+          amount: "1万元",
+          color: "support",
+          desc: "配合部门各项工作推进，暂未能取得当年可量化成果"
+        },
+        {
+          name: "效果奖",
+          weight: "额外追加",
+          amount: "上不封顶",
+          color: "effect",
+          desc: "产生重大经济效益（≥3万元），视情况额外追加，不计在5万元总包内"
+        }
+      ],
+      rules: [
+        "每季度第一个月申报上一季度的《季度工作内容》",
+        "工作内容中无法量化的成果，由部门协助完成量化",
+        "年度工作内容由四个季度工作内容汇总而成",
+        "第四季度申报内容占比不超过年度工作的50%",
+        "结果导向，数据优先：以现场结果或客户反馈为依据",
+        "一事一报：同一事项只申报一次，不得重复申报",
+        "公平公正公开：评选规则、申报材料、评审结果均会在部门内公示"
+      ],
+      penalty: [
+        {desc: "伪造相关数据或证明材料", action: "取消评选资格+通报人事"},
+        {desc: "虚构工作事项或夸大成果", action: "追回所有奖励"},
+        {desc: "重复申报未如实说明", action: "取消资格"},
+        {desc: "隐瞒不利信息影响评审", action: "追究责任"}
       ]
     }
   }
 };
 
 // ==================== STATE ====================
-let currentTab='ogsmt';
-let selectedMonth=DATA.currentMonth;
-let expandState={}; // "big1":true, "big1_s1":true, ...
-let jumpTarget=null; // action ID to jump to when switching tabs
+let DATA = JSON.parse(JSON.stringify(DEFAULT_DATA)); // Deep copy
+let currentTab = 'ogsmt';
+let selectedMonth = DATA.currentMonth;
+let expandState = {};
+let jumpTarget = null;
+let isAdminMode = false;
+let pendingStatusChange = null; // { monthKey, catIdx, itemIdx, status }
 
-// LocalStorage helpers
-function getOGCK(id){try{return localStorage.getItem('ogck_'+id)==='1'}catch(e){return false}}
-function setOGCK(id,v){try{localStorage.setItem('ogck_'+id,v?'1':'0')}catch(e){}}
-function getRiskCK(r,i){try{return localStorage.getItem('rk_'+selectedMonth+'_'+r+'_'+i)==='1'}catch(e){return false}}
-function setRiskCK(r,i,v){try{localStorage.setItem('rk_'+selectedMonth+'_'+r+'_'+i,v?'1':'0')}catch(e){}}
-function getRiskCL(r){try{return localStorage.getItem('rcl_'+selectedMonth+'_'+r)||''}catch(e){return''}}
-function setRiskCL(r,v){try{localStorage.setItem('rcl_'+selectedMonth+'_'+r,v)}catch(e){}}
-function getExtraClaims(){try{return JSON.parse(localStorage.getItem('claims_x')||'[]')}catch(e){return[]}}
-function setExtraClaims(a){try{localStorage.setItem('claims_x',JSON.stringify(a))}catch(e){}}
+// GitHub Config
+let githubConfig = {
+  owner: '',
+  repo: '',
+  branch: 'main',
+  token: ''
+};
 
-const riskMap={extreme:'极高',high:'高',mid:'中',low:'低'};
+// ==================== LOCAL STORAGE HELPERS ====================
+function getOGCK(id) { try { return localStorage.getItem('ogck_' + id) === '1' } catch (e) { return false } }
+function setOGCK(id, v) { try { localStorage.setItem('ogck_' + id, v ? '1' : '0') } catch (e) {} }
+function getRiskCK(r, i) { try { return localStorage.getItem('rk_' + selectedMonth + '_' + r + '_' + i) === '1' } catch (e) { return false } }
+function setRiskCK(r, i, v) { try { localStorage.setItem('rk_' + selectedMonth + '_' + r + '_' + i, v ? '1' : '0') } catch (e) {} }
+function getRiskCL(r) { try { return localStorage.getItem('rcl_' + selectedMonth + '_' + r) || '' } catch (e) { return '' } }
+function setRiskCL(r, v) { try { localStorage.setItem('rcl_' + selectedMonth + '_' + r, v) } catch (e) {} }
+function getExtraClaims() { try { return JSON.parse(localStorage.getItem('claims_x') || '[]') } catch (e) { return [] } }
+function setExtraClaims(a) { try { localStorage.setItem('claims_x', JSON.stringify(a)) } catch (e) {} }
+function getLocalCheckedItems() { try { return JSON.parse(localStorage.getItem('checked_items') || '{}') } catch (e) { return {} } }
+function setLocalCheckedItems(items) { try { localStorage.setItem('checked_items', JSON.stringify(items)) } catch (e) {} }
 
-// ==================== BUILD REVERSE INDEX ====================
-// actionId → [{month, catKey, desc, status, result, person, time}]
-function buildMonthlyIndex(){
-  const idx={};
-  Object.entries(DATA.months).forEach(([mk,md])=>{
-    md.works.forEach(cat=>{
-      cat.items.forEach(item=>{
-        if(item.ref){
-          if(!idx[item.ref])idx[item.ref]=[];
-          idx[item.ref].push({month:mk,monthLabel:md.label,catKey:cat.catKey,desc:item.desc,status:item.status,result:item.result,person:item.person,time:item.time});
+const riskMap = { extreme: '极高', high: '高', mid: '中', low: '低' };
+
+// ==================== GITHUB API ====================
+async function loadGitHubConfig() {
+  try {
+    const saved = localStorage.getItem('quality_board_config');
+    if (saved) {
+      githubConfig = JSON.parse(saved);
+      return true;
+    }
+  } catch (e) {}
+  return false;
+}
+
+async function saveGitHubConfigToStorage() {
+  localStorage.setItem('quality_board_config', JSON.stringify(githubConfig));
+}
+
+async function testGitHubConnection() {
+  const { owner, repo, token, branch } = githubConfig;
+  if (!owner || !repo) return { success: false, message: '请填写用户名和仓库名' };
+  
+  try {
+    const resp = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/data.json?ref=${branch}`, {
+      headers: token ? { Authorization: `token ${token}` } : {}
+    });
+    if (resp.ok) {
+      return { success: true, message: '连接成功！可以读取数据' };
+    } else if (resp.status === 404) {
+      return { success: true, message: '仓库存在，但data.json不存在，将使用默认数据' };
+    } else {
+      return { success: false, message: `连接失败: ${resp.status} ${resp.statusText}` };
+    }
+  } catch (e) {
+    return { success: false, message: '网络错误: ' + e.message };
+  }
+}
+
+async function fetchDataFromGitHub() {
+  const { owner, repo, branch } = githubConfig;
+  if (!owner || !repo) return null;
+  
+  try {
+    const url = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/data.json?t=${Date.now()}`;
+    const resp = await fetch(url);
+    if (resp.ok) {
+      const data = await resp.json();
+      return data;
+    }
+  } catch (e) {
+    console.warn('GitHub fetch failed:', e);
+  }
+  return null;
+}
+
+async function saveDataToGitHub(data) {
+  const { owner, repo, token, branch } = githubConfig;
+  if (!owner || !repo || !token) return { success: false, message: '未配置GitHub或缺少Token' };
+  
+  try {
+    // Get file SHA
+    const getResp = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/data.json?ref=${branch}`, {
+      headers: { Authorization: `token ${token}` }
+    });
+    
+    let sha = null;
+    if (getResp.ok) {
+      const fileData = await getResp.json();
+      sha = fileData.sha;
+    } else if (getResp.status !== 404) {
+      return { success: false, message: `获取SHA失败: ${getResp.status}` };
+    }
+    
+    // Write file
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+    const body = {
+      message: `更新工作看板数据 ${new Date().toISOString()}`,
+      content: content,
+      branch: branch
+    };
+    if (sha) body.sha = sha;
+    
+    const putResp = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/data.json`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    
+    if (putResp.ok) {
+      return { success: true, message: '保存成功' };
+    } else {
+      const err = await putResp.json();
+      return { success: false, message: err.message || '保存失败' };
+    }
+  } catch (e) {
+    return { success: false, message: '保存失败: ' + e.message };
+  }
+}
+
+// ==================== DATA INITIALIZATION ====================
+async function init() {
+  showLoading('加载数据中...');
+  
+  await loadGitHubConfig();
+  
+  // Check if admin mode should be enabled
+  isAdminMode = githubConfig.owner && githubConfig.repo && githubConfig.token;
+  updateAdminButton();
+  
+  // Try to load from GitHub
+  const githubData = await fetchDataFromGitHub();
+  if (githubData) {
+    DATA = deepMerge(DEFAULT_DATA, githubData);
+    selectedMonth = DATA.currentMonth;
+    showToast('已从GitHub加载最新数据');
+  }
+  
+  hideLoading();
+  render();
+}
+
+function deepMerge(target, source) {
+  const result = { ...target };
+  for (const key in source) {
+    if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+      result[key] = deepMerge(target[key] || {}, source[key]);
+    } else {
+      result[key] = source[key];
+    }
+  }
+  return result;
+}
+
+// ==================== ADMIN MODE ====================
+function toggleAdminMode() {
+  if (!githubConfig.owner || !githubConfig.repo) {
+    // Need to configure first
+    openAdminModal();
+    return;
+  }
+  
+  if (!githubConfig.token) {
+    showToast('请先配置GitHub PAT才能使用管理模式');
+    openAdminModal();
+    return;
+  }
+  
+  isAdminMode = !isAdminMode;
+  updateAdminButton();
+  render();
+  showToast(isAdminMode ? '已进入管理模式' : '已退出管理模式');
+}
+
+function updateAdminButton() {
+  const btn = document.getElementById('adminBtn');
+  if (isAdminMode) {
+    btn.classList.add('active');
+    btn.textContent = '退出管理';
+  } else {
+    btn.classList.remove('active');
+    btn.textContent = '管理模式';
+  }
+}
+
+function openAdminModal() {
+  document.getElementById('cfgOwner').value = githubConfig.owner || '';
+  document.getElementById('cfgRepo').value = githubConfig.repo || '';
+  document.getElementById('cfgBranch').value = githubConfig.branch || 'main';
+  document.getElementById('cfgToken').value = githubConfig.token || '';
+  document.getElementById('adminConfigStatus').textContent = '';
+  document.getElementById('adminModal').classList.add('show');
+}
+
+function closeAdminModal() {
+  document.getElementById('adminModal').classList.remove('show');
+}
+
+async function testGitHubConfig() {
+  const owner = document.getElementById('cfgOwner').value.trim();
+  const repo = document.getElementById('cfgRepo').value.trim();
+  const branch = document.getElementById('cfgBranch').value.trim() || 'main';
+  const token = document.getElementById('cfgToken').value.trim();
+  
+  const tempConfig = { owner, repo, branch, token };
+  const original = { ...githubConfig };
+  Object.assign(githubConfig, tempConfig);
+  
+  document.getElementById('adminConfigStatus').innerHTML = '<span style="color:var(--accent)">测试中...</span>';
+  
+  const result = await testGitHubConnection();
+  
+  document.getElementById('adminConfigStatus').innerHTML = result.success 
+    ? '<span style="color:var(--success)">' + result.message + '</span>'
+    : '<span style="color:var(--danger)">' + result.message + '</span>';
+  
+  if (!result.success) {
+    Object.assign(githubConfig, original);
+  }
+}
+
+async function saveGitHubConfig() {
+  githubConfig.owner = document.getElementById('cfgOwner').value.trim();
+  githubConfig.repo = document.getElementById('cfgRepo').value.trim();
+  githubConfig.branch = document.getElementById('cfgBranch').value.trim() || 'main';
+  githubConfig.token = document.getElementById('cfgToken').value.trim();
+  
+  await saveGitHubConfigToStorage();
+  
+  closeAdminModal();
+  
+  isAdminMode = githubConfig.token ? true : isAdminMode;
+  updateAdminButton();
+  
+  showToast('配置已保存');
+  render();
+}
+
+// ==================== BUILD INDEX ====================
+function buildMonthlyIndex() {
+  const idx = {};
+  Object.entries(DATA.months).forEach(([mk, md]) => {
+    md.works.forEach(cat => {
+      cat.items.forEach(item => {
+        if (item.ref) {
+          if (!idx[item.ref]) idx[item.ref] = [];
+          idx[item.ref].push({ month: mk, monthLabel: md.label, catKey: cat.catKey, desc: item.desc, status: item.status, result: item.result, person: item.person, time: item.time });
         }
       });
     });
   });
   return idx;
 }
-const monthlyIdx=buildMonthlyIndex();
+const monthlyIdx = buildMonthlyIndex();
 
-// Find action by ID in OGSMT tree
-function findAction(aid){
-  for(const big of DATA.ogsmt){
-    for(const strat of big.strategies){
-      for(const act of strat.actions){
-        if(act.id===aid)return{big,strat,act};
+function findAction(aid) {
+  for (const big of DATA.ogsmt) {
+    for (const strat of big.strategies) {
+      for (const act of strat.actions) {
+        if (act.id === aid) return { big, strat, act };
       }
     }
   }
   return null;
 }
 
-// Build OGSMT ref path for display
-function getOGPath(aid){
-  const f=findAction(aid);
-  if(!f)return'';
-  return f.big.title+' › '+f.strat.name+' › '+f.act.name;
+function getOGPath(aid) {
+  const f = findAction(aid);
+  if (!f) return '';
+  return f.big.title + ' › ' + f.strat.name + ' › ' + f.act.name;
 }
 
 // ==================== NAVIGATION ====================
-function navTo(tab){
-  currentTab=tab;
-  document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+function navTo(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   render();
-  if(jumpTarget){
-    setTimeout(()=>{
-      const el=document.getElementById('act_'+jumpTarget);
-      if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.background='var(--accent-pale)';setTimeout(()=>el.style.background='',1500)}
-      jumpTarget=null;
-    },100);
+  if (jumpTarget) {
+    setTimeout(() => {
+      const el = document.getElementById('act_' + jumpTarget);
+      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.background = 'var(--accent-pale)'; setTimeout(() => el.style.background = '', 1500) }
+      jumpTarget = null;
+    }, 100);
   }
 }
 
-function toggleExpand(key){
-  expandState[key]=!expandState[key];
+function toggleExpand(key) {
+  expandState[key] = !expandState[key];
   render();
 }
 
-function jumpToAction(aid){
-  // Switch to OGSMT tab, expand path to this action
-  const f=findAction(aid);
-  if(!f)return;
-  expandState[f.big.id]=true;
-  expandState[f.big.id+'_'+f.strat.id]=true;
-  jumpTarget=aid;
+function jumpToAction(aid) {
+  const f = findAction(aid);
+  if (!f) return;
+  expandState[f.big.id] = true;
+  expandState[f.big.id + '_' + f.strat.id] = true;
+  jumpTarget = aid;
   navTo('ogsmt');
 }
 
-function render(){
-  const d=DATA.months[selectedMonth];
-  document.getElementById('monthTag').textContent=d?d.label:'';
-  if(currentTab==='ogsmt')renderOGSMT();
-  else renderMonthly(d);
+function render() {
+  const d = DATA.months[selectedMonth];
+  document.getElementById('monthTag').textContent = d ? d.label : '';
+  if (currentTab === 'ogsmt') renderOGSMT();
+  else if (currentTab === 'monthly') renderMonthly(d);
+  else if (currentTab === 'bonus') renderBonus();
 }
 
 // ==================== OGSMT VIEW ====================
-function renderOGSMT(){
-  // Compute stats
-  let totalActions=0,totalStrategies=0,highRiskActions=0;
-  DATA.ogsmt.forEach(big=>{
-    totalStrategies+=big.strategies.length;
-    big.strategies.forEach(s=>{
-      totalActions+=s.actions.length;
-      highRiskActions+=s.actions.filter(a=>a.risk==='high'||a.risk==='extreme').length;
+function renderOGSMT() {
+  let totalActions = 0, totalStrategies = 0, highRiskActions = 0;
+  DATA.ogsmt.forEach(big => {
+    totalStrategies += big.strategies.length;
+    big.strategies.forEach(s => {
+      totalActions += s.actions.length;
+      highRiskActions += s.actions.filter(a => a.risk === 'high' || a.risk === 'extreme').length;
     });
   });
-  // Coverage: actions that have at least one monthly ref with status doing/done
-  let coveredActions=0;
-  DATA.ogsmt.forEach(big=>big.strategies.forEach(s=>s.actions.forEach(a=>{
-    if(monthlyIdx[a.id]&&monthlyIdx[a.id].some(m=>m.status==='done'||m.status==='doing'))coveredActions++;
+  
+  let coveredActions = 0;
+  DATA.ogsmt.forEach(big => big.strategies.forEach(s => s.actions.forEach(a => {
+    if (monthlyIdx[a.id] && monthlyIdx[a.id].some(m => m.status === 'done' || m.status === 'doing')) coveredActions++;
   })));
-
-  let html=`<div class="fade-in">`;
-
-  // Hero
-  html+=`<div class="hero hero-blue">
+  
+  // Get checked items from localStorage (admin mode)
+  const checkedItems = getLocalCheckedItems();
+  
+  let html = `<div class="fade-in">`;
+  
+  html += `<div class="hero hero-blue">
     <div class="h-label">年度战略目标</div>
     <div class="h-title">品质部2026年度OGSMT</div>
     <div class="h-sub">${DATA.ogsmt.length}件大事 / ${totalStrategies}项策略 / ${totalActions}项行动方案</div>
     <div class="hero-stats c4">
       <div class="hs"><div class="num">${totalActions}</div><div class="lbl">总行动项</div></div>
       <div class="hs"><div class="num">${coveredActions}</div><div class="lbl">已启动</div></div>
-      <div class="hs"><div class="num">${totalActions-coveredActions}</div><div class="lbl">未启动</div></div>
+      <div class="hs"><div class="num">${totalActions - coveredActions}</div><div class="lbl">未启动</div></div>
       <div class="hs"><div class="num" style="color:#ff6b6b">${highRiskActions}</div><div class="lbl">高风险项</div></div>
     </div>
   </div>`;
-
+  
   // Big Events
-  DATA.ogsmt.forEach((big,bi)=>{
-    const isOpen=expandState[big.id]!==false;
-    const bActions=big.strategies.reduce((a,s)=>a+s.actions.length,0);
-    const bHighRisk=big.strategies.reduce((a,s)=>a+s.actions.filter(act=>act.risk==='high'||act.risk==='extreme').length,0);
-    const bCovered=big.strategies.reduce((a,s)=>a+s.actions.filter(act=>monthlyIdx[act.id]&&monthlyIdx[act.id].some(m=>m.status==='done'||m.status==='doing')).length,0);
-
-    html+=`<div class="card og-big ${bi===1?'e2':''}">
+  DATA.ogsmt.forEach((big, bi) => {
+    const isOpen = expandState[big.id] !== false;
+    const bActions = big.strategies.reduce((a, s) => a + s.actions.length, 0);
+    const bHighRisk = big.strategies.reduce((a, s) => a + s.actions.filter(act => act.risk === 'high' || act.risk === 'extreme').length, 0);
+    const bCovered = big.strategies.reduce((a, s) => a + s.actions.filter(act => monthlyIdx[act.id] && monthlyIdx[act.id].some(m => m.status === 'done' || m.status === 'doing')).length, 0);
+    
+    html += `<div class="card og-big ${bi === 1 ? 'e2' : ''}">
       <div class="og-big-head" onclick="toggleExpand('${big.id}')">
         <div>
           <div class="og-big-title">${big.full}</div>
           <div style="font-size:12px;color:var(--text-sec);margin-top:2px">${big.goal}</div>
         </div>
         <div style="display:flex;align-items:center">
-          <span class="og-big-meta">${bCovered}/${bActions}启动${bHighRisk?' / <span style="color:var(--danger)">'+bHighRisk+'高风险</span>':''}</span>
-          <span class="og-arrow ${isOpen?'open':''}">&#9656;</span>
+          <span class="og-big-meta">${bCovered}/${bActions}启动${bHighRisk ? ' / <span style="color:var(--danger)">' + bHighRisk + '高风险</span>' : ''}</span>
+          <span class="og-arrow ${isOpen ? 'open' : ''}">&#9656;</span>
         </div>
       </div>`;
-
-    if(isOpen){
-      big.strategies.forEach((strat,si)=>{
-        const sOpen=expandState[big.id+'_'+strat.id]===true;
-        const sActions=strat.actions.length;
-        const sHighRisk=strat.actions.filter(a=>a.risk==='high'||a.risk==='extreme').length;
-
-        html+=`<div class="og-strat">
+    
+    if (isOpen) {
+      big.strategies.forEach((strat, si) => {
+        const sOpen = expandState[big.id + '_' + strat.id] === true;
+        const sActions = strat.actions.length;
+        const sHighRisk = strat.actions.filter(a => a.risk === 'high' || a.risk === 'extreme').length;
+        
+        html += `<div class="og-strat">
           <div class="og-strat-head" onclick="toggleExpand('${big.id}_${strat.id}')">
-            <span class="og-strat-name">${sHighRisk?'<span style="color:var(--danger)">⚠ </span>':''}${strat.name}</span>
+            <span class="og-strat-name">${sHighRisk ? '<span style="color:var(--danger)">⚠ </span>' : ''}${strat.name}</span>
             <div style="display:flex;align-items:center">
-              <span class="og-strat-meta">${sActions}项${strat.target?' | '+strat.target:''}</span>
-              <span class="og-arrow ${sOpen?'open':''}">&#9656;</span>
+              <span class="og-strat-meta">${sActions}项${strat.target ? ' | ' + strat.target : ''}</span>
+              <span class="og-arrow ${sOpen ? 'open' : ''}">&#9656;</span>
             </div>
           </div>`;
-
-        if(sOpen){
-          strat.actions.forEach(act=>{
-            const ck=getOGCK(act.id);
-            const refs=monthlyIdx[act.id]||[];
-            const riskCls=act.risk==='extreme'?'b-risk-extreme':act.risk==='high'?'b-risk-high':act.risk==='mid'?'b-risk-mid':'b-risk-low';
-
-            html+=`<div class="og-act" id="act_${act.id}">
-              <div class="og-ck"><input type="checkbox" ${ck?'checked':''} onchange="setOGCK('${act.id}',this.checked)"></div>
+        
+        if (sOpen) {
+          strat.actions.forEach(act => {
+            const ck = isAdminMode ? (checkedItems[act.id] || getOGCK(act.id)) : getOGCK(act.id);
+            const refs = monthlyIdx[act.id] || [];
+            const riskCls = act.risk === 'extreme' ? 'b-risk-extreme' : act.risk === 'high' ? 'b-risk-high' : act.risk === 'mid' ? 'b-risk-mid' : 'b-risk-low';
+            
+            html += `<div class="og-act" id="act_${act.id}">
+              <div class="og-ck"><input type="checkbox" ${ck ? 'checked' : ''} ${isAdminMode ? '' : 'disabled'} onchange="toggleOGCheck('${act.id}', this.checked)"></div>
               <div class="og-act-info">
-                <div class="og-act-name" style="${ck?'text-decoration:line-through;color:var(--gray-500)':''}">${act.name}</div>
+                <div class="og-act-name" style="${ck ? 'text-decoration:line-through;color:var(--gray-500)' : ''}">${act.name}</div>
                 <div class="og-act-meta">
                   <span class="badge b-person">${act.person}</span>
-                  ${act.deadline&&act.deadline!=='-'?`<span class="badge b-dl">${act.deadline}</span>`:''}
+                  ${act.deadline && act.deadline !== '-' ? `<span class="badge b-dl">${act.deadline}</span>` : ''}
                   <span class="badge ${riskCls}">${riskMap[act.risk]}风险</span>
                 </div>
-                ${act.riskNote?`<div class="og-act-rsk">${act.riskNote}</div>`:''}`;
-
-            // Monthly refs
-            if(refs.length){
-              html+=`<div class="og-monthly-refs">
+                ${act.riskNote ? `<div class="og-act-rsk">${act.riskNote}</div>` : ''}`;
+            
+            if (refs.length) {
+              html += `<div class="og-monthly-refs">
                 <div class="og-mr-title">月度实际工作</div>`;
-              refs.forEach(r=>{
-                html+=`<div class="og-mr-item">
+              refs.forEach(r => {
+                html += `<div class="og-mr-item">
                   <span class="og-mr-dot ${r.status}"></span>
                   <span>${r.monthLabel} | ${r.result}</span>
                 </div>`;
               });
-              html+=`</div>`;
+              html += `</div>`;
             }
-
-            html+=`</div></div>`;
+            
+            html += `</div></div>`;
           });
         }
-        html+=`</div>`;
+        html += `</div>`;
       });
     }
-    html+=`</div>`;
+    html += `</div>`;
   });
-
+  
   // Risk section
-  html+=`<div class="stitle"><h2>风险与行动跟踪</h2></div>`;
-  const levelOrd={extreme:0,high:1,mid:2,low:3};
-  const sorted=[...DATA.risks].sort((a,b)=>levelOrd[a.level]-levelOrd[b.level]);
-  sorted.forEach(r=>{
-    const cls=r.level==='extreme'?'':r.level==='mid'?'r-mid':r.level==='low'?'r-low':'';
-    const allDone=r.actions.every((_,i)=>getRiskCK(r.id,i));
-    html+=`<div class="card risk-card ${cls}"><div class="card-body">
+  html += `<div class="stitle"><h2>风险与行动跟踪</h2></div>`;
+  const levelOrd = { extreme: 0, high: 1, mid: 2, low: 3 };
+  const sorted = [...DATA.risks].sort((a, b) => levelOrd[a.level] - levelOrd[b.level]);
+  sorted.forEach(r => {
+    const cls = r.level === 'extreme' ? '' : r.level === 'mid' ? 'r-mid' : r.level === 'low' ? 'r-low' : '';
+    const allDone = r.actions.every((_, i) => getRiskCK(r.id, i));
+    html += `<div class="card risk-card ${cls}"><div class="card-body">
       <div class="risk-title"><span class="badge b-risk-${r.level}">${riskMap[r.level]}</span>${r.title}</div>
       <div class="risk-impact">影响：${r.impact}</div>
-      <div style="font-size:12px;font-weight:600;margin-bottom:4px">建议行动${allDone?' <span style="color:var(--success);font-weight:400">✓ 已全部完成</span>':''}</div>`;
-    r.actions.forEach((act,i)=>{
-      const ck=getRiskCK(r.id,i);
-      html+=`<div class="action-check">
-        <input type="checkbox" ${ck?'checked':''} onchange="toggleRiskCK('${r.id}',${i},this)">
-        <label class="${ck?'checked':''}">${act}</label>
+      <div style="font-size:12px;font-weight:600;margin-bottom:4px">建议行动${allDone ? ' <span style="color:var(--success);font-weight:400">✓ 已全部完成</span>' : ''}</div>`;
+    r.actions.forEach((act, i) => {
+      const ck = getRiskCK(r.id, i);
+      html += `<div class="action-check">
+        <input type="checkbox" ${ck ? 'checked' : ''} ${isAdminMode ? '' : 'disabled'} onchange="toggleRiskCK('${r.id}',${i},this)">
+        <label class="${ck ? 'checked' : ''}">${act}</label>
       </div>`;
     });
-    const cl=getRiskCL(r.id);
-    html+=`<div class="risk-owner">责任人：${r.owner}</div>
-      <div class="claim-row"><input placeholder="认领人/执行说明" value="${cl}" id="rcl_${r.id}"><button onclick="saveRiskCL('${r.id}',this)">保存</button></div>
-      ${r.refActions&&r.refActions.length?`<div style="font-size:11px;color:var(--text-sec);margin-top:6px">关联行动：${r.refActions.map(a=>{const f=findAction(a);return f?`<span class="badge b-ref" onclick="jumpToAction('${a}')">${f.act.name.slice(0,10)}...</span>`:''}).join(' ')}</div>`:''}
+    const cl = getRiskCL(r.id);
+    html += `<div class="risk-owner">责任人：${r.owner}</div>
+      <div class="claim-row"><input placeholder="认领人/执行说明" value="${cl}" id="rcl_${r.id}" ${isAdminMode ? '' : 'disabled'}><button onclick="saveRiskCL('${r.id}',this)" ${isAdminMode ? '' : 'disabled'} >保存</button></div>
+      ${r.refActions && r.refActions.length ? `<div style="font-size:11px;color:var(--text-sec);margin-top:6px">关联行动：${r.refActions.map(a => { const f = findAction(a); return f ? `<span class="badge b-ref" onclick="jumpToAction('${a}')">${f.act.name.slice(0, 10)}...</span>` : '' }).join(' ')}</div>` : ''}
     </div></div>`;
   });
-
+  
   // Person load
-  html+=`<div class="stitle"><h2>人员负载快照</h2></div><div class="pl-grid">`;
-  const personMap={};
-  DATA.ogsmt.forEach(big=>big.strategies.forEach(s=>s.actions.forEach(a=>{
-    a.person.split('/').forEach(p=>{
-      p=p.trim();if(!p)return;
-      if(!personMap[p])personMap[p]={total:0,done:0,doing:0,todo:0,highRisk:0};
+  html += `<div class="stitle"><h2>人员负载快照</h2></div><div class="pl-grid">`;
+  const personMap = {};
+  DATA.ogsmt.forEach(big => big.strategies.forEach(s => s.actions.forEach(a => {
+    a.person.split('/').forEach(p => {
+      p = p.trim(); if (!p) return;
+      if (!personMap[p]) personMap[p] = { total: 0, done: 0, doing: 0, todo: 0, highRisk: 0 };
       personMap[p].total++;
-      const refs=monthlyIdx[a.id]||[];
-      if(refs.some(r=>r.status==='done'))personMap[p].done++;
-      else if(refs.some(r=>r.status==='doing'))personMap[p].doing++;
+      const refs = monthlyIdx[a.id] || [];
+      if (refs.some(r => r.status === 'done')) personMap[p].done++;
+      else if (refs.some(r => r.status === 'doing')) personMap[p].doing++;
       else personMap[p].todo++;
-      if(a.risk==='high'||a.risk==='extreme')personMap[p].highRisk++;
+      if (a.risk === 'high' || a.risk === 'extreme') personMap[p].highRisk++;
     });
   })));
-  Object.entries(personMap).sort((a,b)=>b[1].highRisk-a[1].highRisk||b[1].total-a[1].total).forEach(([name,info])=>{
-    let dots='';
-    for(let i=0;i<info.done;i++)dots+=`<span class="pl-dot d-done"></span>`;
-    for(let i=0;i<info.doing;i++)dots+=`<span class="pl-dot d-doing"></span>`;
-    for(let i=0;i<info.todo;i++)dots+=`<span class="pl-dot d-todo"></span>`;
-    for(let i=0;i<info.highRisk;i++)dots+=`<span class="pl-dot d-high"></span>`;
-    html+=`<div class="pl-item">
-      <div class="pl-name">${name}${info.highRisk?` <span style="color:var(--danger);font-size:11px">${info.highRisk}高风险</span>`:''}</div>
+  Object.entries(personMap).sort((a, b) => b[1].highRisk - a[1].highRisk || b[1].total - a[1].total).forEach(([name, info]) => {
+    let dots = '';
+    for (let i = 0; i < info.done; i++) dots += `<span class="pl-dot d-done"></span>`;
+    for (let i = 0; i < info.doing; i++) dots += `<span class="pl-dot d-doing"></span>`;
+    for (let i = 0; i < info.todo; i++) dots += `<span class="pl-dot d-todo"></span>`;
+    for (let i = 0; i < info.highRisk; i++) dots += `<span class="pl-dot d-high"></span>`;
+    html += `<div class="pl-item">
+      <div class="pl-name">${name}${info.highRisk ? ` <span style="color:var(--danger);font-size:11px">${info.highRisk}高风险</span>` : ''}</div>
       <div class="pl-bar">${dots}</div>
       <div class="pl-meta">${info.total}项 | ✓${info.done} 进行中${info.doing} 待启动${info.todo}</div>
     </div>`;
   });
-  html+=`</div>`;
-
-  html+=`</div>`;
-  document.getElementById('main').innerHTML=html;
+  html += `</div>`;
+  
+  html += `</div>`;
+  document.getElementById('main').innerHTML = html;
 }
 
-function toggleRiskCK(r,i,el){
-  setRiskCK(r,i,el.checked);
-  el.nextElementSibling.classList.toggle('checked',el.checked);
+async function toggleOGCheck(actId, checked) {
+  // Save locally first
+  setOGCK(actId, checked);
+  
+  // Update checked items for GitHub sync
+  const checkedItems = getLocalCheckedItems();
+  checkedItems[actId] = checked;
+  setLocalCheckedItems(checkedItems);
+  
+  // Sync to GitHub if admin mode
+  if (isAdminMode) {
+    await saveDataToGitHub(DATA);
+  }
+  
+  // Update UI
+  render();
 }
-function saveRiskCL(r,btn){
-  setRiskCL(r,document.getElementById('rcl_'+r).value);
-  btn.textContent='已保存';btn.classList.add('saved');
-  setTimeout(()=>{btn.textContent='保存';btn.classList.remove('saved')},1500);
+
+function toggleRiskCK(r, i, el) {
+  setRiskCK(r, i, el.checked);
+  el.nextElementSibling.classList.toggle('checked', el.checked);
+}
+
+function saveRiskCL(r, btn) {
+  setRiskCL(r, document.getElementById('rcl_' + r).value);
+  btn.textContent = '已保存'; btn.classList.add('saved');
+  setTimeout(() => { btn.textContent = '保存'; btn.classList.remove('saved') }, 1500);
 }
 
 // ==================== MONTHLY VIEW ====================
-function renderMonthly(d){
-  if(!d){document.getElementById('main').innerHTML='<div class="empty-state">暂无该月数据</div>';return}
-  const monthKeys=Object.keys(DATA.months).sort();
-
-  let html=`<div class="fade-in">`;
-
+function renderMonthly(d) {
+  if (!d) { document.getElementById('main').innerHTML = '<div class="empty-state">暂无该月数据</div>'; return; }
+  
+  // Sort months in descending order (newest first)
+  const monthKeys = Object.keys(DATA.months).sort().reverse();
+  
+  let html = `<div class="fade-in">`;
+  
   // Month selector
-  html+=`<div class="msel">`;
-  monthKeys.forEach(m=>{
-    html+=`<button class="${m===selectedMonth?'active':''}" onclick="selectedMonth='${m}';render()">${DATA.months[m].label}</button>`;
+  html += `<div class="msel">`;
+  monthKeys.forEach(m => {
+    html += `<button class="${m === selectedMonth ? 'active' : ''}" onclick="selectedMonth='${m}';render()">${DATA.months[m].label}</button>`;
   });
-  html+=`</div>`;
-
+  html += `</div>`;
+  
   // Stats
-  const allItems=d.works.reduce((a,w)=>a+w.items.length,0);
-  const allDone=d.works.reduce((a,w)=>a+w.items.filter(i=>i.status==='done').length,0);
-  const allDoing=d.works.reduce((a,w)=>a+w.items.filter(i=>i.status==='doing').length,0);
-  const allTodo=d.works.reduce((a,w)=>a+w.items.filter(i=>i.status==='todo').length,0);
-  const pct=allItems?Math.round(allDone/allItems*100):0;
-
+  const allItems = d.works.reduce((a, w) => a + w.items.length, 0);
+  const allDone = d.works.reduce((a, w) => a + w.items.filter(i => i.status === 'done').length, 0);
+  const allDoing = d.works.reduce((a, w) => a + w.items.filter(i => i.status === 'doing').length, 0);
+  const allTodo = d.works.reduce((a, w) => a + w.items.filter(i => i.status === 'todo').length, 0);
+  const allRef = d.works.reduce((a, w) => a + w.items.filter(i => i.status === 'ref').length, 0);
+  const allPause = d.works.reduce((a, w) => a + w.items.filter(i => i.status === 'pause').length, 0);
+  const pct = allItems ? Math.round(allDone / allItems * 100) : 0;
+  
   // OGSMT coverage
-  let totalOGActions=0,coveredOGActions=0;
-  DATA.ogsmt.forEach(big=>big.strategies.forEach(s=>s.actions.forEach(a=>{
+  let totalOGActions = 0, coveredOGActions = 0;
+  DATA.ogsmt.forEach(big => big.strategies.forEach(s => s.actions.forEach(a => {
     totalOGActions++;
-    if(monthlyIdx[a.id]&&monthlyIdx[a.id].some(m=>m.month===selectedMonth&&(m.status==='done'||m.status==='doing')))coveredOGActions++;
+    if (monthlyIdx[a.id] && monthlyIdx[a.id].some(m => m.month === selectedMonth && (m.status === 'done' || m.status === 'doing'))) coveredOGActions++;
   })));
-  const covPct=totalOGActions?Math.round(coveredOGActions/totalOGActions*100):0;
-
+  const covPct = totalOGActions ? Math.round(coveredOGActions / totalOGActions * 100) : 0;
+  
+  // Unique persons
+  const persons = [...new Set(d.works.flatMap(c => c.items.map(i => i.person)))];
+  
   // Work type distribution
-  const catStats=d.works.map(cat=>({
-    name:cat.category,key:cat.catKey,
-    done:cat.items.filter(i=>i.status==='done').length,
-    doing:cat.items.filter(i=>i.status==='doing').length,
-    todo:cat.items.filter(i=>i.status==='todo').length,
-    total:cat.items.length
+  const catStats = d.works.map(cat => ({
+    name: cat.category, key: cat.catKey,
+    done: cat.items.filter(i => i.status === 'done').length,
+    doing: cat.items.filter(i => i.status === 'doing').length,
+    todo: cat.items.filter(i => i.status === 'todo').length,
+    total: cat.items.length
   }));
-
-  html+=`<div class="hero hero-green">
+  
+  // Hero section with key stats
+  html += `<div class="hero hero-green">
     <div class="h-label">${d.label}工作总结</div>
     <div class="h-title">完成率 ${pct}% | OGSMT覆盖率 ${covPct}%</div>
     <div class="h-sub">${allDone}项完成 / ${allDoing}项进行中 / ${allTodo}项未启动</div>
@@ -630,13 +1139,29 @@ function renderMonthly(d){
       <div class="hs"><div class="num">${coveredOGActions}/${totalOGActions}</div><div class="lbl">OG覆盖</div></div>
     </div>
   </div>`;
-
+  
+  // Participants and pending items
+  if (isAdminMode) {
+    html += `<div class="card"><div class="card-body" style="padding:14px 16px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;color:var(--text-sec)">参与人员</div>
+          <div style="font-size:14px;font-weight:600;margin-top:2px">${persons.length}人</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:12px;color:var(--text-sec)">待推进</div>
+          <div style="font-size:14px;font-weight:600;margin-top:2px;color:var(--warning)">${allDoing + allTodo}项</div>
+        </div>
+      </div>
+    </div></div>`;
+  }
+  
   // Work type distribution bar
-  html+=`<div class="card"><div class="card-body">
+  html += `<div class="card"><div class="card-body">
     <div style="font-size:13px;font-weight:600;margin-bottom:10px">工作类型分布</div>`;
-  catStats.forEach(cat=>{
-    const catPct=cat.total?Math.round(cat.done/cat.total*100):0;
-    html+=`<div style="margin-bottom:10px">
+  catStats.forEach(cat => {
+    const catPct = cat.total ? Math.round(cat.done / cat.total * 100) : 0;
+    html += `<div style="margin-bottom:10px">
       <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
         <span>${cat.name}</span>
         <span style="color:var(--text-sec)">${cat.done}/${cat.total} 完成 (${catPct}%)</span>
@@ -646,114 +1171,385 @@ function renderMonthly(d){
       </div>
     </div>`;
   });
-  html+=`</div></div>`;
-
+  html += `</div></div>`;
+  
   // Category cards with items
-  d.works.forEach(cat=>{
-    const catDone=cat.items.filter(i=>i.status==='done').length;
-    const catDoing=cat.items.filter(i=>i.status==='doing').length;
-    const catTodo=cat.items.filter(i=>i.status==='todo').length;
-
-    html+=`<div class="card cat-card ck-${cat.catKey}">
+  d.works.forEach((cat, catIdx) => {
+    const catDone = cat.items.filter(i => i.status === 'done').length;
+    const catDoing = cat.items.filter(i => i.status === 'doing').length;
+    const catTodo = cat.items.filter(i => i.status === 'todo').length;
+    
+    html += `<div class="card cat-card ck-${cat.catKey}">
       <div class="cat-head">
         <span class="cat-name">${cat.category}</span>
         <span class="cat-count">✓${catDone} 进行中${catDoing} 待启动${catTodo}</span>
       </div>`;
-
-    cat.items.forEach(item=>{
-      const f=item.ref?findAction(item.ref):null;
-      const ogRef=f?`${f.big.title} › ${f.strat.name}`:'';
-
-      html+=`<div class="cat-item">
-        <div class="ci-dot ${item.status}"></div>
+    
+    cat.items.forEach((item, itemIdx) => {
+      const f = item.ref ? findAction(item.ref) : null;
+      const ogRef = f ? `${f.big.title} › ${f.strat.name}` : '';
+      const statusClass = isAdminMode && currentTab === 'monthly' ? 'editable' : '';
+      const statusTitle = isAdminMode ? '点击修改状态' : '';
+      
+      html += `<div class="cat-item">
+        <div class="ci-dot ${item.status} ${statusClass}" style="${statusClass ? 'cursor:pointer' : ''}" ${statusTitle ? `title="${statusTitle}"` : ''} onclick="${isAdminMode ? `openStatusModal('${selectedMonth}', ${catIdx}, ${itemIdx})` : ''}"></div>
         <div class="ci-info">
           <div class="ci-name">${item.desc}</div>
           <div class="ci-result">${item.result}</div>
           <div class="ci-meta">
             <span>${item.person}</span>
-            ${item.time&&item.time!=='-'?`<span>${item.time}</span>`:''}
-            ${ogRef?`<span class="badge b-ref" onclick="jumpToAction('${item.ref}')">${ogRef}</span>`:''}
+            ${item.time && item.time !== '-' ? `<span>${item.time}</span>` : ''}
+            ${ogRef ? `<span class="badge b-ref" onclick="jumpToAction('${item.ref}')">${ogRef}</span>` : ''}
+            ${isAdminMode ? `<span class="badge ${STATUS_MAP[STATUS_KEY_MAP[item.status] || 0].class}" style="font-size:10px">${STATUS_MAP[STATUS_KEY_MAP[item.status] || 0].label}</span>` : ''}
           </div>
         </div>
       </div>`;
     });
-    html+=`</div>`;
+    html += `</div>`;
   });
-
+  
   // Claims (compact)
-  const base=d.claims||[];
-  const extra=getExtraClaims().filter(c=>c.month===selectedMonth);
-  const all=[...base,...extra];
-  if(all.length){
-    html+=`<div class="stitle"><h2>待办认领</h2><button class="btn-export" onclick="openModal()" style="font-size:12px;padding:4px 12px">+ 新增</button></div>`;
-    all.forEach(c=>{
-      const od=c.deadline&&new Date(c.deadline)<new Date();
-      html+=`<div class="card"><div class="card-body" style="padding:12px 16px">
+  const base = d.claims || [];
+  const extra = getExtraClaims().filter(c => c.month === selectedMonth);
+  const all = [...base, ...extra];
+  if (all.length) {
+    html += `<div class="stitle"><h2>待办认领</h2>${isAdminMode ? `<button class="btn-export" onclick="openModal()" style="font-size:12px;padding:4px 12px">+ 新增</button>` : ''}</div>`;
+    all.forEach(c => {
+      const od = c.deadline && new Date(c.deadline) < new Date();
+      html += `<div class="card"><div class="card-body" style="padding:12px 16px">
         <div style="font-size:13px;font-weight:500">${c.desc}</div>
         <div style="font-size:11px;color:var(--text-sec);margin-top:3px">
-          ${c.claimer?'认领：'+c.claimer:'<span style="color:var(--danger)">待认领</span>'} | 截止：${c.deadline||'待定'}${od?' <span style="color:var(--danger)">超时</span>':''}
+          ${c.claimer ? '认领：' + c.claimer : '<span style="color:var(--danger)">待认领</span>'} | 截止：${c.deadline || '待定'}${od ? ' <span style="color:var(--danger)">超时</span>' : ''}
         </div>
-        <div style="display:flex;gap:6px;margin-top:6px">
-          ${!c.claimer?`<button class="ki-btn btn-claim" style="border:none;background:var(--accent);color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;cursor:pointer" onclick="claimIt('${c.id}')">认领</button>`:''}
-          ${c.claimer&&c.status!=='done'?`<button class="ki-btn btn-complete" style="border:none;background:var(--success);color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;cursor:pointer" onclick="completeIt('${c.id}')">确认完成</button>`:''}
-        </div>
+        ${isAdminMode ? `<div style="display:flex;gap:6px;margin-top:6px">
+          ${!c.claimer ? `<button class="ki-btn btn-claim" style="border:none;background:var(--accent);color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;cursor:pointer" onclick="claimIt('${c.id}')">认领</button>` : ''}
+          ${c.claimer && c.status !== 'done' ? `<button class="ki-btn btn-complete" style="border:none;background:var(--success);color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;cursor:pointer" onclick="completeIt('${c.id}')">确认完成</button>` : ''}
+        </div>` : ''}
       </div></div>`;
     });
   }
-
-  html+=`<button class="btn-export" onclick="exportMonthlyCSV()" style="margin-top:4px">导出本月数据 (CSV)</button>`;
-  html+=`</div>`;
-  document.getElementById('main').innerHTML=html;
+  
+  html += `<button class="btn-export" onclick="exportMonthlyCSV()" style="margin-top:4px">导出本月数据 (CSV)</button>`;
+  html += `</div>`;
+  document.getElementById('main').innerHTML = html;
 }
 
-function exportMonthlyCSV(){
-  const d=DATA.months[selectedMonth];if(!d)return;
-  let csv='\uFEFF工作分类,任务描述,交付成果,状态,执行人,时间,关联OGSMT\n';
-  d.works.forEach(cat=>{
-    cat.items.forEach(item=>{
-      const st=item.status==='done'?'已完成':item.status==='doing'?'进行中':'未启动';
-      const ogPath=item.ref?getOGPath(item.ref):'';
-      csv+=`"${cat.category}","${item.desc}","${item.result}","${st}","${item.person}","${item.time||''}","${ogPath}"\n`;
+// ==================== STATUS EDITING ====================
+function openStatusModal(monthKey, catIdx, itemIdx) {
+  pendingStatusChange = { monthKey, catIdx, itemIdx };
+  
+  const month = DATA.months[monthKey];
+  const item = month.works[catIdx].items[itemIdx];
+  const currentStatus = STATUS_KEY_MAP[item.status] || 0;
+  
+  document.getElementById('statusModalTitle').textContent = '修改状态';
+  
+  let pickerHtml = '';
+  for (let i = 0; i < 5; i++) {
+    const s = STATUS_MAP[i];
+    pickerHtml += `<div class="status-option ${i === currentStatus ? 'selected' : ''}" onclick="selectStatus(${i})">
+      <div class="so-dot" style="background:${s.color}"></div>
+      <div class="so-label">${s.label}</div>
+    </div>`;
+  }
+  document.getElementById('statusPicker').innerHTML = pickerHtml;
+  
+  document.getElementById('statusModal').classList.add('show');
+}
+
+function selectStatus(idx) {
+  document.querySelectorAll('.status-option').forEach((el, i) => {
+    el.classList.toggle('selected', i === idx);
+  });
+}
+
+function closeStatusModal() {
+  document.getElementById('statusModal').classList.remove('show');
+  pendingStatusChange = null;
+}
+
+async function confirmStatusChange() {
+  if (!pendingStatusChange) return;
+  
+  const selected = document.querySelector('.status-option.selected');
+  if (!selected) return;
+  
+  const idx = [...document.querySelectorAll('.status-option')].indexOf(selected);
+  const statusNames = ['todo', 'doing', 'done', 'ref', 'pause'];
+  
+  const { monthKey, catIdx, itemIdx } = pendingStatusChange;
+  DATA.months[monthKey].works[catIdx].items[itemIdx].status = statusNames[idx];
+  
+  closeStatusModal();
+  
+  // Save to GitHub
+  if (isAdminMode) {
+    showLoading('保存中...');
+    const result = await saveDataToGitHub(DATA);
+    hideLoading();
+    showToast(result.success ? '保存成功' : '保存失败: ' + result.message);
+  }
+  
+  render();
+}
+
+function exportMonthlyCSV() {
+  const d = DATA.months[selectedMonth]; if (!d) return;
+  let csv = '\uFEFF工作分类,任务描述,交付成果,状态,执行人,时间,关联OGSMT\n';
+  d.works.forEach(cat => {
+    cat.items.forEach(item => {
+      const st = STATUS_MAP[STATUS_KEY_MAP[item.status] || 0]?.label || item.status;
+      const ogPath = item.ref ? getOGPath(item.ref) : '';
+      csv += `"${cat.category}","${item.desc}","${item.result}","${st}","${item.person}","${item.time || ''}","${ogPath}"\n`;
     });
   });
-  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download=`品质部${d.label}工作汇总.csv`;a.click();URL.revokeObjectURL(url);
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `品质部${d.label}工作汇总.csv`; a.click(); URL.revokeObjectURL(url);
 }
 
 // ===== CLAIMS =====
-function openModal(){document.getElementById('modal').classList.add('show')}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
-function addTask(){
-  const desc=document.getElementById('mDesc').value.trim();
-  const std=document.getElementById('mStd').value.trim();
-  const dl=document.getElementById('mDl').value;
-  if(!desc){alert('请填写任务描述');return}
-  const extra=getExtraClaims();
-  extra.push({id:'cx_'+Date.now(),desc,std,deadline:dl||'',claimDate:new Date().toISOString().slice(0,10),status:'unclaimed',claimer:'',delivery:'',month:selectedMonth});
-  setExtraClaims(extra);closeModal();
-  document.getElementById('mDesc').value='';document.getElementById('mStd').value='';document.getElementById('mDl').value='';
-  render();
-}
-function claimIt(id){
-  const name=prompt('请输入认领人姓名：');if(!name)return;
-  const d=DATA.months[selectedMonth];
-  const base=(d.claims||[]).find(c=>c.id===id);
-  if(base){base.claimer=name;base.status='doing'}
-  else{const extra=getExtraClaims();const item=extra.find(c=>c.id===id);if(item){item.claimer=name;item.status='doing'}setExtraClaims(extra)}
-  render();
-}
-function completeIt(id){
-  if(!confirm('确认该任务已完成？'))return;
-  const d=DATA.months[selectedMonth];
-  const base=(d.claims||[]).find(c=>c.id===id);
-  if(base){base.status='done'}
-  else{const extra=getExtraClaims();const item=extra.find(c=>c.id===id);if(item)item.status='done';setExtraClaims(extra)}
+function openModal() { document.getElementById('modal').classList.add('show') }
+function closeModal() { document.getElementById('modal').classList.remove('show') }
+
+async function addTask() {
+  const desc = document.getElementById('mDesc').value.trim();
+  const std = document.getElementById('mStd').value.trim();
+  const dl = document.getElementById('mDl').value;
+  if (!desc) { alert('请填写任务描述'); return }
+  const extra = getExtraClaims();
+  extra.push({ id: 'cx_' + Date.now(), desc, std, deadline: dl || '', claimDate: new Date().toISOString().slice(0, 10), status: 'unclaimed', claimer: '', delivery: '', month: selectedMonth });
+  setExtraClaims(extra);
+  closeModal();
+  document.getElementById('mDesc').value = ''; document.getElementById('mStd').value = ''; document.getElementById('mDl').value = '';
+  
+  // Save to GitHub
+  if (isAdminMode) {
+    await saveDataToGitHub(DATA);
+  }
+  
   render();
 }
 
+async function claimIt(id) {
+  const name = prompt('请输入认领人姓名：'); if (!name) return;
+  const d = DATA.months[selectedMonth];
+  const base = (d.claims || []).find(c => c.id === id);
+  if (base) { base.claimer = name; base.status = 'doing' }
+  else { const extra = getExtraClaims(); const item = extra.find(c => c.id === id); if (item) { item.claimer = name; item.status = 'doing' } setExtraClaims(extra) }
+  
+  if (isAdminMode) await saveDataToGitHub(DATA);
+  render();
+}
+
+async function completeIt(id) {
+  if (!confirm('确认该任务已完成？')) return;
+  const d = DATA.months[selectedMonth];
+  const base = (d.claims || []).find(c => c.id === id);
+  if (base) { base.status = 'done' }
+  else { const extra = getExtraClaims(); const item = extra.find(c => c.id === id); if (item) item.status = 'done'; setExtraClaims(extra) }
+  
+  if (isAdminMode) await saveDataToGitHub(DATA);
+  render();
+}
+
+// ==================== BONUS RULES VIEW ====================
+function renderBonus() {
+  const bonus = DATA.bonus['2026'];
+  if (!bonus) {
+    document.getElementById('main').innerHTML = '<div class="empty-state">暂无奖金规则数据</div>';
+    return;
+  }
+  
+  let html = `<div class="fade-in">`;
+  
+  // Hero with total package
+  html += `<div class="bonus-hero">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div>
+        <div style="font-size:12px;opacity:.7">年度奖金总包</div>
+        <div style="font-size:28px;font-weight:700;margin:4px 0">${bonus.totalPackage}</div>
+        <div style="font-size:12px;opacity:.8">生效日期：${bonus.effectiveDate}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:12px;opacity:.7">版本</div>
+        <div style="font-size:16px;font-weight:600">${bonus.title.split('V')[1] || '1.0'}</div>
+      </div>
+    </div>
+  </div>`;
+  
+  // Pie chart and legend
+  html += `<div class="card"><div class="card-body">
+    <div style="font-size:14px;font-weight:600;margin-bottom:12px">奖金分配概览</div>
+    <div class="bonus-pie">
+      <div class="bonus-pie-chart">
+        <div class="bonus-pie-ring">
+          <div class="bonus-pie-inner">5万</div>
+        </div>
+      </div>
+      <div class="bonus-legend">
+        <div class="bonus-legend-item">
+          <div class="bonus-legend-dot dev"></div>
+          <span>研发奖（技术支持）</span>
+          <span class="bonus-legend-amount">60% / 3万</span>
+        </div>
+        <div class="bonus-legend-item">
+          <div class="bonus-legend-dot newtech"></div>
+          <span>研发奖（新产品/新技术）</span>
+          <span class="bonus-legend-amount">20% / 1万</span>
+        </div>
+        <div class="bonus-legend-item">
+          <div class="bonus-legend-dot support"></div>
+          <span>配合奖</span>
+          <span class="bonus-legend-amount">20% / 1万</span>
+        </div>
+        <div class="bonus-legend-item">
+          <div class="bonus-legend-dot effect"></div>
+          <span>效果奖（额外追加）</span>
+          <span class="bonus-legend-amount">上不封顶</span>
+        </div>
+      </div>
+    </div>
+  </div></div>`;
+  
+  // Progress bars for each category
+  html += `<div class="card"><div class="card-body">
+    <div style="font-size:14px;font-weight:600;margin-bottom:12px">各奖项金额分配</div>`;
+  
+  const colors = {
+    'dev': 'var(--cat-dev)',
+    'newtech': 'var(--cat-support)',
+    'support': 'var(--bonus-support)',
+    'effect': 'var(--bonus-effect)'
+  };
+  
+  bonus.categories.forEach(cat => {
+    const color = colors[cat.color] || 'var(--accent)';
+    html += `<div class="bonus-progress-item">
+      <div class="bonus-progress-header">
+        <span style="font-weight:500">${cat.name}</span>
+        <span style="color:var(--text-sec)">${cat.amount}</span>
+      </div>
+      <div class="bonus-progress-bar">
+        <div class="bonus-progress-fill" style="width:${cat.weight === '额外追加' ? '100%' : cat.weight};background:${color}"></div>
+      </div>
+    </div>`;
+  });
+  html += `</div></div>`;
+  
+  // Category details
+  html += `<div class="stitle"><h2>奖项详情说明</h2></div>`;
+  
+  bonus.categories.forEach((cat, idx) => {
+    const isOpen = expandState['bonus_' + idx] !== false;
+    html += `<div class="bonus-category">
+      <div class="bonus-cat-header ${cat.color}" onclick="toggleExpand('bonus_${idx}')">
+        <div>
+          <div class="bonus-cat-title">${cat.name}</div>
+          <div class="bonus-cat-meta">权重 ${cat.weight}</div>
+        </div>
+        <div style="display:flex;align-items:center">
+          <div class="bonus-cat-amount">${cat.amount}<small>${cat.weight !== '额外追加' ? '占总额' : '额外追加'}</small></div>
+          <span class="bonus-cat-arrow ${isOpen ? 'open' : ''}">▼</span>
+        </div>
+      </div>`;
+    
+    if (isOpen) {
+      html += `<div class="bonus-cat-body">`;
+      
+      if (cat.children) {
+        // Has sub-children (like 技术支持)
+        cat.children.forEach(sub => {
+          html += `<div class="bonus-sub-item">
+            <div class="bonus-sub-header" onclick="toggleExpand('bonus_${idx}_${sub.name}')">
+              <span class="bonus-sub-name">${sub.name} <span style="font-weight:400;color:var(--text-sec)">(${sub.weight}%)</span></span>
+              <span class="bonus-sub-amount">${sub.amount}</span>
+            </div>`;
+          
+          if (sub.subChildren) {
+            html += `<div class="bonus-sub-body">`;
+            sub.subChildren.forEach(sc => {
+              html += `<div class="bonus-sub-detail">
+                <div class="bonus-sub-detail-name">${sc.name} <span style="color:var(--accent);font-weight:500">${sc.weight} / ${sc.amount}</span></div>
+                <div>${sc.desc}</div>
+              </div>`;
+            });
+            html += `</div>`;
+          } else if (sub.desc) {
+            html += `<div class="bonus-sub-body"><div class="bonus-sub-detail">${sub.desc}</div></div>`;
+          }
+          html += `</div>`;
+        });
+      } else if (cat.desc) {
+        html += `<div style="font-size:13px;color:var(--text-sec);padding:8px 0">${cat.desc}</div>`;
+      }
+      
+      html += `</div>`;
+    }
+    html += `</div>`;
+  });
+  
+  // Rules section
+  html += `<div class="card"><div class="card-body">
+    <div class="bonus-rules">
+      <div class="bonus-rules-title">📋 评选规则 <span>（共${bonus.rules.length}条）</span></div>`;
+  bonus.rules.forEach((rule, i) => {
+    html += `<div class="bonus-rule-item">
+      <div class="bonus-rule-num">${i + 1}</div>
+      <div class="bonus-rule-text">${rule}</div>
+    </div>`;
+  });
+  html += `</div></div>`;
+  
+  // Penalty section
+  html += `<div class="card"><div class="card-body">
+    <div class="bonus-rules">
+      <div class="bonus-rules-title" style="color:var(--danger)">⚠️ 违规处罚 <span>（共${bonus.penalty.length}条）</span></div>`;
+  bonus.penalty.forEach((p, i) => {
+    html += `<div class="bonus-penalty-item">
+      <div class="bonus-penalty-num">${i + 1}</div>
+      <div class="bonus-penalty-text">${p.desc} <span class="bonus-penalty-arrow">→</span> ${p.action}</div>
+    </div>`;
+  });
+  html += `</div></div>`;
+  
+  html += `</div>`;
+  document.getElementById('main').innerHTML = html;
+}
+
+// ==================== UTILS ====================
+function showLoading(text) {
+  document.getElementById('loadingText').textContent = text || '加载中...';
+  document.getElementById('loadingOverlay').style.display = 'flex';
+}
+
+function hideLoading() {
+  document.getElementById('loadingOverlay').style.display = 'none';
+}
+
+function showToast(msg) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2500);
+}
+
 // ==================== INIT ====================
-render();
+init();
+
+// Close modals on outside click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.getElementById('statusModal').addEventListener('click', function(e) {
+  if (e.target === this) closeStatusModal();
+});
+document.getElementById('adminModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAdminModal();
+});
 </script>
 </body>
 </html>
