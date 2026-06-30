@@ -319,8 +319,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 <div class="content" id="main"></div>
 
 <div class="bottom-nav">
-  <button class="active" data-tab="ogsmt" onclick="navTo('ogsmt')"><span class="nav-icon">&#9878;</span>年度计划</button>
-  <button data-tab="monthly" onclick="navTo('monthly')"><span class="nav-icon">&#128200;</span>月度汇总</button>
+  <button class="active" data-tab="monthly" onclick="navTo('monthly')"><span class="nav-icon">&#128200;</span>月度汇总</button>
+  <button data-tab="ogsmt" onclick="navTo('ogsmt')"><span class="nav-icon">&#9878;</span>年度OGSMT</button>
   <button data-tab="bonus" onclick="navTo('bonus')"><span class="nav-icon">&#9733;</span>奖金规则</button>
 </div>
 
@@ -410,7 +410,7 @@ const DEFAULT_DATA = {
 
 // ==================== STATE ====================
 let DATA = JSON.parse(JSON.stringify(DEFAULT_DATA)); // Deep copy
-let currentTab = 'ogsmt';
+let currentTab = 'monthly';
 let selectedMonth = DATA.currentMonth;
 let expandState = {};
 let jumpTarget = null;
