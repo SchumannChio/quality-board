@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>品质部2026工作看板</title>
+<style>
+:root{
+  --primary:#1a3a5c;--primary-light:#2c5f8a;--primary-pale:#e8f0f8;
+  --accent:#2e75b6;--accent-pale:#d0e3f5;
+  --success:#2d7d46;--success-pale:#d4edda;--success-deep:#1e5631;
+  --warning:#d4780a;--warning-pale:#fff3cd;
+  --danger:#b91c1c;--danger-pale:#f8d7da;--danger-deep:#7f1d1d;
+  --gray-50:#f8f9fa;--gray-100:#f1f3f5;--gray-200:#e9ecef;--gray-300:#dee2e6;
+  --gray-500:#868e96;--gray-700:#495057;
+  --bg:#f0f2f5;--card:#fff;--text:#2d3436;--text-sec:#636e72;
+  --radius:12px;--radius-sm:8px;--radius-xs:6px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow:0 2px 12px rgba(0,0,0,.08);
+  --transition:all .25s cubic-bezier(.4,0,.2,1);
+  --cat-help:#e17055;--cat-tech:#00b894;--cat-support:#6c5ce7;--cat-optim:#0984e3
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;padding-bottom:64px;-webkit-font-smoothing:antialiased}
+.header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,var(--primary),var(--primary-light));padding:0 16px;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:50px}
+.header h1{font-size:17px;font-weight:600;color:#fff}
+.header-right span{background:rgba(255,255,255,.18);color:#fff;padding:4px 12px;border-radius:20px;font-size:12px}
+.content{padding:12px 16px;max-width:640px;margin:0 auto}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:12px}
+.card-body{padding:16px}
+
+/* ===== HERO CARDS ===== */
+.hero{border-radius:var(--radius);padding:20px 18px;margin-bottom:16px;box-shadow:var(--shadow);color:#fff}
+.hero-blue{background:linear-gradient(135deg,var(--primary),#1e4a73)}
+.hero-green{background:linear-gradient(135deg,#2d6a4f,#40916c)}
+.hero .h-label{font-size:12px;opacity:.7;margin-bottom:2px}
+.hero .h-title{font-size:18px;font-weight:700;margin-bottom:6px}
+.hero .h-sub{font-size:13px;opacity:.85;line-height:1.5;margin-bottom:14px}
+.hero-stats{display:grid;gap:6px}
+.hero-stats.c3{grid-template-columns:repeat(3,1fr)}
+.hero-stats.c4{grid-template-columns:repeat(4,1fr)}
+.hero-stats.c5{grid-template-columns:repeat(5,1fr)}
+.hs{text-align:center;padding:10px 4px;background:rgba(255,255,255,.12);border-radius:var(--radius-sm)}
+.hs .num{font-size:22px;font-weight:700;line-height:1.1}
+.hs .lbl{font-size:10px;opacity:.75;margin-top:2px}
+
+/* ===== SECTION TITLE ===== */
+.stitle{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px}
+.stitle h2{font-size:15px;font-weight:600;padding-left:10px;position:relative}
+.stitle h2::before{content:'';position:absolute;left:0;top:2px;bottom:2px;width:3px;background:var(--accent);border-radius:2px}
+.stitle .more{font-size:12px;color:var(--accent);cursor:pointer}
+
+/* ===== MONTH SELECTOR ===== */
+.msel{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;margin-bottom:16px}
+.msel button{border:1px solid var(--gray-300);background:var(--card);padding:7px 14px;border-radius:20px;font-size:13px;white-space:nowrap;cursor:pointer;transition:var(--transition);font-weight:500}
+.msel button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* ===== BADGES ===== */
+.badge{font-size:10px;padding:2px 7px;border-radius:8px;font-weight:500;display:inline-block}
+.b-person{background:var(--accent-pale);color:var(--accent)}
+.b-type{background:var(--primary-pale);color:var(--primary-light)}
+.b-dl{background:var(--gray-100);color:var(--gray-700)}
+.b-risk-high{background:var(--danger-pale);color:var(--danger)}
+.b-risk-mid{background:var(--warning-pale);color:var(--warning)}
+.b-risk-low{background:var(--success-pale);color:var(--success)}
+.b-risk-extreme{background:var(--danger-pale);color:var(--danger-deep);font-weight:700}
+.b-done{background:var(--success-pale);color:var(--success)}
+.b-doing{background:var(--warning-pale);color:var(--warning)}
+.b-todo{background:var(--gray-100);color:var(--gray-500)}
+.b-ref{background:var(--accent-pale);color:var(--accent);cursor:pointer}
+.b-ref:active{opacity:.7}
+
+/* ===== OGSMT VIEW ===== */
+.og-big{border-left:4px solid var(--accent);margin-bottom:14px;border-radius:var(--radius);overflow:hidden}
+.og-big.e2{border-left-color:var(--warning)}
+.og-big-head{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:var(--primary-pale)}
+.og-big-head:active{background:var(--accent-pale)}
+.og-big-title{font-size:15px;font-weight:600;color:var(--primary);flex:1;line-height:1.4}
+.og-big-meta{font-size:11px;color:var(--text-sec);margin-left:8px;white-space:nowrap}
+.og-arrow{color:var(--gray-500);font-size:12px;margin-left:4px;transition:var(--transition)}
+.og-arrow.open{transform:rotate(90deg)}
+
+.og-strat{border-top:1px solid var(--gray-100)}
+.og-strat-head{padding:11px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:var(--gray-50)}
+.og-strat-head:active{background:var(--gray-100)}
+.og-strat-name{font-size:13px;font-weight:600;color:var(--primary-light);flex:1;line-height:1.4}
+.og-strat-meta{font-size:11px;color:var(--text-sec);margin-left:8px;white-space:nowrap}
+
+.og-act{padding:10px 16px 10px 24px;border-bottom:1px solid var(--gray-100);display:flex;align-items:flex-start;gap:10px}
+.og-act:last-child{border-bottom:none}
+.og-ck{flex-shrink:0;margin-top:3px}
+.og-ck input[type=checkbox]{width:18px;height:18px;accent-color:var(--success);cursor:pointer}
+.og-act-info{flex:1;min-width:0}
+.og-act-name{font-size:13px;font-weight:500;line-height:1.4}
+.og-act-meta{font-size:11px;color:var(--text-sec);margin-top:3px;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.og-act-rsk{font-size:11px;color:var(--danger);margin-top:4px;display:flex;align-items:flex-start;gap:4px;line-height:1.4}
+.og-act-rsk::before{content:'⚠';flex-shrink:0}
+
+/* Monthly refs under action */
+.og-monthly-refs{margin-top:6px;padding-top:6px;border-top:1px dashed var(--gray-200)}
+.og-mr-title{font-size:11px;color:var(--text-sec);margin-bottom:4px}
+.og-mr-item{display:flex;align-items:center;gap:6px;padding:3px 0;font-size:12px}
+.og-mr-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.og-mr-dot.done{background:var(--success)}
+.og-mr-dot.doing{background:var(--warning)}
+.og-mr-dot.todo{background:var(--gray-300)}
+
+/* ===== RISK SECTION IN OGSMT ===== */
+.risk-card{border-left:4px solid var(--danger);margin-bottom:10px;border-radius:var(--radius)}
+.risk-card.r-mid{border-left-color:var(--warning)}
+.risk-card.r-low{border-left-color:var(--success)}
+.risk-title{font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
+.risk-impact{font-size:12px;color:var(--text-sec);margin:6px 0}
+.action-check{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:1px solid var(--gray-100)}
+.action-check:last-of-type{border-bottom:none}
+.action-check input[type=checkbox]{width:18px;height:18px;margin-top:1px;accent-color:var(--accent);flex-shrink:0;cursor:pointer}
+.action-check label{font-size:13px;flex:1;cursor:pointer}
+.action-check label.checked{text-decoration:line-through;color:var(--gray-500)}
+.claim-row{display:flex;gap:8px;margin-top:6px}
+.claim-row input{flex:1;border:1px solid var(--gray-300);border-radius:var(--radius-xs);padding:6px 10px;font-size:12px;font-family:inherit}
+.claim-row button{border:none;background:var(--accent);color:#fff;padding:6px 14px;border-radius:var(--radius-xs);font-size:12px;cursor:pointer;font-weight:500}
+.claim-row button.saved{background:var(--success)}
+.risk-owner{font-size:11px;color:var(--text-sec);margin-top:6px}
+
+/* ===== PERSON LOAD ===== */
+.pl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.pl-item{background:var(--card);border-radius:var(--radius-sm);padding:10px 12px;box-shadow:var(--shadow-sm)}
+.pl-name{font-size:13px;font-weight:600;margin-bottom:4px}
+.pl-bar{display:flex;gap:3px;flex-wrap:wrap}
+.pl-dot{width:10px;height:10px;border-radius:50%}
+.pl-dot.d-done{background:var(--success)}
+.pl-dot.d-doing{background:var(--warning)}
+.pl-dot.d-todo{background:var(--gray-300)}
+.pl-dot.d-high{background:var(--danger)}
+.pl-meta{font-size:11px;color:var(--text-sec);margin-top:3px}
+
+/* ===== MONTHLY VIEW ===== */
+.cat-card{margin-bottom:12px;border-left:4px solid var(--accent);border-radius:var(--radius);overflow:hidden}
+.cat-card.ck-help{border-left-color:var(--cat-help)}
+.cat-card.ck-tech{border-left-color:var(--cat-tech)}
+.cat-card.ck-support{border-left-color:var(--cat-support)}
+.cat-card.ck-optim{border-left-color:var(--cat-optim)}
+.cat-head{padding:12px 16px;background:var(--gray-50);display:flex;justify-content:space-between;align-items:center}
+.cat-name{font-size:14px;font-weight:600}
+.cat-count{font-size:12px;color:var(--text-sec)}
+.cat-item{padding:12px 16px;border-bottom:1px solid var(--gray-100);display:flex;align-items:flex-start;gap:10px}
+.cat-item:last-child{border-bottom:none}
+.ci-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0}
+.ci-dot.done{background:var(--success)}
+.ci-dot.doing{background:var(--warning)}
+.ci-dot.todo{background:var(--gray-300)}
+.ci-info{flex:1;min-width:0}
+.ci-name{font-size:13px;font-weight:500;line-height:1.4}
+.ci-result{font-size:12px;color:var(--text-sec);margin-top:2px;line-height:1.4}
+.ci-meta{font-size:11px;color:var(--text-sec);margin-top:3px;display:flex;flex-wrap:wrap;gap:3px 6px;align-items:center}
+
+/* ===== MODAL ===== */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:var(--card);border-radius:var(--radius) var(--radius) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;animation:slideUp .3s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal h3{font-size:17px;font-weight:600;margin-bottom:16px}
+.modal label{display:block;font-size:12px;color:var(--text-sec);font-weight:500;margin-bottom:4px;margin-top:14px}
+.modal input{width:100%;border:1px solid var(--gray-300);border-radius:var(--radius-xs);padding:10px 12px;font-size:14px;font-family:inherit}
+.modal input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-pale)}
+.modal-btns{display:flex;gap:10px;margin-top:20px}
+.modal-btns button{flex:1;padding:12px;border:none;border-radius:var(--radius-sm);font-size:14px;cursor:pointer;font-weight:500}
+.modal-btns .btn-cancel{background:var(--gray-100);color:var(--gray-700)}
+.modal-btns .btn-confirm{background:var(--accent);color:#fff}
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);display:flex;border-top:1px solid var(--gray-200);z-index:100;box-shadow:0 -1px 8px rgba(0,0,0,.06);padding-bottom:env(safe-area-inset-bottom)}
+.bottom-nav button{flex:1;border:none;background:none;padding:8px 4px;font-size:10px;color:var(--gray-500);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:var(--transition);position:relative}
+.bottom-nav button.active{color:var(--accent)}
+.bottom-nav button.active::before{content:'';position:absolute;top:0;left:25%;right:25%;height:2px;background:var(--accent);border-radius:0 0 2px 2px}
+.bottom-nav .nav-icon{font-size:20px;line-height:1}
+
+/* ===== UTILS ===== */
+.empty-state{text-align:center;padding:40px 20px;color:var(--gray-500);font-size:13px}
+.fade-in{animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.btn-export{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--accent);background:transparent;color:var(--accent);padding:8px 18px;border-radius:var(--radius-sm);font-size:13px;cursor:pointer;font-weight:500;transition:var(--transition)}
+.btn-export:hover{background:var(--accent);color:#fff}
+
+@media(max-width:360px){.hero-stats.c4,.hero-stats.c5{grid-template-columns:repeat(2,1fr)}.pl-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1>品质部工作看板</h1>
+    <div class="header-right"><span id="monthTag"></span></div>
+  </div>
+</div>
+<div class="content" id="main"></div>
+
+<div class="bottom-nav">
+  <button class="active" data-tab="ogsmt" onclick="navTo('ogsmt')"><span class="nav-icon">&#9878;</span>年度计划</button>
+  <button data-tab="monthly" onclick="navTo('monthly')"><span class="nav-icon">&#128200;</span>月度汇总</button>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>新增待办任务</h3>
+    <label>任务描述</label><input id="mDesc" placeholder="描述任务内容">
+    <label>交付标准</label><input id="mStd" placeholder="完成标准">
+    <label>完成时限</label><input id="mDl" type="date">
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">取消</button>
+      <button class="btn-confirm" onclick="addTask()">发布</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==================== DATA ====================
+const DATA={
+  currentMonth:"2026-05",
+  ogsmt:[
+    {
+      id:"big1",title:"大事一",full:"大事一：提升品质效率（技术支持+新产品/新技术）",
+      goal:"通过技术支持和新技术应用，提升品质工作效率",
+      strategies:[
+        {id:"s1",name:"建立技术库-材质库",target:"完成全部项目材质库建设",actions:[
+          {id:"a1",name:"AI材质识别SKILL训练+1-3个项目手搓",person:"余XH",deadline:"8/30(手搓6/30)",risk:"high",riskNote:"手搓仅剩18天，需加速"},
+          {id:"a2",name:"带领1-5人完成所有项目材质库",person:"张YQ/郭LB/马QJ",deadline:"8/30",risk:"high"},
+          {id:"a3",name:"分析材质，设置清洁属性并归类",person:"鲍YM",deadline:"8月底",risk:"mid",riskNote:"依赖材质库收集完成"}
+        ]},
+        {id:"s2",name:"建立技术库-污渍库",target:"完成污渍库汇总与源头减量",actions:[
+          {id:"a4",name:"收集清洁工作内容推导污渍并汇总",person:"张YQ/郭LB/马QJ",deadline:"6/30",risk:"high",riskNote:"截止仅剩18天，仅1个项目"},
+          {id:"a5",name:"可源头减量污渍再梳理",person:"张Z",deadline:"6/30",risk:"high",riskNote:"依赖污渍汇总完成"}
+        ]},
+        {id:"s3",name:"建立技术库-二库组合",target:"AI建模组合库，生成清洁工作模型，有效率>=80%",actions:[
+          {id:"a6",name:"AI建模组合库导入清洁方式生成工作模型",person:"鲍YM/龙虾小组",deadline:"9月底",risk:"mid",riskNote:"依赖材质库+污渍库"}
+        ]},
+        {id:"s4",name:"建立技术库-培训辅导",target:"一线管理人员应用培训+复盘反馈",actions:[
+          {id:"a7",name:"培训一线管理人员应用+复盘反馈",person:"鲍YM",deadline:"10月底",risk:"low",riskNote:"依赖二库组合完成"}
+        ]},
+        {id:"s5",name:"新产品测试",target:"持续测试新品，每周新增10-30个，推广落地",actions:[
+          {id:"a8",name:"建立测试新品库每周新增10-30个",person:"曹MZ",deadline:"每周一",risk:"low"},
+          {id:"a9",name:"发布测试清单+参与邀请",person:"余XH",deadline:"全年",risk:"low"},
+          {id:"a10",name:"金鹰系列产品测试",person:"余XH",deadline:"年底",risk:"low",riskNote:"需关注采纳+成本量化"},
+          {id:"a11",name:"玻璃清洁机器人测试",person:"余XH",deadline:"-",risk:"low",riskNote:"需跟进推广采纳"},
+          {id:"a12",name:"玻璃镜面/石材台面工具试验",person:"张YQ",deadline:"-",risk:"low",riskNote:"需跟进推广采纳"}
+        ]},
+        {id:"s6",name:"技术支持-被动支援",target:"响应项目现场技术支援需求",actions:[
+          {id:"a13",name:"宝地广场车库顶部胶痕现场指导",person:"郭LB",deadline:"-",risk:"low"}
+        ]},
+        {id:"s7",name:"本项目优化提升",target:"所在项目品质优化与提升",actions:[
+          {id:"a14",name:"启园大堂人造石地面返碱处理",person:"李H",deadline:"-",risk:"low"},
+          {id:"a15",name:"外围麻石台阶防护处理",person:"李H",deadline:"-",risk:"low"}
+        ]}
+      ]
+    },
+    {
+      id:"big2",title:"大事二",full:"大事二：使用者满意调研",
+      goal:"基于人性梳理使用者感受，建立满意度调研体系",
+      strategies:[
+        {id:"s8",name:"基于人性梳理使用者感受",target:"完成满意调研4个阶段，建立工作流优化+半自动采集系统",actions:[
+          {id:"a16",name:"阶段1：AI推演基础版本1.0",person:"鲍YM",deadline:"6/30",risk:"high",riskNote:"截止仅剩18天"},
+          {id:"a17",name:"阶段2：现场多维验证+修改2.0",person:"鲍YM",deadline:"8/30",risk:"mid",riskNote:"依赖1.0完成"},
+          {id:"a18",name:"阶段3：培训普及+抽查",person:"鲍YM",deadline:"12/31",risk:"low",riskNote:"依赖2.0完成"},
+          {id:"a19",name:"阶段4：工作流优化+半自动采集系统",person:"鲍YM",deadline:"长期",risk:"mid",riskNote:"策略'没想好'部分待拆解"}
+        ]}
+      ]
+    }
+  ],
+  risks:[
+    {id:"r1",title:"鲍YM 6项任务全部未启动",level:"extreme",impact:"材质分析+组合方案+满意调研全线延期",actions:["6月集中攻满意调研1.0+材质分析启动","7月攻组合方案2.0"],owner:"鲍YM+部门协调",refActions:["a3","a6","a7","a16","a17","a18"]},
+    {id:"r2",title:"污渍库6/30截止，仅宝地部分完成",level:"high",impact:"影响后续组合方案和培训",actions:["扩大到3-5个项目点同步采集","明确每日采集量目标"],owner:"张Z",refActions:["a4","a5"]},
+    {id:"r3",title:"材质库手搓6/30截止，进度5%",level:"high",impact:"手搓未完成无法推广",actions:["锁定2个基础项目集中手搓","6月15日前完成第1个"],owner:"张Z",refActions:["a1"]},
+    {id:"r4",title:"宝地材质+污渍已超时13天",level:"high",impact:"认领看板信用+奖金申报",actions:["立即组织交付评审","确认完成/补充完善/延期"],owner:"部门负责人",refActions:["a2","a4"]},
+    {id:"r5",title:"Q1季度申报是否已完成未知",level:"mid",impact:"影响奖金发放依据",actions:["确认Q1申报状态","准备Q2申报(7月前)"],owner:"曹MZ",refActions:[]},
+    {id:"r6",title:"月度汇总6/10已过未执行",level:"mid",impact:"缺少进度跟踪闭环",actions:["补做5月进度汇总","建立自动提醒"],owner:"曹MZ",refActions:[]},
+    {id:"r7",title:"认领看板仅3条 vs OGSMT 10项",level:"mid",impact:"7项无跟踪闭环",actions:["将OGSMT全部待办上认领看板","建立定期更新机制"],owner:"部门负责人",refActions:[]}
+  ],
+  months:{
+    "2026-05":{
+      label:"截止5月",updateTime:"2026-06-12",
+      works:[
+        {category:"跨项目帮扶-主动支持",catKey:"help",items:[
+          {desc:"AI材质识别SKILL训练，华泰金融石材10种AI识别采集验证",result:"已完成",status:"done",person:"余XH",time:"2-5月",ref:"a1"},
+          {desc:"宝地广场部分楼层卫生间材质清单采集",result:"部分完成，需扩大到所有项目点",status:"doing",person:"张YQ/郭LB/马QJ",time:"5月",ref:"a2"},
+          {desc:"宝地广场部分楼层卫生间污渍清单采集",result:"部分完成，仅1个项目",status:"doing",person:"张YQ/郭LB/马QJ",time:"5月",ref:"a4"},
+          {desc:"材质分析，设置清洁属性并归类",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a3"},
+          {desc:"源头减量污渍再梳理",result:"未启动",status:"todo",person:"张Z",time:"-",ref:"a5"},
+          {desc:"AI建模组合库导入清洁方式生成工作模型",result:"未启动",status:"todo",person:"鲍YM/龙虾小组",time:"-",ref:"a6"},
+          {desc:"培训一线管理人员应用+复盘反馈",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a7"},
+          {desc:"满意调研阶段1：AI推演基础版本1.0",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a16"},
+          {desc:"满意调研阶段2：现场多维验证+修改2.0",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a17"}
+        ]},
+        {category:"新产品/技术",catKey:"tech",items:[
+          {desc:"建立测试新品库，系统自动每周更新10-30个",result:"已建立，系统自动运行",status:"done",person:"曹MZ",time:"持续",ref:"a8"},
+          {desc:"发布第一批新品测试清单和人员邀请",result:"已发布，第一批测品进行中",status:"doing",person:"余XH",time:"4-5月",ref:"a9"},
+          {desc:"金鹰系列产品测试",result:"测试中，结果待反馈",status:"doing",person:"余XH",time:"5月",ref:"a10"},
+          {desc:"玻璃清洁机器人测试",result:"已完成，高楼层窗外1m2约6分钟",status:"done",person:"余XH",time:"5月",ref:"a11"},
+          {desc:"玻璃镜面/石材台面工具试验",result:"已完成",status:"done",person:"张YQ",time:"5月",ref:"a12"}
+        ]},
+        {category:"技术支持",catKey:"support",items:[
+          {desc:"宝地广场车库顶部胶痕现场指导",result:"已完成，胶痕明显淡化",status:"done",person:"郭LB",time:"5月",ref:"a13"}
+        ]},
+        {category:"本项目优化提升",catKey:"optim",items:[
+          {desc:"启园大堂人造石地面返碱处理",result:"已完成",status:"done",person:"李H",time:"4月",ref:"a14"},
+          {desc:"外围麻石台阶防护处理",result:"已完成",status:"done",person:"李H",time:"4月",ref:"a15"},
+          {desc:"满意调研阶段3：培训普及+抽查",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a18"},
+          {desc:"满意调研阶段4：工作流优化+半自动采集系统",result:"未启动",status:"todo",person:"鲍YM",time:"-",ref:"a19"}
+        ]}
+      ],
+      claims:[
+        {id:"c1",desc:"协助宝地广场智慧清洁项目完成材质辨识和污渍辨识",std:"待定",deadline:"2026-05-29",claimDate:"2026-04-11",status:"doing",claimer:"郭LB/马QJ/张YQ",delivery:"已提交交付链接",overdue:true},
+        {id:"c2",desc:"金鹰工具的测试与推广",std:"找到符合需求的工具，推广到项目落地使用",deadline:"2026-12-31",claimDate:"2026-04-21",status:"doing",claimer:"余XH",delivery:""},
+        {id:"c3",desc:"新产品测试",std:"应用跟进，结果及时反馈",deadline:"2026-12-31",claimDate:"2026-06-01",status:"doing",claimer:"余XH",delivery:""}
+      ]
+    }
+  }
+};
+
+// ==================== STATE ====================
+let currentTab='ogsmt';
+let selectedMonth=DATA.currentMonth;
+let expandState={}; // "big1":true, "big1_s1":true, ...
+let jumpTarget=null; // action ID to jump to when switching tabs
+
+// LocalStorage helpers
+function getOGCK(id){try{return localStorage.getItem('ogck_'+id)==='1'}catch(e){return false}}
+function setOGCK(id,v){try{localStorage.setItem('ogck_'+id,v?'1':'0')}catch(e){}}
+function getRiskCK(r,i){try{return localStorage.getItem('rk_'+selectedMonth+'_'+r+'_'+i)==='1'}catch(e){return false}}
+function setRiskCK(r,i,v){try{localStorage.setItem('rk_'+selectedMonth+'_'+r+'_'+i,v?'1':'0')}catch(e){}}
+function getRiskCL(r){try{return localStorage.getItem('rcl_'+selectedMonth+'_'+r)||''}catch(e){return''}}
+function setRiskCL(r,v){try{localStorage.setItem('rcl_'+selectedMonth+'_'+r,v)}catch(e){}}
+function getExtraClaims(){try{return JSON.parse(localStorage.getItem('claims_x')||'[]')}catch(e){return[]}}
+function setExtraClaims(a){try{localStorage.setItem('claims_x',JSON.stringify(a))}catch(e){}}
+
+const riskMap={extreme:'极高',high:'高',mid:'中',low:'低'};
+
+// ==================== BUILD REVERSE INDEX ====================
+// actionId → [{month, catKey, desc, status, result, person, time}]
+function buildMonthlyIndex(){
+  const idx={};
+  Object.entries(DATA.months).forEach(([mk,md])=>{
+    md.works.forEach(cat=>{
+      cat.items.forEach(item=>{
+        if(item.ref){
+          if(!idx[item.ref])idx[item.ref]=[];
+          idx[item.ref].push({month:mk,monthLabel:md.label,catKey:cat.catKey,desc:item.desc,status:item.status,result:item.result,person:item.person,time:item.time});
+        }
+      });
+    });
+  });
+  return idx;
+}
+const monthlyIdx=buildMonthlyIndex();
+
+// Find action by ID in OGSMT tree
+function findAction(aid){
+  for(const big of DATA.ogsmt){
+    for(const strat of big.strategies){
+      for(const act of strat.actions){
+        if(act.id===aid)return{big,strat,act};
+      }
+    }
+  }
+  return null;
+}
+
+// Build OGSMT ref path for display
+function getOGPath(aid){
+  const f=findAction(aid);
+  if(!f)return'';
+  return f.big.title+' › '+f.strat.name+' › '+f.act.name;
+}
+
+// ==================== NAVIGATION ====================
+function navTo(tab){
+  currentTab=tab;
+  document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+  render();
+  if(jumpTarget){
+    setTimeout(()=>{
+      const el=document.getElementById('act_'+jumpTarget);
+      if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.background='var(--accent-pale)';setTimeout(()=>el.style.background='',1500)}
+      jumpTarget=null;
+    },100);
+  }
+}
+
+function toggleExpand(key){
+  expandState[key]=!expandState[key];
+  render();
+}
+
+function jumpToAction(aid){
+  // Switch to OGSMT tab, expand path to this action
+  const f=findAction(aid);
+  if(!f)return;
+  expandState[f.big.id]=true;
+  expandState[f.big.id+'_'+f.strat.id]=true;
+  jumpTarget=aid;
+  navTo('ogsmt');
+}
+
+function render(){
+  const d=DATA.months[selectedMonth];
+  document.getElementById('monthTag').textContent=d?d.label:'';
+  if(currentTab==='ogsmt')renderOGSMT();
+  else renderMonthly(d);
+}
+
+// ==================== OGSMT VIEW ====================
+function renderOGSMT(){
+  // Compute stats
+  let totalActions=0,totalStrategies=0,highRiskActions=0;
+  DATA.ogsmt.forEach(big=>{
+    totalStrategies+=big.strategies.length;
+    big.strategies.forEach(s=>{
+      totalActions+=s.actions.length;
+      highRiskActions+=s.actions.filter(a=>a.risk==='high'||a.risk==='extreme').length;
+    });
+  });
+  // Coverage: actions that have at least one monthly ref with status doing/done
+  let coveredActions=0;
+  DATA.ogsmt.forEach(big=>big.strategies.forEach(s=>s.actions.forEach(a=>{
+    if(monthlyIdx[a.id]&&monthlyIdx[a.id].some(m=>m.status==='done'||m.status==='doing'))coveredActions++;
+  })));
+
+  let html=`<div class="fade-in">`;
+
+  // Hero
+  html+=`<div class="hero hero-blue">
+    <div class="h-label">年度战略目标</div>
+    <div class="h-title">品质部2026年度OGSMT</div>
+    <div class="h-sub">${DATA.ogsmt.length}件大事 / ${totalStrategies}项策略 / ${totalActions}项行动方案</div>
+    <div class="hero-stats c4">
+      <div class="hs"><div class="num">${totalActions}</div><div class="lbl">总行动项</div></div>
+      <div class="hs"><div class="num">${coveredActions}</div><div class="lbl">已启动</div></div>
+      <div class="hs"><div class="num">${totalActions-coveredActions}</div><div class="lbl">未启动</div></div>
+      <div class="hs"><div class="num" style="color:#ff6b6b">${highRiskActions}</div><div class="lbl">高风险项</div></div>
+    </div>
+  </div>`;
+
+  // Big Events
+  DATA.ogsmt.forEach((big,bi)=>{
+    const isOpen=expandState[big.id]!==false;
+    const bActions=big.strategies.reduce((a,s)=>a+s.actions.length,0);
+    const bHighRisk=big.strategies.reduce((a,s)=>a+s.actions.filter(act=>act.risk==='high'||act.risk==='extreme').length,0);
+    const bCovered=big.strategies.reduce((a,s)=>a+s.actions.filter(act=>monthlyIdx[act.id]&&monthlyIdx[act.id].some(m=>m.status==='done'||m.status==='doing')).length,0);
+
+    html+=`<div class="card og-big ${bi===1?'e2':''}">
+      <div class="og-big-head" onclick="toggleExpand('${big.id}')">
+        <div>
+          <div class="og-big-title">${big.full}</div>
+          <div style="font-size:12px;color:var(--text-sec);margin-top:2px">${big.goal}</div>
+        </div>
+        <div style="display:flex;align-items:center">
+          <span class="og-big-meta">${bCovered}/${bActions}启动${bHighRisk?' / <span style="color:var(--danger)">'+bHighRisk+'高风险</span>':''}</span>
+          <span class="og-arrow ${isOpen?'open':''}">&#9656;</span>
+        </div>
+      </div>`;
+
+    if(isOpen){
+      big.strategies.forEach((strat,si)=>{
+        const sOpen=expandState[big.id+'_'+strat.id]===true;
+        const sActions=strat.actions.length;
+        const sHighRisk=strat.actions.filter(a=>a.risk==='high'||a.risk==='extreme').length;
+
+        html+=`<div class="og-strat">
+          <div class="og-strat-head" onclick="toggleExpand('${big.id}_${strat.id}')">
+            <span class="og-strat-name">${sHighRisk?'<span style="color:var(--danger)">⚠ </span>':''}${strat.name}</span>
+            <div style="display:flex;align-items:center">
+              <span class="og-strat-meta">${sActions}项${strat.target?' | '+strat.target:''}</span>
+              <span class="og-arrow ${sOpen?'open':''}">&#9656;</span>
+            </div>
+          </div>`;
+
+        if(sOpen){
+          strat.actions.forEach(act=>{
+            const ck=getOGCK(act.id);
+            const refs=monthlyIdx[act.id]||[];
+            const riskCls=act.risk==='extreme'?'b-risk-extreme':act.risk==='high'?'b-risk-high':act.risk==='mid'?'b-risk-mid':'b-risk-low';
+
+            html+=`<div class="og-act" id="act_${act.id}">
+              <div class="og-ck"><input type="checkbox" ${ck?'checked':''} onchange="setOGCK('${act.id}',this.checked)"></div>
+              <div class="og-act-info">
+                <div class="og-act-name" style="${ck?'text-decoration:line-through;color:var(--gray-500)':''}">${act.name}</div>
+                <div class="og-act-meta">
+                  <span class="badge b-person">${act.person}</span>
+                  ${act.deadline&&act.deadline!=='-'?`<span class="badge b-dl">${act.deadline}</span>`:''}
+                  <span class="badge ${riskCls}">${riskMap[act.risk]}风险</span>
+                </div>
+                ${act.riskNote?`<div class="og-act-rsk">${act.riskNote}</div>`:''}`;
+
+            // Monthly refs
+            if(refs.length){
+              html+=`<div class="og-monthly-refs">
+                <div class="og-mr-title">月度实际工作</div>`;
+              refs.forEach(r=>{
+                html+=`<div class="og-mr-item">
+                  <span class="og-mr-dot ${r.status}"></span>
+                  <span>${r.monthLabel} | ${r.result}</span>
+                </div>`;
+              });
+              html+=`</div>`;
+            }
+
+            html+=`</div></div>`;
+          });
+        }
+        html+=`</div>`;
+      });
+    }
+    html+=`</div>`;
+  });
+
+  // Risk section
+  html+=`<div class="stitle"><h2>风险与行动跟踪</h2></div>`;
+  const levelOrd={extreme:0,high:1,mid:2,low:3};
+  const sorted=[...DATA.risks].sort((a,b)=>levelOrd[a.level]-levelOrd[b.level]);
+  sorted.forEach(r=>{
+    const cls=r.level==='extreme'?'':r.level==='mid'?'r-mid':r.level==='low'?'r-low':'';
+    const allDone=r.actions.every((_,i)=>getRiskCK(r.id,i));
+    html+=`<div class="card risk-card ${cls}"><div class="card-body">
+      <div class="risk-title"><span class="badge b-risk-${r.level}">${riskMap[r.level]}</span>${r.title}</div>
+      <div class="risk-impact">影响：${r.impact}</div>
+      <div style="font-size:12px;font-weight:600;margin-bottom:4px">建议行动${allDone?' <span style="color:var(--success);font-weight:400">✓ 已全部完成</span>':''}</div>`;
+    r.actions.forEach((act,i)=>{
+      const ck=getRiskCK(r.id,i);
+      html+=`<div class="action-check">
+        <input type="checkbox" ${ck?'checked':''} onchange="toggleRiskCK('${r.id}',${i},this)">
+        <label class="${ck?'checked':''}">${act}</label>
+      </div>`;
+    });
+    const cl=getRiskCL(r.id);
+    html+=`<div class="risk-owner">责任人：${r.owner}</div>
+      <div class="claim-row"><input placeholder="认领人/执行说明" value="${cl}" id="rcl_${r.id}"><button onclick="saveRiskCL('${r.id}',this)">保存</button></div>
+      ${r.refActions&&r.refActions.length?`<div style="font-size:11px;color:var(--text-sec);margin-top:6px">关联行动：${r.refActions.map(a=>{const f=findAction(a);return f?`<span class="badge b-ref" onclick="jumpToAction('${a}')">${f.act.name.slice(0,10)}...</span>`:''}).join(' ')}</div>`:''}
+    </div></div>`;
+  });
+
+  // Person load
+  html+=`<div class="stitle"><h2>人员负载快照</h2></div><div class="pl-grid">`;
+  const personMap={};
+  DATA.ogsmt.forEach(big=>big.strategies.forEach(s=>s.actions.forEach(a=>{
+    a.person.split('/').forEach(p=>{
+      p=p.trim();if(!p)return;
+      if(!personMap[p])personMap[p]={total:0,done:0,doing:0,todo:0,highRisk:0};
+      personMap[p].total++;
+      const refs=monthlyIdx[a.id]||[];
+      if(refs.some(r=>r.status==='done'))personMap[p].done++;
+      else if(refs.some(r=>r.status==='doing'))personMap[p].doing++;
+      else personMap[p].todo++;
+      if(a.risk==='high'||a.risk==='extreme')personMap[p].highRisk++;
+    });
+  })));
+  Object.entries(personMap).sort((a,b)=>b[1].highRisk-a[1].highRisk||b[1].total-a[1].total).forEach(([name,info])=>{
+    let dots='';
+    for(let i=0;i<info.done;i++)dots+=`<span class="pl-dot d-done"></span>`;
+    for(let i=0;i<info.doing;i++)dots+=`<span class="pl-dot d-doing"></span>`;
+    for(let i=0;i<info.todo;i++)dots+=`<span class="pl-dot d-todo"></span>`;
+    for(let i=0;i<info.highRisk;i++)dots+=`<span class="pl-dot d-high"></span>`;
+    html+=`<div class="pl-item">
+      <div class="pl-name">${name}${info.highRisk?` <span style="color:var(--danger);font-size:11px">${info.highRisk}高风险</span>`:''}</div>
+      <div class="pl-bar">${dots}</div>
+      <div class="pl-meta">${info.total}项 | ✓${info.done} 进行中${info.doing} 待启动${info.todo}</div>
+    </div>`;
+  });
+  html+=`</div>`;
+
+  html+=`</div>`;
+  document.getElementById('main').innerHTML=html;
+}
+
+function toggleRiskCK(r,i,el){
+  setRiskCK(r,i,el.checked);
+  el.nextElementSibling.classList.toggle('checked',el.checked);
+}
+function saveRiskCL(r,btn){
+  setRiskCL(r,document.getElementById('rcl_'+r).value);
+  btn.textContent='已保存';btn.classList.add('saved');
+  setTimeout(()=>{btn.textContent='保存';btn.classList.remove('saved')},1500);
+}
+
+// ==================== MONTHLY VIEW ====================
+function renderMonthly(d){
+  if(!d){document.getElementById('main').innerHTML='<div class="empty-state">暂无该月数据</div>';return}
+  const monthKeys=Object.keys(DATA.months).sort();
+
+  let html=`<div class="fade-in">`;
+
+  // Month selector
+  html+=`<div class="msel">`;
+  monthKeys.forEach(m=>{
+    html+=`<button class="${m===selectedMonth?'active':''}" onclick="selectedMonth='${m}';render()">${DATA.months[m].label}</button>`;
+  });
+  html+=`</div>`;
+
+  // Stats
+  const allItems=d.works.reduce((a,w)=>a+w.items.length,0);
+  const allDone=d.works.reduce((a,w)=>a+w.items.filter(i=>i.status==='done').length,0);
+  const allDoing=d.works.reduce((a,w)=>a+w.items.filter(i=>i.status==='doing').length,0);
+  const allTodo=d.works.reduce((a,w)=>a+w.items.filter(i=>i.status==='todo').length,0);
+  const pct=allItems?Math.round(allDone/allItems*100):0;
+
+  // OGSMT coverage
+  let totalOGActions=0,coveredOGActions=0;
+  DATA.ogsmt.forEach(big=>big.strategies.forEach(s=>s.actions.forEach(a=>{
+    totalOGActions++;
+    if(monthlyIdx[a.id]&&monthlyIdx[a.id].some(m=>m.month===selectedMonth&&(m.status==='done'||m.status==='doing')))coveredOGActions++;
+  })));
+  const covPct=totalOGActions?Math.round(coveredOGActions/totalOGActions*100):0;
+
+  // Work type distribution
+  const catStats=d.works.map(cat=>({
+    name:cat.category,key:cat.catKey,
+    done:cat.items.filter(i=>i.status==='done').length,
+    doing:cat.items.filter(i=>i.status==='doing').length,
+    todo:cat.items.filter(i=>i.status==='todo').length,
+    total:cat.items.length
+  }));
+
+  html+=`<div class="hero hero-green">
+    <div class="h-label">${d.label}工作总结</div>
+    <div class="h-title">完成率 ${pct}% | OGSMT覆盖率 ${covPct}%</div>
+    <div class="h-sub">${allDone}项完成 / ${allDoing}项进行中 / ${allTodo}项未启动</div>
+    <div class="hero-stats c5">
+      <div class="hs"><div class="num">${allItems}</div><div class="lbl">总任务</div></div>
+      <div class="hs"><div class="num" style="color:#7dffb3">${allDone}</div><div class="lbl">已完成</div></div>
+      <div class="hs"><div class="num" style="color:#ffd166">${allDoing}</div><div class="lbl">进行中</div></div>
+      <div class="hs"><div class="num">${allTodo}</div><div class="lbl">未启动</div></div>
+      <div class="hs"><div class="num">${coveredOGActions}/${totalOGActions}</div><div class="lbl">OG覆盖</div></div>
+    </div>
+  </div>`;
+
+  // Work type distribution bar
+  html+=`<div class="card"><div class="card-body">
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">工作类型分布</div>`;
+  catStats.forEach(cat=>{
+    const catPct=cat.total?Math.round(cat.done/cat.total*100):0;
+    html+=`<div style="margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+        <span>${cat.name}</span>
+        <span style="color:var(--text-sec)">${cat.done}/${cat.total} 完成 (${catPct}%)</span>
+      </div>
+      <div style="height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden">
+        <div style="height:100%;width:${catPct}%;background:var(--cat-${cat.key});border-radius:3px;transition:width .6s"></div>
+      </div>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  // Category cards with items
+  d.works.forEach(cat=>{
+    const catDone=cat.items.filter(i=>i.status==='done').length;
+    const catDoing=cat.items.filter(i=>i.status==='doing').length;
+    const catTodo=cat.items.filter(i=>i.status==='todo').length;
+
+    html+=`<div class="card cat-card ck-${cat.catKey}">
+      <div class="cat-head">
+        <span class="cat-name">${cat.category}</span>
+        <span class="cat-count">✓${catDone} 进行中${catDoing} 待启动${catTodo}</span>
+      </div>`;
+
+    cat.items.forEach(item=>{
+      const f=item.ref?findAction(item.ref):null;
+      const ogRef=f?`${f.big.title} › ${f.strat.name}`:'';
+
+      html+=`<div class="cat-item">
+        <div class="ci-dot ${item.status}"></div>
+        <div class="ci-info">
+          <div class="ci-name">${item.desc}</div>
+          <div class="ci-result">${item.result}</div>
+          <div class="ci-meta">
+            <span>${item.person}</span>
+            ${item.time&&item.time!=='-'?`<span>${item.time}</span>`:''}
+            ${ogRef?`<span class="badge b-ref" onclick="jumpToAction('${item.ref}')">${ogRef}</span>`:''}
+          </div>
+        </div>
+      </div>`;
+    });
+    html+=`</div>`;
+  });
+
+  // Claims (compact)
+  const base=d.claims||[];
+  const extra=getExtraClaims().filter(c=>c.month===selectedMonth);
+  const all=[...base,...extra];
+  if(all.length){
+    html+=`<div class="stitle"><h2>待办认领</h2><button class="btn-export" onclick="openModal()" style="font-size:12px;padding:4px 12px">+ 新增</button></div>`;
+    all.forEach(c=>{
+      const od=c.deadline&&new Date(c.deadline)<new Date();
+      html+=`<div class="card"><div class="card-body" style="padding:12px 16px">
+        <div style="font-size:13px;font-weight:500">${c.desc}</div>
+        <div style="font-size:11px;color:var(--text-sec);margin-top:3px">
+          ${c.claimer?'认领：'+c.claimer:'<span style="color:var(--danger)">待认领</span>'} | 截止：${c.deadline||'待定'}${od?' <span style="color:var(--danger)">超时</span>':''}
+        </div>
+        <div style="display:flex;gap:6px;margin-top:6px">
+          ${!c.claimer?`<button class="ki-btn btn-claim" style="border:none;background:var(--accent);color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;cursor:pointer" onclick="claimIt('${c.id}')">认领</button>`:''}
+          ${c.claimer&&c.status!=='done'?`<button class="ki-btn btn-complete" style="border:none;background:var(--success);color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;cursor:pointer" onclick="completeIt('${c.id}')">确认完成</button>`:''}
+        </div>
+      </div></div>`;
+    });
+  }
+
+  html+=`<button class="btn-export" onclick="exportMonthlyCSV()" style="margin-top:4px">导出本月数据 (CSV)</button>`;
+  html+=`</div>`;
+  document.getElementById('main').innerHTML=html;
+}
+
+function exportMonthlyCSV(){
+  const d=DATA.months[selectedMonth];if(!d)return;
+  let csv='\uFEFF工作分类,任务描述,交付成果,状态,执行人,时间,关联OGSMT\n';
+  d.works.forEach(cat=>{
+    cat.items.forEach(item=>{
+      const st=item.status==='done'?'已完成':item.status==='doing'?'进行中':'未启动';
+      const ogPath=item.ref?getOGPath(item.ref):'';
+      csv+=`"${cat.category}","${item.desc}","${item.result}","${st}","${item.person}","${item.time||''}","${ogPath}"\n`;
+    });
+  });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=`品质部${d.label}工作汇总.csv`;a.click();URL.revokeObjectURL(url);
+}
+
+// ===== CLAIMS =====
+function openModal(){document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function addTask(){
+  const desc=document.getElementById('mDesc').value.trim();
+  const std=document.getElementById('mStd').value.trim();
+  const dl=document.getElementById('mDl').value;
+  if(!desc){alert('请填写任务描述');return}
+  const extra=getExtraClaims();
+  extra.push({id:'cx_'+Date.now(),desc,std,deadline:dl||'',claimDate:new Date().toISOString().slice(0,10),status:'unclaimed',claimer:'',delivery:'',month:selectedMonth});
+  setExtraClaims(extra);closeModal();
+  document.getElementById('mDesc').value='';document.getElementById('mStd').value='';document.getElementById('mDl').value='';
+  render();
+}
+function claimIt(id){
+  const name=prompt('请输入认领人姓名：');if(!name)return;
+  const d=DATA.months[selectedMonth];
+  const base=(d.claims||[]).find(c=>c.id===id);
+  if(base){base.claimer=name;base.status='doing'}
+  else{const extra=getExtraClaims();const item=extra.find(c=>c.id===id);if(item){item.claimer=name;item.status='doing'}setExtraClaims(extra)}
+  render();
+}
+function completeIt(id){
+  if(!confirm('确认该任务已完成？'))return;
+  const d=DATA.months[selectedMonth];
+  const base=(d.claims||[]).find(c=>c.id===id);
+  if(base){base.status='done'}
+  else{const extra=getExtraClaims();const item=extra.find(c=>c.id===id);if(item)item.status='done';setExtraClaims(extra)}
+  render();
+}
+
+// ==================== INIT ====================
+render();
+</script>
+</body>
+</html>
