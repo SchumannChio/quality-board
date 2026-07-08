@@ -62,7 +62,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 
 /* ===== MONTH SELECTOR ===== */
 .msel{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;margin-bottom:16px}
-.msel button{border:1px solid var(--gray-300);background:var(--card);padding:7px 14px;border-radius:20px;font-size:13px;white-space:nowrap;cursor:pointer;transition:var(--transition);font-weight:500}
+.msel button{border:1px solid var(--gray-300);background:var(--card);padding:7px 14px;border-radius:20px;font-size:14px;white-space:nowrap;cursor:pointer;transition:var(--transition);font-weight:500}
 .msel button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 
 /* ===== BADGES ===== */
@@ -156,6 +156,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .pl-meta{font-size:11px;color:var(--text-sec);margin-top:3px}
 
 /* ===== MONTHLY VIEW ===== */
+.hero-green .h-label{font-size:13px}
+.hero-green .h-sub{font-size:14px}
+.hero-green .hs .num{font-size:24px}
+.hero-green .hs .lbl{font-size:11px}
 .cat-card{margin-bottom:12px;border-left:4px solid var(--accent);border-radius:var(--radius);overflow:hidden}
 .cat-card.ck-help{border-left-color:var(--cat-help)}
 .cat-card.ck-tech{border-left-color:var(--cat-tech)}
@@ -165,8 +169,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .cat-card.ck-satisfaction{border-left-color:var(--cat-satisfaction)}
 .cat-card.ck-techlib{border-left-color:var(--cat-techlib)}
 .cat-head{padding:12px 16px;background:var(--gray-50);display:flex;justify-content:space-between;align-items:center}
-.cat-name{font-size:14px;font-weight:600}
-.cat-count{font-size:12px;color:var(--text-sec)}
+.cat-name{font-size:15px;font-weight:600}
+.cat-count{font-size:13px;color:var(--text-sec)}
 .cat-item{padding:12px 16px;border-bottom:1px solid var(--gray-100);display:flex;align-items:flex-start;gap:10px}
 .cat-item:last-child{border-bottom:none}
 .ci-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0;cursor:default}
@@ -179,9 +183,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .ci-dot.editable{cursor:pointer;border:2px solid var(--gray-500)}
 .ci-dot.editable:hover{border-color:var(--accent);transform:scale(1.2)}
 .ci-info{flex:1;min-width:0}
-.ci-name{font-size:13px;font-weight:500;line-height:1.4}
-.ci-result{font-size:12px;color:var(--text-sec);margin-top:2px;line-height:1.4}
-.ci-meta{font-size:11px;color:var(--text-sec);margin-top:3px;display:flex;flex-wrap:wrap;gap:3px 6px;align-items:center}
+.ci-name{font-size:14px;font-weight:500;line-height:1.4}
+.ci-result{font-size:13px;color:var(--text-sec);margin-top:2px;line-height:1.4}
+.ci-meta{font-size:12px;color:var(--text-sec);margin-top:3px;display:flex;flex-wrap:wrap;gap:3px 6px;align-items:center}
 
 /* ===== BONUS RULES VIEW ===== */
 .bonus-hero{border-radius:var(--radius);padding:20px 18px;margin-bottom:16px;box-shadow:var(--shadow);color:#fff;background:linear-gradient(135deg,#1a3a5c,#2c5f8a)}
@@ -1190,11 +1194,11 @@ function renderMonthly(d) {
   
   // Work type distribution bar
   html += `<div class="card"><div class="card-body">
-    <div style="font-size:13px;font-weight:600;margin-bottom:10px">工作类型分布</div>`;
+    <div style="font-size:14px;font-weight:600;margin-bottom:10px">工作类型分布</div>`;
   catStats.forEach(cat => {
     const catPct = cat.total ? Math.round(cat.done / cat.total * 100) : 0;
     html += `<div style="margin-bottom:10px">
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
         <span>${cat.name}</span>
         <span style="color:var(--text-sec)">${cat.done}/${cat.total} 有进展</span>
       </div>
