@@ -553,7 +553,7 @@ const DEFAULT_DATA = {
                 "items": [
                     {
                         "desc": "基于人性梳理使用者感受的自然表达规律1.0版本：用AI推演得出基础版本",
-                        "result": "",
+                        "result": "AI推演完成，形成1.0版基础框架，待进一步验证",
                         "status": "done",
                         "person": "鲍YM",
                         "time": "6月",
@@ -567,7 +567,7 @@ const DEFAULT_DATA = {
                 "items": [
                     {
                         "desc": "建立各项目点材质库+污渍库：1-3个基础项目手搓完成",
-                        "result": "",
+                        "result": "宝地广场等1-3个项目手搓采集进行中，尚未全面铺开",
                         "status": "done",
                         "person": "张Z",
                         "time": "6月",
@@ -581,7 +581,7 @@ const DEFAULT_DATA = {
                 "items": [
                     {
                         "desc": "建立测试新品库，系统自动每周更新10-30个",
-                        "result": "",
+                        "result": "系统自动运行，周更10-30款新品，待深度评估",
                         "status": "done",
                         "person": "曹MZ",
                         "time": "持续",
@@ -1163,13 +1163,12 @@ function renderMonthly(d) {
   
   // Hero section with key stats
   html += `<div class="hero hero-green">
-    <div class="h-label">${d.label}工作总结</div>
-    <div class="h-title">完成率 ${pct}%</div>
-    <div class="h-sub">${allDone}项完成 / ${allDoing}项进行中</div>
+    <div class="h-label">${d.label}工作盘点</div>
+    <div class="h-sub" style="margin-top:8px">共开展 ${allItems} 项工作 · ${allDone} 项有明确进展 · ${allDoing} 项持续推进</div>
     <div class="hero-stats c3">
-      <div class="hs"><div class="num">${allItems}</div><div class="lbl">总任务</div></div>
-      <div class="hs"><div class="num" style="color:#7dffb3">${allDone}</div><div class="lbl">已完成</div></div>
-      <div class="hs"><div class="num" style="color:#ffd166">${allDoing}</div><div class="lbl">进行中</div></div>
+      <div class="hs"><div class="num">${allItems}</div><div class="lbl">开展事项</div></div>
+      <div class="hs"><div class="num" style="color:#7dffb3">${allDone}</div><div class="lbl">有进展</div></div>
+      <div class="hs"><div class="num" style="color:#ffd166">${allDoing}</div><div class="lbl">推进中</div></div>
     </div>
   </div>`;
   
@@ -1197,7 +1196,7 @@ function renderMonthly(d) {
     html += `<div style="margin-bottom:10px">
       <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
         <span>${cat.name}</span>
-        <span style="color:var(--text-sec)">${cat.done}/${cat.total} 完成 (${catPct}%)</span>
+        <span style="color:var(--text-sec)">${cat.done}/${cat.total} 有进展</span>
       </div>
       <div style="height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden">
         <div style="height:100%;width:${catPct}%;background:var(--cat-${cat.key});border-radius:3px;transition:width .6s"></div>
@@ -1215,7 +1214,7 @@ function renderMonthly(d) {
     html += `<div class="card cat-card ck-${cat.catKey}">
       <div class="cat-head">
         <span class="cat-name">${cat.category}</span>
-        <span class="cat-count">✓${catDone} 进行中${catDoing} 待启动${catTodo}</span>
+        <span class="cat-count">有进展${catDone} · 推进中${catDoing} · 待启动${catTodo}</span>
       </div>`;
     
     cat.items.forEach((item, itemIdx) => {
