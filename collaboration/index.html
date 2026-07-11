@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三智能体协同记录</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    background: #f5f7fa;
+    color: #2c3e50;
+    line-height: 1.7;
+    padding: 20px;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  /* Hero区 */
+  .hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 32px 36px;
+    color: white;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero .subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+    position: relative;
+  }
+  .hero .meta-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .hero .meta-item {
+    font-size: 13px;
+    opacity: 0.92;
+  }
+  .hero .meta-label {
+    opacity: 0.75;
+    margin-right: 6px;
+  }
+  /* 概览卡片 */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 18px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card .label {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 4px;
+  }
+  /* 周标签 */
+  .week-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .week-tab {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: white;
+    color: #667eea;
+    border: 1px solid #e0e6ed;
+    transition: all 0.2s;
+  }
+  .week-tab.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+  }
+  .week-tab:hover:not(.active) {
+    border-color: #667eea;
+  }
+  /* 区块标题 */
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 28px 0 16px;
+    padding-left: 12px;
+    border-left: 4px solid #667eea;
+  }
+  .section-subtitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: #34495e;
+    margin: 20px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8ecf1;
+  }
+  /* 事件卡片 */
+  .event-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-left: 4px solid #667eea;
+  }
+  .event-card.done { border-left-color: #27ae60; }
+  .event-card.running { border-left-color: #f39c12; }
+  .event-card.ongoing { border-left-color: #3498db; }
+  .event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 12px;
+  }
+  .event-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  .event-status {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .status-done { background: #e8f8f0; color: #27ae60; }
+  .status-running { background: #fef5e7; color: #e67e22; }
+  .status-ongoing { background: #e8f4fd; color: #3498db; }
+  .event-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .event-meta span::before {
+    content: '•';
+    margin-right: 6px;
+    color: #bdc3c7;
+  }
+  .event-meta span:first-child::before {
+    content: '';
+    margin: 0;
+  }
+  .event-bg {
+    font-size: 13px;
+    color: #7f8c8d;
+    background: #f8f9fb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .event-content {
+    font-size: 13.5px;
+    color: #34495e;
+  }
+  .event-content ul {
+    padding-left: 20px;
+    margin: 0;
+  }
+  .event-content li {
+    margin-bottom: 4px;
+  }
+  .event-output {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #e0e6ed;
+    font-size: 13px;
+    color: #667eea;
+    font-weight: 500;
+  }
+  /* 模式分析区 */
+  .analysis-section {
+    background: white;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .flow-diagram {
+    background: #f8f9fb;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 13px;
+    color: #5a6c7d;
+    line-height: 1.8;
+    margin: 12px 0;
+  }
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .pros-cons h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .pros h4 { color: #27ae60; }
+  .cons h4 { color: #e74c3c; }
+  .pros-cons ul {
+    padding-left: 18px;
+    font-size: 13px;
+    color: #34495e;
+  }
+  .pros-cons li { margin-bottom: 4px; }
+  /* 数据表 */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .data-table th, .data-table td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #f0f3f7;
+  }
+  .data-table th {
+    background: #f8f9fb;
+    font-weight: 600;
+    font-size: 13px;
+    color: #5a6c7d;
+  }
+  .data-table td {
+    font-size: 14px;
+  }
+  .data-table tr:last-child td {
+    border-bottom: none;
+  }
+  /* 页脚 */
+  .footer {
+    text-align: center;
+    color: #95a5a6;
+    font-size: 12px;
+    margin-top: 32px;
+    padding: 16px;
+  }
+  /* 响应式 */
+  @media (max-width: 768px) {
+    body { padding: 12px; }
+    .hero { padding: 22px 20px; }
+    .hero h1 { font-size: 20px; }
+    .overview-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .pros-cons {
+      grid-template-columns: 1fr;
+    }
+    .event-header { flex-direction: column; }
+    .hero .meta-row { gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero区 -->
+  <div class="hero">
+    <h1>🤖 三智能体协同记录</h1>
+    <div class="subtitle">记录舒曼 · 小二子 · 碎碎 三智能体协同事件、信息流转与经验沉淀</div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">更新频率</span>每周五更新</div>
+      <div class="meta-item"><span class="meta-label">推送方式</span>小猪助理钉钉群</div>
+    </div>
+  </div>
+
+  <!-- 总览数据卡片 -->
+  <div class="overview-grid">
+    <div class="stat-card">
+      <div class="num">7</div>
+      <div class="label">协同事件总数</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">4</div>
+      <div class="label">已完成</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">2</div>
+      <div class="label">进行中</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">1</div>
+      <div class="label">持续运行</div>
+    </div>
+  </div>
+
+  <!-- 周标签 -->
+  <div class="week-tabs">
+    <div class="week-tab active" onclick="showWeek('w28')">W28 · 深度协同期</div>
+    <div class="week-tab" onclick="showWeek('w27')">W27 · 机制建立期</div>
+    <div class="week-tab" onclick="showWeek('all')">全部展开</div>
+  </div>
+
+  <!-- W28 事件 -->
+  <div id="w28-events">
+    <h2 class="section-title">W28 · 7/7 - 7/13 深度协同期</h2>
+
+    <!-- 事件4 -->
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">④ 7月9日录音沟通纪要传递与回复</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 7月10日</span>
+        <span>🔄 小二子 → 舒曼 → 小二子</span>
+      </div>
+      <div class="event-bg">
+        💡 背景：鲍总7/9与曹明珠面对面沟通，小二子基于录音整理AI初稿
+      </div>
+      <div class="event-content">
+        <ul>
+          <li>7/10 13:10 小二子发送纪要邮件（六大板块+3项待办）</li>
+          <li>舒曼接收后推送钉钉通知，按用户要求调取原文展示</li>
+          <li>同步归档至「总经理工作沟通纪要」目录</li>
+          <li>7/10 18:26 舒曼回复确认邮件：确认收到、补贴扣款清单已交付、其余两项按优先级推进</li>
+          <li>7/11 小二子发送鲍总确认回执</li>
+        </ul>
+        <div style="margin-top:8px; font-size:12.5px; color:#e67e22;">
+          ⚠️ 纪要性质：AI整理稿仅供参考，非正式工作指令，待办以鲍总后续正式确认版本为准
+        </div>
+      </div>
+      <div class="event-output">📎 产出：纪要归档 + 确认回复 + 待办状态更新</div>
+    </div>
+
+    <!-- 事件5 -->
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑤ 鲍总更正说明传递</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 7月11日 10:50</span>
+        <span>🔄 小二子 → 舒曼</span>
+      </div>
+      <div class="event-bg">
+        💡 背景：鲍总审核7/9纪要后，认为AI整理稿可能有偏差
+      </div>
+      <div class="event-content">
+        <ul>
+          <li>小二子转发鲍总更正说明：录音纪要是参考信息，非正式工作指令</li>
+          <li>原纪要中3项待办降级为「参考待办」，需以正式确认版为准</li>
+          <li>舒曼同步更新待办清单状态（#48/#49/#50改为待鲍总确认）</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：待办状态降级 + 清单同步更新</div>
+    </div>
+
+    <!-- 事件6 -->
+    <div class="event-card running">
+      <div class="event-header">
+        <div class="event-title">⑥ 三智能体月底复盘通知</div>
+        <span class="event-status status-running">🟡 进行中</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 7月11日 12:04</span>
+        <span>🔄 小二子 → 舒曼</span>
+        <span>⏰ 截止 7/25</span>
+      </div>
+      <div class="event-bg">
+        💡 背景：鲍总要求月底对三智能体协同机制做深度复盘
+      </div>
+      <div class="event-content">
+        <ul>
+          <li>小二子转达鲍总通知：7月底深度复盘</li>
+          <li>7/25前准备：协同记录、使用感受、改进建议</li>
+          <li>复盘方向：信息流转效率、决策支持质量、协同成本、规则落地情况</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：三智能体复盘资料准备（7/25截止）</div>
+    </div>
+
+    <!-- 事件7 -->
+    <div class="event-card running">
+      <div class="event-header">
+        <div class="event-title">⑦ 利管中心周度自审机制运行</div>
+        <span class="event-status status-running">🟡 首次运行中</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 7月10日起 · 每周五</span>
+        <span>🔄 舒曼（发起）→ 曹明珠（执行）</span>
+      </div>
+      <div class="event-bg">
+        💡 背景：利管中心每周自我审视，形成结构化输出
+      </div>
+      <div class="event-content">
+        <ul>
+          <li>每周五舒曼通过邮件发送自审提醒</li>
+          <li>4个维度：数据分析、工作流分析、问题分级、问题解决</li>
+          <li>W28首封提醒已发送，待曹明珠回复</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- W27 事件 -->
+  <div id="w27-events" style="display:none;">
+    <h2 class="section-title">W27 · 7/1 - 7/6 机制建立期</h2>
+
+    <!-- 事件1 -->
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">① 三智能体协同规则v1讨论与v2定稿</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 7月1日 - 3日</span>
+        <span>🔄 舒曼 ↔ 小二子 ↔ 碎碎</span>
+      </div>
+      <div class="event-bg">
+        💡 背景：三智能体试运行启动，需明确协同边界与交互规则
+      </div>
+      <div class="event-content">
+        <ul>
+          <li>v1初稿由舒曼发起，涵盖角色定位、信息流转、任务对接、冲突处理四大模块</li>
+          <li>小二子反馈：增加「鲍总指令优先级最高」原则、明确信息转述不准时的责任边界</li>
+          <li>碎碎反馈：HR域数据保密规则、跨部门信息传递需经当事人确认</li>
+          <li>v2定稿：整合三方意见，形成9条核心规则+3项兜底机制</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：三智能体协同规则v2，已同步三方</div>
+    </div>
+
+    <!-- 事件2 -->
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">② 6/30鲍总会议纪要传递</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 7月1日</span>
+        <span>🔄 小二子 → 舒曼</span>
+      </div>
+      <div class="event-bg">
+        💡 背景：鲍总6/30会议涉及品质部与数字化相关议题
+      </div>
+      <div class="event-content">
+        <ul>
+          <li>小二子提取会议中与曹明珠相关的部分，通过邮件发送</li>
+          <li>舒曼接收后整理待办，纳入总助清单跟踪</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：会议相关3项待办进入跟踪</div>
+    </div>
+
+    <!-- 事件3 -->
+    <div class="event-card ongoing">
+      <div class="event-header">
+        <div class="event-title">③ 日常邮件检查机制运行</div>
+        <span class="event-status status-ongoing">🟢 持续运行</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 7月1日起 · 每日4次</span>
+        <span>🔄 舒曼（主动检查）</span>
+      </div>
+      <div class="event-content">
+        <ul>
+          <li>建立定时检查机制，每日4轮（早间/上午/下午/晚间）检查三方邮箱</li>
+          <li>有新邮件即时通过钉钉推送，无邮件则静默</li>
+          <li>7/1-7/6期间：除启动邮件外无新增外部邮件</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 协同模式分析 -->
+  <h2 class="section-title">协同模式分析</h2>
+  <div class="analysis-section">
+    <h3 class="section-subtitle">信息流转路径</h3>
+    <div class="flow-diagram">
+鲍总 → 小二子（整理 / 筛选）→ 舒曼（接收 / 执行 / 归档）→ 钉钉推送用户<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↕<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碎碎（HR / 总经办域交叉时协同）
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>✓ 已验证有效</h4>
+        <ul>
+          <li><strong>邮件为主渠道</strong>：正式信息可追溯、可归档</li>
+          <li><strong>AI初稿+人工确认</strong>：效率与准确性平衡</li>
+          <li><strong>待办清单联动</strong>：收到信息立即更新，闭环跟踪</li>
+          <li><strong>钉钉推送兜底</strong>：重要信息即时触达</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>✗ 待优化</h4>
+        <ul>
+          <li><strong>碎碎参与度偏低</strong>：HR域交叉场景较少</li>
+          <li><strong>信息重复推送</strong>：同一邮件可能被多次命中</li>
+          <li><strong>反向信息流不足</strong>：舒曼→小二子主动汇报少</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 本周数据 -->
+  <h2 class="section-title">本周（W28）协同数据</h2>
+  <table class="data-table">
+    <tr>
+      <th>指标</th>
+      <th>数值</th>
+    </tr>
+    <tr>
+      <td>新增协同事件</td>
+      <td>4 件</td>
+    </tr>
+    <tr>
+      <td>邮件往来</td>
+      <td>6 封</td>
+    </tr>
+    <tr>
+      <td>产生待办</td>
+      <td>1 项（复盘资料准备）</td>
+    </tr>
+    <tr>
+      <td>完成事项</td>
+      <td>3 件</td>
+    </tr>
+    <tr>
+      <td>进行中</td>
+      <td>2 件</td>
+    </tr>
+    <tr>
+      <td>碎碎参与次数</td>
+      <td>0 次</td>
+    </tr>
+  </table>
+
+  <div class="footer">
+    下次更新：2026年7月18日（W29周汇总）· 三智能体协同记录
+  </div>
+
+</div>
+
+<script>
+function showWeek(week) {
+  const tabs = document.querySelectorAll('.week-tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  
+  const w27 = document.getElementById('w27-events');
+  const w28 = document.getElementById('w28-events');
+  
+  if (week === 'w27') {
+    w27.style.display = 'block';
+    w28.style.display = 'none';
+    tabs[1].classList.add('active');
+  } else if (week === 'w28') {
+    w27.style.display = 'none';
+    w28.style.display = 'block';
+    tabs[0].classList.add('active');
+  } else {
+    w27.style.display = 'block';
+    w28.style.display = 'block';
+    tabs[2].classList.add('active');
+  }
+}
+</script>
+
+</body>
+</html>
