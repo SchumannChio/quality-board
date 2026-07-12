@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工资表字段调整汇总确认 - 会议讨论稿</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: #fff; padding: 32px 40px; }
+  .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+  .header p { font-size: 14px; opacity: 0.85; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  /* 统计卡片 */
+  .stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 28px; }
+  .stat-card { background: #fff; border-radius: 8px; padding: 16px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .stat-card .num { font-size: 28px; font-weight: 700; }
+  .stat-card .label { font-size: 12px; color: #666; margin-top: 4px; }
+  .stat-card.blue .num { color: #1e3a5f; }
+  .stat-card.red .num { color: #dc2626; }
+  .stat-card.green .num { color: #16a34a; }
+  .stat-card.amber .num { color: #d97706; }
+  .stat-card.purple .num { color: #7c3aed; }
+
+  /* 分类区块 */
+  .section { background: #fff; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); overflow: hidden; }
+  .section-header { padding: 16px 24px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #f0f0f0; }
+  .section-header .icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .section-header h2 { font-size: 16px; font-weight: 600; }
+  .section-header .desc { font-size: 13px; color: #666; margin-top: 2px; }
+
+  .s1 .icon { background: #dbeafe; }
+  .s2 .icon { background: #fee2e2; }
+  .s3 .icon { background: #dcfce7; }
+  .s4 .icon { background: #fef3c7; }
+  .s5 .icon { background: #ede9fe; }
+
+  /* 表格 */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #f8fafc; font-weight: 600; text-align: left; padding: 10px 16px; border-bottom: 2px solid #e2e8f0; white-space: nowrap; }
+  td { padding: 10px 16px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover { background: #fafbfc; }
+
+  /* 标签 */
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-delete { background: #fee2e2; color: #dc2626; }
+  .tag-merge { background: #fef3c7; color: #92400e; }
+  .tag-rename { background: #dbeafe; color: #1e40af; }
+  .tag-move { background: #dcfce7; color: #166534; }
+  .tag-new { background: #ede9fe; color: #5b21b6; }
+  .tag-keep { background: #e0e7ff; color: #3730a3; }
+  .tag-pending { background: #f3f4f6; color: #6b7280; }
+
+  .arrow { color: #6b7280; margin: 0 4px; }
+  .highlight { background: #fffbeb; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+  .note { color: #6b7280; font-size: 12px; }
+  .formula { font-family: "Courier New", monospace; background: #f8fafc; padding: 8px 12px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 12px; margin-top: 6px; line-height: 1.8; }
+  .formula .old { color: #dc2626; text-decoration: line-through; }
+  .formula .new { color: #16a34a; font-weight: 600; }
+
+  /* 讨论标记 */
+  .discuss-badge { display: inline-flex; align-items: center; gap: 4px; background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-left: 8px; }
+  .discuss-badge::before { content: "💬"; }
+
+  /* 底部 */
+  .footer { text-align: center; padding: 20px; color: #9ca3af; font-size: 12px; }
+
+  @media (max-width: 768px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .header { padding: 20px; }
+    td, th { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📋 工资表字段调整汇总确认</h1>
+  <p>会议讨论稿 ｜ 2026年7月 ｜ 共涉及 21 个字段调整</p>
+</div>
+
+<div class="container">
+
+  <!-- 统计 -->
+  <div class="stats">
+    <div class="stat-card blue"><div class="num">5</div><div class="label">天数→工时转换</div></div>
+    <div class="stat-card red"><div class="num">17</div><div class="label">删除/并入字段</div></div>
+    <div class="stat-card green"><div class="num">3</div><div class="label">建议保留</div></div>
+    <div class="stat-card amber"><div class="num">4</div><div class="label">改名/移动/新增</div></div>
+    <div class="stat-card purple"><div class="num">4</div><div class="label">待确认规则</div></div>
+    <div class="stat-card blue"><div class="num">3</div><div class="label">其他建议</div></div>
+  </div>
+
+  <!-- ① 天数转工时 -->
+  <div class="section s1">
+    <div class="section-header">
+      <div class="icon">🔄</div>
+      <div>
+        <h2>① 天数字段 → 工时字段</h2>
+        <div class="desc">所有"天数"字段统一转化为"工时数"字段</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:40px">#</th><th>原字段名</th><th>→</th><th>新字段名</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>应出勤天数</td><td class="arrow">→</td><td><b>应出勤工时</b></td><td class="note">考勤相关</td></tr>
+        <tr><td>2</td><td>实出勤天数</td><td class="arrow">→</td><td><b>实出勤工时</b></td><td class="note">考勤相关</td></tr>
+        <tr><td>3</td><td>不扣款缺勤天数</td><td class="arrow">→</td><td><b>不扣款缺勤工时</b></td><td class="note">考勤相关</td></tr>
+        <tr><td>4</td><td>扣款缺勤天数</td><td class="arrow">→</td><td><b>扣款缺勤工时</b></td><td class="note">考勤相关</td></tr>
+        <tr><td>5</td><td>病假天数</td><td class="arrow">→</td><td><b>病假工时</b></td><td class="note">考勤相关</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ② 删除并入字段 -->
+  <div class="section s2">
+    <div class="section-header">
+      <div class="icon">🗑️</div>
+      <div>
+        <h2>② 删除并入字段（14个）</h2>
+        <div class="desc">以下字段删除：12个并入岗位津贴，动态固定加班费并入平日加班费，住房补贴并入租房补贴；"其他补贴2"中的奖励改走奖金审批流程</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:40px">#</th><th>删除字段</th><th>处理方式</th><th>相关数据明细(点击链接查看)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>管理工资</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>2</td><td>固定项</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>3</td><td>交通补贴</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>4</td><td>其他补贴</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>5</td><td>考核奖</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>6</td><td>固定饭贴</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>7</td><td>饭贴</td><td><span class="tag tag-merge">并入岗位津贴（建议保留，待定）</span></td><td></td></tr>
+        <tr><td>8</td><td>其他补贴2</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td>其中奖励改走奖金审批流程</td></tr>
+        <tr><td>9</td><td>危废岗补贴</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>10</td><td>垃圾房补贴</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>11</td><td>外围补贴</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td></td></tr>
+        <tr><td>12</td><td>固定补贴</td><td><span class="tag tag-merge">并入岗位津贴</span></td><td>仅涉及陈雪梅1人，行政部确认是否可随"其他补贴"并入"岗位津贴"</td></tr>
+        <tr><td>13</td><td>动态固定加班费</td><td><span class="tag tag-merge">并入平日加班费</span></td><td></td></tr>
+        <tr><td>14</td><td>住房补贴</td><td><span class="tag tag-merge">并入租房补贴</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ③ 删除奖金相关字段 -->
+  <div class="section s2">
+    <div class="section-header">
+      <div class="icon">💰</div>
+      <div>
+        <h2>③ 删除奖金相关字段（3个）</h2>
+        <div class="desc">改走奖金审批流程</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:40px">#</th><th>删除字段</th><th>处理方式</th><th>相关数据明细(点击链接查看)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>全勤奖</td><td><span class="tag tag-delete">删除 → 改走奖金审批流程</span></td><td></td></tr>
+        <tr><td>2</td><td>奖金</td><td><span class="tag tag-delete">删除 → 改走奖金审批流程</span></td><td></td></tr>
+        <tr><td>3</td><td>工程津贴</td><td><span class="tag tag-delete">删除 → 改走奖金审批流程</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ③ 建议保留 -->
+  <div class="section s3">
+    <div class="section-header">
+      <div class="icon">✅</div>
+      <div>
+        <h2>③ 建议保留字段（3个）</h2>
+        <div class="desc">原讨论删除，建议不删不合并</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:40px">#</th><th>字段</th><th>建议</th><th>理由</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>饭贴顿数 / 饭贴单价/饭贴</b></td><td><span class="tag tag-keep">保留</span></td><td>每月浮动不固定，不便于并入固定字段（岗位津贴）</td></tr>
+        <tr><td>2</td><td><b>其他扣款</b></td><td><span class="tag tag-keep">保留</span></td><td>手动录入项，如违规罚金和其他扣款项（例如彭旭才）</td></tr>
+        <tr><td>3</td><td><b>固定扣款</b></td><td><span class="tag tag-rename">保留并改名</span></td><td>系统自动统计项，改名为 <span class="highlight">"考勤补贴扣款"</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ④⑤⑥ 改名/移动/新增 -->
+  <div class="section s4">
+    <div class="section-header">
+      <div class="icon">✏️</div>
+      <div>
+        <h2>④⑤⑥ 字段改名 / 移动 / 新增</h2>
+        <div class="desc">字段名优化、归属调整、新增员工编号</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:40px">#</th><th>调整项</th><th>类型</th><th>详情</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>④</td>
+          <td><b>字段改名</b></td>
+          <td><span class="tag tag-rename">改名</span></td>
+          <td>
+            "各类补贴小计" → <span class="highlight">"考勤补贴小计"</span><br>
+            "个税补贴" → <span class="highlight">"个税补贴（年底统算）"</span>
+            <div class="note">便于理解和提醒</div>
+          </td>
+        </tr>
+        <tr>
+          <td>⑤</td>
+          <td><b>信息补贴 → 岗位津贴</b></td>
+          <td><span class="tag tag-move">移动</span></td>
+          <td>
+            管理人员的"信息补贴"并入<span class="highlight">岗位津贴</span>作为固定项<br>
+            <div class="note">原因：在考勤补贴大项里，但不随缺勤而扣款</div>
+          </td>
+        </tr>
+        <tr>
+          <td>⑥</td>
+          <td><b>社保补贴移出考勤补贴</b></td>
+          <td><span class="tag tag-move">移动</span></td>
+          <td>
+            从"考勤补贴"大项 → 移入<span class="highlight">"基础工资架构"</span>大项作为固定项<br>
+            <div class="note">原因：不随缺勤而扣款</div>
+          </td>
+        </tr>
+        <tr>
+          <td>⑩</td>
+          <td><b>新增"员工编号"列</b></td>
+          <td><span class="tag tag-new">新增</span></td>
+          <td>
+            作为员工数据唯一识别号，区别于身份证号码（红线数据）<br>
+            <div class="note">基础信息和工资架构等固定项会随时间线变化，需按时间线维护更新并建立时间关联</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ⑦⑧⑨ 公式调整 -->
+  <div class="section s4">
+    <div class="section-header">
+      <div class="icon">🧮</div>
+      <div>
+        <h2>⑦⑧⑨ 合计公式调整</h2>
+        <div class="desc">三个小计/合计项的组成字段变更对比</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:50px">项</th><th>合计名称</th><th>变更前 → 变更后</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>⑦</b></td>
+          <td><b>考勤补贴小计</b></td>
+          <td>
+            <div class="formula">
+              <span class="old">原 = 信息补贴 + 固定饭贴 + 社保补贴 + 个税补贴 + 住房补贴 + 租房补贴（6项）</span><br>
+              <span class="new">新 = 信息补贴（不含管理人员）+ 个税补贴 + 租房补贴（3项）</span>
+            </div>
+            <div class="note" style="margin-top:6px">
+              移出：固定饭贴（并入岗位津贴）、社保补贴（→基础工资架构）、住房补贴（并入租房补贴）<br>
+              信息补贴：管理人员部分并入岗位津贴，非管理人员仍在此项
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><b>⑧</b></td>
+          <td><b>基础工资小计</b></td>
+          <td>
+            <div class="formula">
+              <span class="old">原 = 基本工资+管理工资+岗位工资+管理津贴+岗位津贴+试用期折减+固定项+危废岗补贴+垃圾房补贴+外围补贴+技能补贴+交通补贴+其他补贴+考核奖+固定代岗+固定加班（16项）</span><br>
+              <span class="new">新 = 基本工资+管理工资+岗位工资+管理津贴+岗位津贴+试用期折减+技能补贴+固定代岗+固定加班+社保补贴（10项）</span>
+            </div>
+            <div class="note" style="margin-top:6px">
+              移出：固定项、危废岗补贴、垃圾房补贴、外围补贴、交通补贴、其他补贴、考核奖（均并入岗位津贴）<br>
+              移入：社保补贴（从考勤补贴大项移入）
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><b>⑨</b></td>
+          <td><b>增项小计</b></td>
+          <td>
+            <div class="formula">
+              <span class="old">原 = 平日加班+节日加班+动态固定加班费+工龄工资+饭贴+临时代岗费+钟点工+临时工+打卡+全勤奖+特约费+借出补贴+高温补贴+奖金+补发+工程津贴+其他补贴2+固定补贴（18项）</span><br>
+              <span class="new">新 = 平日加班+节日加班+工龄工资+饭贴+临时代岗费+钟点工+临时工+打卡+特约费+借出补贴+高温补贴+补发（12项）</span>
+            </div>
+            <div class="note" style="margin-top:6px">
+              移出：动态固定加班费（并入平日加班费）、全勤奖（→奖金审批）、奖金（→奖金审批）、工程津贴（→奖金审批）、其他补贴2（并入岗位津贴）、固定补贴（并入岗位津贴）
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ⑾ 待确认 -->
+  <div class="section s5">
+    <div class="section-header">
+      <div class="icon">⏳</div>
+      <div>
+        <h2>⑾ 待提供规则 / 标准 <span class="discuss-badge">需会议确认</span></h2>
+        <div class="desc">以下规则/标准尚未提供，需在会议中明确责任人和时间节点</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:40px">#</th><th>待确认事项</th><th>责任人</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>国定加班单价标准</td><td>戴</td><td><span class="tag tag-pending">待提供</span></td></tr>
+        <tr><td>2</td><td>基本工资架构拆分规则</td><td>彭</td><td><span class="tag tag-pending">待提供</span></td></tr>
+        <tr><td>3</td><td>住房/租房补贴规则</td><td>彭</td><td><span class="tag tag-pending">待提供</span></td></tr>
+        <tr><td>4</td><td>社保补贴规则</td><td>？</td><td><span class="tag tag-pending">待确认责任人</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ⑿ 其他建议 -->
+  <div class="section s5">
+    <div class="section-header">
+      <div class="icon">💡</div>
+      <div>
+        <h2>⑿ 其他建议 <span class="discuss-badge">需会议确认</span></h2>
+        <div class="desc">额外建议事项，需会议讨论确认</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:40px">#</th><th>建议主项</th><th>描述</th><th>理由</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>花名册追加工资架构数据</b></td><td>花名册关联工资架构（前期人工手动），工资表关联花名册（含基础信息和工资架构）</td><td class="note">简化数据关系引用，降低错乱风险</td></tr>
+        <tr><td>2</td><td><b>13/14个并入字段6月工资起合并</b></td><td colspan="2">其中：11/12个并入岗位津贴，1个并入平日加班费，1个并入租房补贴</td></tr>
+      </tbody>
+    </table>
+    <div style="padding: 12px 24px; background: #fffbeb; border-top: 1px solid #fef3c7; font-size: 13px; color: #92400e;">
+      <b>温馨提示：</b><br>
+      1、经营一部、经营二部注意走奖金审批流程的相关数据<br>
+      2、人事部注意本次确认后的相关工资数据源填写、花名册及工资架构数据并入维护更新<br>
+      3、曹调整工资表考勤数据字段录入及规则调整的模型架构
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  工资表字段调整汇总确认 · 会议讨论稿 · 2026年7月
+</div>
+
+</body>
+</html>
