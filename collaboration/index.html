@@ -13,10 +13,7 @@
     line-height: 1.7;
     padding: 20px;
   }
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-  }
+  .container { max-width: 960px; margin: 0 auto; }
   .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 16px;
@@ -36,32 +33,11 @@
     background: rgba(255,255,255,0.08);
     border-radius: 50%;
   }
-  .hero h1 {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    position: relative;
-  }
-  .hero .subtitle {
-    font-size: 14px;
-    opacity: 0.9;
-    position: relative;
-  }
-  .hero .meta-row {
-    display: flex;
-    gap: 24px;
-    margin-top: 18px;
-    flex-wrap: wrap;
-    position: relative;
-  }
-  .hero .meta-item {
-    font-size: 13px;
-    opacity: 0.92;
-  }
-  .hero .meta-label {
-    opacity: 0.75;
-    margin-right: 6px;
-  }
+  .hero h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; position: relative; }
+  .hero .subtitle { font-size: 14px; opacity: 0.9; position: relative; }
+  .hero .meta-row { display: flex; gap: 24px; margin-top: 18px; flex-wrap: wrap; position: relative; }
+  .hero .meta-item { font-size: 13px; opacity: 0.92; }
+  .hero .meta-label { opacity: 0.75; margin-right: 6px; }
   .overview-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -83,17 +59,8 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .stat-card .label {
-    font-size: 12px;
-    color: #7f8c8d;
-    margin-top: 4px;
-  }
-  .week-tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-  }
+  .stat-card .label { font-size: 12px; color: #7f8c8d; margin-top: 4px; }
+  .week-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
   .week-tab {
     padding: 8px 18px;
     border-radius: 20px;
@@ -105,14 +72,8 @@
     border: 1px solid #e0e6ed;
     transition: all 0.2s;
   }
-  .week-tab.active {
-    background: #667eea;
-    color: white;
-    border-color: #667eea;
-  }
-  .week-tab:hover:not(.active) {
-    border-color: #667eea;
-  }
+  .week-tab.active { background: #667eea; color: white; border-color: #667eea; }
+  .week-tab:hover:not(.active) { border-color: #667eea; }
   .section-title {
     font-size: 18px;
     font-weight: 600;
@@ -147,11 +108,7 @@
     margin-bottom: 10px;
     gap: 12px;
   }
-  .event-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: #2c3e50;
-  }
+  .event-title { font-size: 15px; font-weight: 600; color: #2c3e50; }
   .event-status {
     font-size: 12px;
     padding: 3px 10px;
@@ -170,15 +127,8 @@
     margin-bottom: 10px;
     flex-wrap: wrap;
   }
-  .event-meta span::before {
-    content: '•';
-    margin-right: 6px;
-    color: #bdc3c7;
-  }
-  .event-meta span:first-child::before {
-    content: '';
-    margin: 0;
-  }
+  .event-meta span::before { content: '•'; margin-right: 6px; color: #bdc3c7; }
+  .event-meta span:first-child::before { content: ''; margin: 0; }
   .event-bg {
     font-size: 13px;
     color: #7f8c8d;
@@ -187,17 +137,9 @@
     border-radius: 8px;
     margin-bottom: 10px;
   }
-  .event-content {
-    font-size: 13.5px;
-    color: #34495e;
-  }
-  .event-content ul {
-    padding-left: 20px;
-    margin: 0;
-  }
-  .event-content li {
-    margin-bottom: 4px;
-  }
+  .event-content { font-size: 13.5px; color: #34495e; }
+  .event-content ul { padding-left: 20px; margin: 0; }
+  .event-content li { margin-bottom: 4px; }
   .event-output {
     margin-top: 10px;
     padding-top: 10px;
@@ -229,17 +171,10 @@
     gap: 16px;
     margin-top: 12px;
   }
-  .pros-cons h4 {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
+  .pros-cons h4 { font-size: 14px; margin-bottom: 8px; }
   .pros h4 { color: #27ae60; }
   .cons h4 { color: #e74c3c; }
-  .pros-cons ul {
-    padding-left: 18px;
-    font-size: 13px;
-    color: #34495e;
-  }
+  .pros-cons ul { padding-left: 18px; font-size: 13px; color: #34495e; }
   .pros-cons li { margin-bottom: 4px; }
   .data-table {
     width: 100%;
@@ -260,12 +195,8 @@
     font-size: 13px;
     color: #5a6c7d;
   }
-  .data-table td {
-    font-size: 14px;
-  }
-  .data-table tr:last-child td {
-    border-bottom: none;
-  }
+  .data-table td { font-size: 14px; }
+  .data-table tr:last-child td { border-bottom: none; }
   .footer {
     text-align: center;
     color: #95a5a6;
@@ -273,16 +204,14 @@
     margin-top: 32px;
     padding: 16px;
   }
+  .week-section { display: none; }
+  .week-section.active { display: block; }
   @media (max-width: 768px) {
     body { padding: 12px; }
     .hero { padding: 22px 20px; }
     .hero h1 { font-size: 20px; }
-    .overview-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .pros-cons {
-      grid-template-columns: 1fr;
-    }
+    .overview-grid { grid-template-columns: repeat(2, 1fr); }
+    .pros-cons { grid-template-columns: 1fr; }
     .event-header { flex-direction: column; }
     .hero .meta-row { gap: 10px; }
   }
@@ -297,956 +226,839 @@
     <div class="meta-row">
       <div class="meta-item"><span class="meta-label">更新频率</span>每周五更新</div>
       <div class="meta-item"><span class="meta-label">推送方式</span>小猪助理钉钉群</div>
-      <div class="meta-item"><span class="meta-label">最新周次</span>W32 · 8/3-8/7</div>
+      <div class="meta-item"><span class="meta-label">最近更新</span>2026-08-21 W34</div>
     </div>
   </div>
 
   <div class="overview-grid">
     <div class="stat-card">
-      <div class="num">38</div>
+      <div class="num">60</div>
       <div class="label">协同事件总数</div>
     </div>
     <div class="stat-card">
-      <div class="num">25</div>
+      <div class="num">45</div>
       <div class="label">已完成</div>
     </div>
     <div class="stat-card">
-      <div class="num">8</div>
+      <div class="num">9</div>
       <div class="label">进行中</div>
     </div>
     <div class="stat-card">
-      <div class="num">5</div>
+      <div class="num">6</div>
       <div class="label">持续运行</div>
     </div>
   </div>
 
   <div class="week-tabs">
-    <div class="week-tab active" onclick="showWeek('w32')">W32 · 深度协作与机制进化期</div>
-    <div class="week-tab" onclick="showWeek('w31')">W31 · 月底收官与深度梳理期</div>
-    <div class="week-tab" onclick="showWeek('w30')">W30 · 深度协作与数据盘点期</div>
-    <div class="week-tab" onclick="showWeek('w29')">W29 · 常态运行与重构期</div>
-    <div class="week-tab" onclick="showWeek('w28')">W28 · 深度协同期</div>
-    <div class="week-tab" onclick="showWeek('w27')">W27 · 机制建立期</div>
+    <div class="week-tab active" onclick="showWeek('w34')">W34 · 流程交付里程碑</div>
+    <div class="week-tab" onclick="showWeek('w33')">W33</div>
+    <div class="week-tab" onclick="showWeek('w32')">W32</div>
+    <div class="week-tab" onclick="showWeek('w31')">W31</div>
+    <div class="week-tab" onclick="showWeek('w30')">W30</div>
+    <div class="week-tab" onclick="showWeek('w29')">W29</div>
+    <div class="week-tab" onclick="showWeek('w28')">W28</div>
+    <div class="week-tab" onclick="showWeek('w27')">W27</div>
     <div class="week-tab" onclick="showWeek('all')">全部展开</div>
   </div>
 
-  <!-- W32 事件 -->
-  <div id="w32-events">
-    <h2 class="section-title">W32 · 8/3 - 8/7 深度协作与机制进化期</h2>
+  <!-- ============ W34 ============ -->
+  <div id="w34" class="week-section active">
+    <h2 class="section-title">W34 · 8/17 - 8/21 流程交付里程碑与经营深化期</h2>
 
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">㉗ 小二子沟通交互项目建立与协作通道规则确立</div>
+        <div class="event-title">④⑨ 8/17鲍总沟通·项目信息标准化与成本拆分</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
       <div class="event-meta">
-        <span>📅 8月3日</span>
-        <span>🔄 舒曼 ↔ 小二子 ← 鲍总</span>
+        <span>📅 8月17日</span>
+        <span>🔄 鲍总（指示）→ 舒曼（接收/执行）</span>
       </div>
-      <div class="event-bg">
-        💡 背景：需建立曹明珠+舒曼与钱歆琰+小二子之间的稳定协作通道
-      </div>
+      <div class="event-bg">💡 背景：鲍总两场会议，明确市场部数据唯一源头与成本拆分原则</div>
       <div class="event-content">
         <ul>
-          <li>10:14 舒曼起草邀请邮件→主人确认→10:36 发送给小二子</li>
-          <li>10:16 小二子回复三问：目标是什么/沟通频率和方式/期望角色和具体职责</li>
-          <li>10:28 舒曼起草建议框架（信息对齐+任务接力+经验沉淀/周度同步+日常@+月度复盘）</li>
-          <li>10:58 小二子转达鲍总指示："先建立通道跑起来，不追求一次把规则定死"</li>
-          <li>确立三条协作通道规则：周度同步先主人确认、仅项目群沟通、鲍总群言论先主人确认</li>
+          <li>市场部确立为大B/小B/食材三业态数据唯一源头，每月1号发布应收计划表</li>
+          <li>成本拆分原则：拆不开则整合、拆得开则细化</li>
+          <li>小B产生交付即纳管，无论是否签合同</li>
+          <li>9月1日启动"月初计划→月底确认→财务开票"在线表格协同</li>
+          <li>提取7条行动项，思想库v3.2新增9条原则</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：小二子沟通交互项目群正式启用，三条协作规则写入记忆</div>
+      <div class="event-output">📎 产出：2场听记纪要 + 思想库v3.2（+9原则）+ 7条行动项</div>
     </div>
 
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">㉘ 龙虾会1+1群协作约定定稿</div>
+        <div class="event-title">⑤⓪ 待办清单v13.1进度同步表</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
       <div class="event-meta">
-        <span>📅 8月3日</span>
-        <span>🔄 舒曼 ↔ 小二子</span>
+        <span>📅 8月17日</span>
+        <span>🔄 舒曼（执行）→ 主人（确认）</span>
       </div>
-      <div class="event-bg">
-        💡 背景：鲍总要求在龙虾小组会议上正式提出1+1群使用规则和数据资产规则
-      </div>
+      <div class="event-bg">💡 背景：主人要求拉取待办清单Excel同步进度</div>
       <div class="event-content">
         <ul>
-          <li>13:15 舒曼起草初稿（使用规则+数据资产规则+同事清单），@小二子启动深度讨论，附4个具体问题</li>
-          <li>13:48 双方整合输入，产出五大板块定稿</li>
-          <li>1+1群使用协作约定（可做/不可做/交付路径+确认机制）</li>
-          <li>数据资产规则（正式内容界定标准——用途维度判断）</li>
-          <li>敏感信息规则（薪资/合同/人事不进智能体）——小二子补充</li>
-          <li>智能体产出校验规则（人工校验+版本管理+跨群不混用）——小二子补充</li>
-          <li>试行与复盘机制（两周试行，复盘调整）——小二子补充</li>
+          <li>新增6项（柘林镇投标/新凯物业/临港6290万/金茂宁波/8/21岗位指标/钉钉数据资产趋势）</li>
+          <li>完成3项移入（BOMA全套材料/W33周报/超龄用工保险报告）</li>
+          <li>活跃29项+已完成13项=42项</li>
+          <li>颜色分区：红=紧急逾期/黄=本周截止/蓝=新增/绿=推进中/灰=完成</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：龙虾会_1加1群协作约定_定稿.md，待鲍总审阅后出正式通知版</div>
+      <div class="event-output">📎 产出：全量待办清单_进度同步_v13.1_20260817.xlsx</div>
     </div>
 
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">㉙ 待办清单v12.0升级与合并</div>
+        <div class="event-title">⑤① 8/18鲍总一对一沟通·数字化进度纠偏</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
       <div class="event-meta">
-        <span>📅 8月3日</span>
-        <span>🔄 舒曼 ↔ 主人 ← 鲍总</span>
+        <span>📅 8月18日</span>
+        <span>🔄 鲍总（指示）→ 舒曼（接收/执行）</span>
       </div>
-      <div class="event-bg">
-        💡 背景：8/3鲍总沟通确认多项待办状态变更，需合并更新待办清单
-      </div>
+      <div class="event-bg">💡 背景：鲍总25分钟一对一沟通，主题数字化进度与薪酬流程优化</div>
       <div class="event-content">
         <ul>
-          <li>标记完成5项（#56/#18/#10操作权限/#55培训日程/1+1群马丽拉入）</li>
-          <li>改名2项（宝地广场权限清单→钉钉后台权限配置清单；咨询会→质询会）</li>
-          <li>新增3项（龙虾会准备/待办堆积系统化规则/流程培训人员选拔）</li>
-          <li>按截止日重排：8/5→8/6→8/15→本周→持续→日常→低优先→暂缓</li>
-          <li>v12.0变更合并进原始待办清单v11.4，保留全部明细（父子层级）</li>
+          <li>快捷栏文件管理：常用表一键打开，3个月未用自动移除</li>
+          <li>数字化进度纠偏：负责进度不负责内容对错，接受不完美交付快速迭代</li>
+          <li>立即召集下次阶段性确认会</li>
+          <li>工资复核流程简化：跳过经营部红线"说明"环节，人事部直接对接财务</li>
+          <li>小胡工资查看权限自行决策并记录，鲍总不替做微观决策</li>
+          <li>思想库v3.2→v3.3，新增11条原则</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：待办同步清单_v12.0（合并版）</div>
+      <div class="event-output">📎 产出：领导沟通纪要 + 思想库v3.3（+11原则）+ 6项待办</div>
     </div>
 
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">㉚ 8/3听记整理与思想库v2.5升级</div>
+        <div class="event-title">⑤② 2026上半年述职报告可视化看板</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
       <div class="event-meta">
-        <span>📅 8月3日</span>
-        <span>🔄 舒曼（自主整理）</span>
+        <span>📅 8月18日</span>
+        <span>🔄 舒曼（执行）</span>
       </div>
-      <div class="event-bg">
-        💡 背景：8/3鲍总两场沟通录音需整理归档
-      </div>
+      <div class="event-bg">💡 背景：述职报告需要数据可视化呈现</div>
       <div class="event-content">
         <ul>
-          <li>听记1（09:38，24分钟）：数字化系统规则与权限管理——被动协同角色定位/系统前置审核机制/数字资产钉钉集中留存/问题上报闭环/决策留痕</li>
-          <li>听记2（13:14，7分钟）：市场部组织拆分与OA流程优化——市场部暂不拆分/自动化线索暂缓/芝麻西瓜成本评估/任务分级S/C级</li>
-          <li>思想库v2.4→v2.5，新增8条原则（芝麻西瓜成本评估/业务驱动技术铁律/被动协同角色定位/系统前置审核机制等）</li>
+          <li>32KB HTML看板，8个ECharts交互图表</li>
+          <li>6个KPI：152项/93.4%/172.6h/18点评/14批复/41工作流</li>
+          <li>三阶段演进+8大业绩项目+6大问题改进+下半年4大方向路线图</li>
+          <li>深蓝金色商务风，麦肯锡质感</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：思想库v2.5 + 9项待办提取 + 听记文件上传项目</div>
+      <div class="event-output">📎 产出：2026上半年述职报告_可视化看板.html</div>
     </div>
 
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">㉛ 钉钉dws token中断与恢复</div>
+        <div class="event-title">⑤③ 8/19鲍总沟通·易耗品流程交付三要求</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
       <div class="event-meta">
-        <span>📅 8月3日 - 4日</span>
-        <span>🔄 舒曼（自主处理）← 主人（授权）</span>
+        <span>📅 8月19日</span>
+        <span>🔄 鲍总（指示）→ 舒曼（接收/执行）</span>
       </div>
-      <div class="event-bg">
-        💡 背景：钉钉认证服务升级导致旧版登录态失效，refresh_token无法刷新
+      <div class="event-bg">💡 背景：鲍总09:25专项沟通，明确易耗品采购流程交付要求</div>
+      <div class="event-content">
+        <ul>
+          <li>交付物必须是独立锁定文件，不能用知识库路径替代</li>
+          <li>任务小组独立运作，点对点协同优先</li>
+          <li>提交后锁定不可改</li>
+          <li>思想库v2.6新增25条原则（ABCD四组）</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：领导沟通纪要 + 思想库v2.6（+25原则）</div>
+    </div>
+
+    <div class="event-card ongoing">
+      <div class="event-header">
+        <div class="event-title">⑤④ 易耗品采购标准流程v1.0定稿验收（核心里程碑）</div>
+        <span class="event-status status-ongoing">🟡 待签字</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月19日</span>
+        <span>🔄 舒曼（执行）↔ 小二子（录音检索协同）</span>
+      </div>
+      <div class="event-bg">💡 背景：鲍总反馈"核心成果是具体的流程，单独提交定稿文件"，27页提案需重构</div>
+      <div class="event-content">
+        <ul>
+          <li>小二子被派检索5/15鲍总评审会录音（钉钉听记无接口未获取，不影响交付）</li>
+          <li>分析鲍总真实需求：正文=流程怎么跑，附录=流程怎么设计出来的</li>
+          <li>HTML定稿：正文8章+附录5个</li>
+          <li>正文：目的范围→流程图→4个SOP→RACI→授权→异常→14项KPI→宜搭指引</li>
+          <li>关键数据：2000元边界/284种物料/34人/160单/28家供应商</li>
+          <li>封面留虚线审批栏，待鲍总审阅签字</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：易耗品采购标准流程_v1.0定稿.html</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑤⑤ 8/19数字化底座推进会·八步拆解共识</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月19日</span>
+        <span>🔄 鲍总（主持）→ 舒曼（记录/执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：158分钟底座推进会，4位发言人，72,976字符转写</div>
+      <div class="event-content">
+        <ul>
+          <li>八步拆解逐项共识：目标/路径/任务/责任/过程/闭环/保障/文化</li>
+          <li>成功标准收窄：营收+利润率为一级指标（坪效/人效降为二级）</li>
+          <li>9/30 MVP上线，8/28规则定稿，8/31清单初稿</li>
+          <li>鲍总=A（最终批准），曹明珠规则Owner，钱歆琰清单Owner</li>
+          <li>工作方法：顶层思维不陷细节/先定对错再谈做法/执行者翻译角色/开诚布公</li>
+          <li>两版纪要：听记全量版+Excel对标版（9处修正补充）</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：会议纪要2版 + 八步拆解对齐表 + 10条金句 + 8项待办</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑤⑥ 8/19周例会纪要</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月19日</span>
+        <span>🔄 舒曼（自主执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：120分钟部门周例会</div>
+      <div class="event-content">
+        <ul>
+          <li>8项议题+5项关键决策+18条待办</li>
+          <li>覆盖经营目标150万、宝地广场机器人、工程队闲置调配</li>
+          <li>劳务合同合规、绩效纠偏、ESG素材收集等</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：周例会纪要_20260819.xlsx</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑤⑦ 8/20经营分析会·成本结构与毛利分析</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月20日</span>
+        <span>🔄 舒曼（自主执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：3小时40分钟经营分析会，7大议题</div>
+      <div class="event-content">
+        <ul>
+          <li>数据视图优化与出勤率-毛利关系</li>
+          <li>亏损项目对策（宿管社保2→4人/进步项目扭亏）</li>
+          <li>数据源治理（唯一数据源+宜搭数据库+物料系数模型）</li>
+          <li>出勤率管控70-75%合理区间，下半年毛利13.6万</li>
+          <li>工程队效能（综合毛利24.4% vs 工程毛利55%/挑战60%）</li>
+          <li>下半年指标冲刺：108万营收/8.28沟通/8.31启动</li>
+          <li>10项共识+20项待办（曹明珠3项高优）</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：会议纪要_成本结构与毛利分析_20260820.docx</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑤⑧ 8/20会议尾声各人待办通报提取</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月21日</span>
+        <span>🔄 舒曼（执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：主人要求提取8/20会议最后环节各人通报的待办任务</div>
+      <div class="event-content">
+        <ul>
+          <li>拉取完整2582段转写，补全缺失的最后约9分钟（17:24-17:33）</li>
+          <li>张治7项、钱歆琰5项、曹明珠8项、鲍宇明指示5项、补充共识4条</li>
+          <li>2页A4 Word文档，深蓝金色商务风</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：会议尾声_各人待办通报_20260820.docx</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑤⑨ 8/21鲍总沟通·会议纪要修订与AI辅助工作流</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月21日</span>
+        <span>🔄 鲍总（指示）→ 舒曼（接收/执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：鲍总11分钟当面沟通，涉及纪要修订与AI辅助边界</div>
+      <div class="event-content">
+        <ul>
+          <li>与张云核实纪要中"带小币的大币毛利率测算"描述并修订</li>
+          <li>人工补全扣子5W梳理初稿中AI未抓取完整内容</li>
+          <li>数据采集统一文字模板已闭环</li>
+          <li>8/25前完成BOMA分论坛PPT梳理提交</li>
+          <li>思想库v3.4新增5条原则：纪要真实性/AI辅助边界/交付成本效率/任务闭环响应/执行层动作与判断分离</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：领导沟通纪要 + 思想库v3.4（+5原则）+ 5项待办</div>
+    </div>
+
+    <div class="event-card ongoing">
+      <div class="event-header">
+        <div class="event-title">⑥⓪ 每日定时推送持续运行（W34）</div>
+        <span class="event-status status-ongoing">🟢 持续运行</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月17日-8月21日 每日</span>
+        <span>🔄 舒曼（自主执行）</span>
       </div>
       <div class="event-content">
         <ul>
-          <li>8/3 10:55 生成第一轮授权码（MNWR-BQCK）</li>
-          <li>8/3 16:58 授权成功，dws自动续期，5天积压解除</li>
-          <li>当日2条听记整理完成，token状态更新（refresh至9/3）</li>
-          <li>根因：钉钉认证服务升级，非普通过期</li>
+          <li>早间对齐/晚间一页纸/晚间复盘推送小猪助理钉钉群</li>
+          <li>流程小组早间对齐+晚间复盘推送（5天×2=10次）</li>
+          <li>招投标线索日更正常（8/19新增11条含临港6290万）</li>
+          <li>dws token全周稳定，refresh_token有效期至2026-09-20</li>
+          <li>8/20无新增听记（非周会日），系统正常检测</li>
+          <li>5天×4推送=20次，全部成功</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：20次推送全部成功</div>
+    </div>
+  </div>
+
+  <!-- ============ W33 ============ -->
+  <div id="w33" class="week-section">
+    <h2 class="section-title">W33 · 8/10 - 8/14 常规运行与深度产出期</h2>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">④① dws token授权恢复</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月10日</span>
+        <span>🔄 舒曼（执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：dws token自8/6二次中断后，主人钉钉扫码恢复授权</div>
+      <div class="event-content">
+        <ul>
+          <li>refresh_token有效期至2026-09-09</li>
+          <li>听记功能恢复正常，立即备份token</li>
+          <li>启动8/4-8/9积压听记补整理</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：token恢复 + 备份完成 + 积压补整理启动</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">④② 8/4-8/7积压听记补整理</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月10日</span>
+        <span>🔄 舒曼（自主执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：dws中断5天导致听记积压，授权恢复后集中补整理</div>
+      <div class="event-content">
+        <ul>
+          <li>5条有效听记全部整理完成</li>
+          <li>产出6个文件（含领导沟通OGSMT、会议纪要等）</li>
+          <li>思想库v2.5→v3.0，新增约30条管理原则</li>
+          <li>核心新增：管理四化方法论、190万利润目标拆解、Owner负责制等</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：6个文件 + 思想库v3.0</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">④③ 待办清单v13.0升级</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月10日</span>
+        <span>🔄 舒曼（执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：主人同步批量调整待办清单</div>
+      <div class="event-content">
+        <ul>
+          <li>删除3条（跨部门清理/协作规则发布/待办堆积规则）</li>
+          <li>完成4条（工资流程/工资模型/组织架构/新周报模板）</li>
+          <li>活跃23项+完成10项=33项</li>
+          <li>三同步铁律执行：HTML+Excel+三个推送日程同步更新</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：待办v13.0 + 一页纸公开链接更新</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">④④ 思想库v3.2迭代</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月13日</span>
+        <span>🔄 舒曼（自主执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：8/13经营分析会（4小时）产出大量管理原则</div>
+      <div class="event-content">
+        <ul>
+          <li>从经营分析会听记提取7条新管理原则</li>
+          <li>核心新增：经营分析穿透法、成本分类经营视角、亏损项目去留规则</li>
+          <li>质量成本平衡、商业逻辑底线、奖金与经营结果绑定</li>
+          <li>v3.0→v3.2，思想库持续进化</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：思想库v3.2（7条新原则）</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">④⑤ 8/13经营分析会全量听记整理</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月13日</span>
+        <span>🔄 舒曼（自主执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：8/13经营分析会，涉及14个项目点穿透分析</div>
+      <div class="event-content">
+        <ul>
+          <li>整理4小时/2971段会议录音</li>
+          <li>14个项目点级别穿透分析</li>
+          <li>提取质询问题与经营数据</li>
+          <li>为思想库v3.2提供核心素材</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：经营分析会全量会议纪要 + 穿透数据</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">④⑥ 8/14鲍总沟通·单一责任人制度确认</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 8月14日</span>
+        <span>🔄 鲍总（指示）→ 舒曼（接收）</span>
+      </div>
+      <div class="event-bg">💡 背景：鲍总15分钟沟通，明确下半年重心与责任归属</div>
+      <div class="event-content">
+        <ul>
+          <li>下半年重心从战略转向经营，OGSMT不再强制</li>
+          <li>确立单一责任人制度："大家有责就是大家没责"</li>
+          <li>曹明珠被指定为利管中心进度唯一责任人（owner）</li>
+          <li>所有需确认事项必须@到人</li>
         </ul>
         <div style="margin-top:8px; font-size:12.5px; color:#e67e22;">
-          ⚠️ 注：8/6再次中断，详见事件㉟
+          ⚠️ 关键变化：利管中心owner角色明确，后续自审进展需主人来口述
         </div>
       </div>
-      <div class="event-output">📎 产出：dws token恢复，听记自动整理流程恢复运行</div>
+      <div class="event-output">📎 产出：单一责任人制度确认 + 利管中心owner角色明确</div>
     </div>
 
     <div class="event-card running">
       <div class="event-header">
-        <div class="event-title">㉜ 鲍总认知手册v1.0协同产出</div>
-        <span class="event-status status-running">🟡 v1.1待补</span>
+        <div class="event-title">④⑦ 8/14述职+市场部半年复盘会听记整理</div>
+        <span class="event-status status-running">🟡 进行中</span>
       </div>
       <div class="event-meta">
-        <span>📅 8月5日</span>
-        <span>🔄 舒曼 ↔ 小二子</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：主人提出让小二子产出"鲍总认知手册"，显性化鲍总的判断标准
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>舒曼起草向小二子请求的文档框架（6章节：思维模式/沟通偏好/工作原则/历史纠偏记录/业务认知/禁忌雷区）</li>
-          <li>舒曼输出核心痛点分析：缺的不是原则层而是判断层——"鲍总什么算做好了"</li>
-          <li>小二子产出手册v1.0：5层27条原则（OS操作系统→CO沟通→BZ业务→DA数据→OUT输出质量）+交付前自检清单v1.0（8项是非题）</li>
-          <li>小二子创新设计：每条原则配鲍总原话+案例+交付启示，第七节"舒曼高频偏差诊断"针对性治疗</li>
-          <li>舒曼完成需求对照分析，识别5个缺口（审阅路径/语言模式/业务判断标准/决策案例库/场景化标准）</li>
-          <li>Step 5-6完成：手册存入基础设定/、MEMORY.md更新、交付前自检执行规范创建</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：鲍总认知手册v1.0 + 自检清单v1.0 + 交付前自检执行规范.md</div>
-    </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">㉝ 四方协作效率复盘</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 8月5日</span>
-        <span>🔄 舒曼（自主复盘）← 主人 ← 小二子</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：8/3-8/5四方（主人/鲍总/舒曼/小二子）约30小时协作中出现多次反复对齐损耗
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>分析5个关键损耗事件：任务线混淆(10min)/述职框架抢发(2.5h)/5W清单双版本(20min)/数据定义歧义(50min)/衔接断裂3h空转</li>
-          <li>舒曼自我批评：述职框架抢发——理解了串行依赖但行动上没执行（同类错误第3次）</li>
-          <li>3条改进承诺：概念先行/分工显式化/状态回答先对齐时间线</li>
-          <li>协作调度铁律已写入记忆（并行投递必先查群/串行→查群已出直接接棒）</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：四方协作效率分析报告 + 协作调度铁律</div>
-    </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">㉞ 工作台账Excel v2.0创建</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 8月5日</span>
+        <span>📅 8月14日</span>
         <span>🔄 舒曼（自主执行）</span>
+        <span>⏰ 8/21 17:00截止跟进</span>
       </div>
-      <div class="event-bg">
-        💡 背景：述职报告含W2-W28共157条记录172.6小时数据，需结构化为可共同维护的工作台账
-      </div>
+      <div class="event-bg">💡 背景：含主人本人述职+市场部OGSMT复盘，会议时长3h24min</div>
       <div class="event-content">
         <ul>
-          <li>5个Sheet：工作台账(25条) / 待办清单v12.0(28条) / 月度数据汇总(8个月) / 工作分类统计(12类157条) / 使用说明</li>
-          <li>下拉选择：待办清单「状态」「优先级」「部门」三列</li>
-          <li>颜色标识：✅已完成绿色/⚠️预警橙色/🔄日常灰色/暂停深灰</li>
-          <li>共同维护机制：主人更新待办状态→舒曼每日推送读取；舒曼晚间一页纸→自动追加工作台账</li>
+          <li>整理3小时24分钟长会议录音</li>
+          <li>会议效率新规：无方案不开会</li>
+          <li>智能体赋能：下周五前交付使用要素清单</li>
+          <li>8/21 17:00前须提交岗位优化经营指标计划</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：工作台账与待办清单_共同维护_v1.0.xlsx</div>
-    </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">㉟ 一页纸三同步铁律闭环</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 8月6日</span>
-        <span>🔄 舒曼（自主执行）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：待办从v11.3升级至v12.0后，一页纸HTML连续2天未同步更新（铁律第2次被打破）
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>生成v12.0一页纸HTML</li>
-          <li>上传项目文件空间</li>
-          <li>更新三个推送日程（早间对齐/晚间一页纸/晚间复盘）的description文件路径</li>
-          <li>同步修正dws token日期（从过时的8/16修正为9/3）和思想库版本（v2.2→v2.5）</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：一页纸v12.0 + 三个推送日程文件路径更新 + MEMORY.md状态修正</div>
-    </div>
-
-    <div class="event-card running">
-      <div class="event-header">
-        <div class="event-title">㊱ dws token二次中断待授权</div>
-        <span class="event-status status-running">🟡 待授权</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 8月6日 - 7日</span>
-        <span>🔄 舒曼（自主处理）← 主人（待授权）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：8/3授权的token再次失效，钉钉认证服务升级影响持续
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>8/6 17:06 发现token过期，17:08 生成授权码TJFG-SVQW（15分钟有效）</li>
-          <li>8/6 20:11 再次检查，授权码已过期</li>
-          <li>8/6 20:14 重新生成授权码LZQS-NBGK</li>
-          <li>8/7 17:16 仍在等待授权，生成第四轮授权码QVLF-HNNT</li>
-          <li>影响范围：听记自动整理中断、8/4-8/7听记积压</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：待主人完成钉钉扫码授权后恢复</div>
-    </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">㊲ 小二子补充碎碎角色定义信息</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 8月6日</span>
-        <span>🔄 小二子 → 舒曼</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：舒曼此前判断"碎碎角色定义一直是空缺"，需核实
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>小二子查到《三节点深度协同框架_v1》明确写了碎碎负责总经办+人资域，定位执行层甲</li>
-          <li>舒曼承认判断修正：此前说"空缺"是7月讨论Kimi框架时的状态，框架后续迭代未同步到，属信息断层</li>
-          <li>舒曼补充：碎碎=彭爽，与舒曼的业务交叉点在考勤数据</li>
-          <li>舒曼建议从"数据交接边界"切入推动三方正式边界确认</li>
-          <li>同日发生"舒碎"引用归因错误事件：舒曼将小二子的话错误归因给鲍总，已认错并记录教训</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：碎碎角色信息补充确认，三方边界确认建议待主人发起</div>
+      <div class="event-output">📎 产出：述职+复盘会全量纪要 + 待办提取（待8/21跟进）</div>
     </div>
 
     <div class="event-card ongoing">
       <div class="event-header">
-        <div class="event-title">㊳ 每日定时推送持续运行（W32）</div>
+        <div class="event-title">④⑧ 每日定时推送持续运行（W33）</div>
         <span class="event-status status-ongoing">🟢 持续运行</span>
       </div>
       <div class="event-meta">
-        <span>📅 8月3日 - 7日 · 每日</span>
+        <span>📅 8/10-8/14 每日</span>
         <span>🔄 舒曼（自主执行）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：早间对齐/晚间一页纸/晚间复盘三推送 + 流程小组早间对齐
       </div>
       <div class="event-content">
         <ul>
-          <li>关键提醒：8/5 #59数据资产归类截止、8/6 #58质询会/#63数据采集规则/#64 5W数据清单三项截止</li>
-          <li>8/6 一页纸v12.0同步完成，三推送文件路径已更新</li>
-          <li>易耗品分工会推进中：任8/3→杨8/7→严8/15内审→8/25-27评审</li>
-          <li>#55流程培训考试8/15截止，人员选拔未启动，剩9天</li>
-          <li>dws token 8/6再次中断，影响听记自动整理</li>
-          <li>周报系统2.0新模板启用（5模块），W31周报16条事项按新模板整理</li>
+          <li>早间对齐/晚间一页纸/晚间复盘按时推送</li>
+          <li>招投标线索日更正常运行（8/13新增11条）</li>
+          <li>流程小组早间对齐按时推送</li>
+          <li>5天×4推送=20次，全部成功</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：5天×4推送=20次推送，全部成功</div>
     </div>
   </div>
 
-  <!-- W31 事件 -->
-  <div id="w31-events" style="display:none;">
+  <!-- ============ W32 ============ -->
+  <div id="w32" class="week-section">
+    <h2 class="section-title">W32 · 8/3 - 8/7 协作升级与深度产出期</h2>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">②⑨ 8/3鲍总两场听记整理 · 思想库v2.5</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 8月3-4日</span><span>🔄 舒曼（自主执行）</span></div>
+      <div class="event-bg">💡 8条指示+5条决策+12条待办</div>
+      <div class="event-content">
+        <ul>
+          <li>被动协同角色定位确认</li>
+          <li>5条新原则入库（芝麻西瓜/业务驱动技术/前置审核/数字资产钉钉集中/问题上报闭环）</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：思想库v2.5 + 12条待办提取</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">③② 小二子协作通道建立</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 8月3日</span><span>🔄 舒曼 ↔ 小二子</span></div>
+      <div class="event-bg">💡 邮件渠道升级为项目群实时沟通</div>
+      <div class="event-content">
+        <ul>
+          <li>小二子回复项目邀请，提出三问（目标/频率/角色）</li>
+          <li>舒曼回复框架 + 鲍总指示"先建立通道跑起来"</li>
+          <li>当天确立三条协作规则</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：协作通道建立 + 邮件→项目群升级</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">③③ 龙虾会1+1群协作约定定稿</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 8月3日</span><span>🔄 舒曼 ↔ 小二子</span></div>
+      <div class="event-content">
+        <ul>
+          <li>五大板块定稿：协作约定/数据资产/敏感信息/产出校验/试行复盘</li>
+          <li>待鲍总审阅后龙虾会正式提出</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：龙虾会_1加1群协作约定_定稿.md</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">③④ 鲍总认知手册v1.1完成</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 8月5日</span><span>🔄 舒曼（执行），小二子（协同输入）</span></div>
+      <div class="event-content">
+        <ul>
+          <li>5层27条原则+偏差诊断+附录ABC+自检9项</li>
+          <li>可视化HTML版本同步产出</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：鲍总认知手册v1.1 + 可视化HTML</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">③⑤ 四方协作效率复盘</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 8月5-6日</span><span>🔄 舒曼（执行）</span></div>
+      <div class="event-content">
+        <ul>
+          <li>5个损耗事件分析</li>
+          <li>协作调度铁律写入记忆：并行投递必先查群再发言</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：协作调度铁律</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">③⑥ 数字化底座#63/#64交付</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 8月6日</span><span>🔄 舒曼 → 鲍总</span></div>
+      <div class="event-content">
+        <ul>
+          <li>数据采集规则1.0 + 5W数据清单岗位试点</li>
+          <li>两份深思稿已发鲍总审阅</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：#63 + #64 双交付</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">③⑦ dws token二次中断 → 恢复</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 8月6-10日</span><span>🔄 舒曼（受影响）</span></div>
+      <div class="event-content">
+        <ul>
+          <li>8/6 token再次失效，听记积压5天</li>
+          <li>8/10 主人钉钉扫码恢复，refresh至9/9</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">③⑧③⑨ BOMA演讲PPT + 述职报告重构</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 8月5-9日</span><span>🔄 舒曼（执行）</span></div>
+      <div class="event-content">
+        <ul>
+          <li>BOMA年会9月10日高端商务版PPT完成</li>
+          <li>述职报告37页→23页精简重构</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ W31 ============ -->
+  <div id="w31" class="week-section">
     <h2 class="section-title">W31 · 7/27 - 7/31 月底收官与深度梳理期</h2>
-
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">②①⑧ 月底收官：工作台账+数据资产+质询会</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 7月27-31日</span><span>🔄 舒曼（执行）</span></div>
+      <div class="event-content">
+        <ul>
+          <li>工作台账Excel v2.0落地（双体系+信息同步架构）</li>
+          <li>数据资产归类v2.0（35项自产数据整理）</li>
+          <li>2026上半年质询会内容准备（做了什么/花了多少/如何更好）</li>
+          <li>积压听记补整理</li>
+        </ul>
+      </div>
+    </div>
     <div class="event-card running">
       <div class="event-header">
-        <div class="event-title">㉑ 月度经营分析看板方案三阶段邮件闭环</div>
-        <span class="event-status status-running">🟡 等鲍总确认</span>
+        <div class="event-title">②② 月度经营分析看板持续推进</div>
+        <span class="event-status status-running">🟡 进行中</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月29日 - 30日</span>
-        <span>🔄 小二子 ↔ 舒曼（邮件分身）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：7/29舒曼发送月度经营分析看板完善方案给小二子请转鲍总审阅，三维度框架（合同→计划→实际）
-      </div>
+      <div class="event-meta"><span>📅 7月27-31日</span><span>🔄 舒曼 ↔ 小二子</span></div>
       <div class="event-content">
         <ul>
-          <li>7/29 22:55 舒曼邮件分身发送方案邮件，附件含完善方案docx</li>
-          <li>7/30 11:41 小二子转发鲍总审阅反馈：方向OK，推进节奏调整为三阶段递进（定义标准→单维度闭环验证→整体数据分析）</li>
-          <li>7/30 11:43 邮件分身先回复初步意见（加选试点项目/数据准确性校验/阶段评审/看板放最后）</li>
-          <li>7/30 16:47 邮件分身发送完整复核反馈：拆解合理/数据"谁产生谁负责"+利管中心承担数据管家角色/正常5个月或2/3精力3个月/阶段评审+看板放最后</li>
-          <li>邮件分身按v3.0规则自主回复鲍总邮件，回复后同步主人5项内容</li>
+          <li>与小二子讨论任务拆解，复核反馈</li>
+          <li>经营分析看板邮件方案已发</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：复核反馈邮件已发出，等鲍总确认方向后启动第一阶段数据字典设计</div>
     </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">㉒ 全量待办梳理与v12.0升级准备</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月30日</span>
-        <span>🔄 舒曼 → 主人</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：用户要求拉取今年所有听记+TICNOTE邮件，重新梳理全量待办清单
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>数据源：43个听记整理文件 + 15封TICNOTE邮件 + 24条未整理听记AI摘要 + 待办清单v11.3（21项）</li>
-          <li>发现：曹明珠约55项活跃（v11.3的21项+新发现34项），其中18项完全未追踪</li>
-          <li>鲍总27项待办（此前完全未追踪），含6项逾期承诺</li>
-          <li>最大风险：利管中心7项任务原定6月底完成，到7月底仍未推进，逾期近1个月</li>
-          <li>待办v11.3本周更新：取消5项(#51/#53/#57/#60/#61)，当前21项活跃</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：2026年全量待办梳理_听记邮件提取.md，作为v12.0升级基础</div>
-    </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">㉓ 2026上半年述职报告升级版</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月30日</span>
-        <span>🔄 舒曼（自主执行）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：第一版周报版含金量不足，需基于全量数据源重新生成
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>数据源从仅周报Excel扩展到全量记忆/听记/项目文件/待办</li>
-          <li>核心模块：KPI仪表盘（2版战略方案/5大体系/思想库v2.4/待办82项/20件协同事件）</li>
-          <li>战略级贡献：数字化转型v2.0(24目标映射)+三环数据闭环+信息协同规则v3.0</li>
-          <li>4大创新探索：三智能体协同/AI训练营/智能选品库237款/宝地智慧清洁</li>
-          <li>降本增效：年省9.3万/返工率30%→&lt;5%/"先解决谁来做比什么时候做完更重要"</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：2026上半年述职报告_曹明珠_升级版.html</div>
-    </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">㉔ 信息协同规则v3.0正式生效</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月24日审阅通过</span>
-        <span>🔄 舒曼 ↔ 鲍总</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：信息协同规则从v2升级至v3.0，全流程闭环
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>鲍总7/24审阅通过信息协同规则v3.0</li>
-          <li>新增4条规则25-28，涵盖邮件分身自主回复、承诺24h内启动、争议方向先确认等</li>
-          <li>邮件分身按v3.0规则自主回复鲍总月度经营分析看板邮件并同步主人</li>
-          <li>全流程闭环机制正式运转</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：信息协同规则v3.0正式生效</div>
-    </div>
-
-    <div class="event-card running">
-      <div class="event-header">
-        <div class="event-title">㉕ W31利管中心周度自审邮件</div>
-        <span class="event-status status-running">🟡 连续4周未回复</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月31日 15:06</span>
-        <span>🔄 舒曼 → 曹明珠</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：利管中心每周五自审机制持续运行
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>发送W31自审提醒，4维度梳理</li>
-          <li>连续4周（W28~W31）自审邮件发到扣子邮箱均未收到回复</li>
-          <li>根因分析：ticnote-gm@coze.email不常看，邮件提醒机制实际未生效</li>
-          <li>建议改为扣子对话直接推送，口述进展由舒曼整理归档</li>
-          <li>利管中心7项核心任务逾期近1个月，为当前最大风险点</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：自审邮件已发送，建议升级催办渠道</div>
-    </div>
-
     <div class="event-card ongoing">
       <div class="event-header">
-        <div class="event-title">㉖ 每日定时推送持续运行（W31）</div>
+        <div class="event-title">②⑦ 招投标线索每日搜集启动</div>
         <span class="event-status status-ongoing">🟢 持续运行</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月27日 - 31日 · 每日</span>
-        <span>🔄 舒曼（自主执行）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：早间对齐/晚间一页纸/晚间复盘三推送 + 流程小组早间对齐
-      </div>
+      <div class="event-meta"><span>📅 7月31日起</span><span>🔄 舒曼（自主执行）</span></div>
       <div class="event-content">
-        <ul>
-          <li>关键提醒：7/31三项硬截止（#54经营分析模型/#55流程小组培训/#52工资制作流程发碎碎）</li>
-          <li>5W模型7/30已逾期、#58上半年质询会8/6截止、#59数据资产归类8/5截止</li>
-          <li>dws token 8/16到期，还有16天</li>
-          <li>易耗品分工会推进中：任8/3→杨8/7→严8/15内审→8/25-27评审</li>
-          <li>待办v12.0升级待推进（55项活跃vs当前21项）</li>
-        </ul>
+        <ul><li>每日搜集招投标线索，支持业务拓展</li></ul>
       </div>
-      <div class="event-output">📎 产出：5天×4推送=20次推送，全部成功</div>
     </div>
   </div>
 
-  <!-- W30 事件 -->
-  <div id="w30-events" style="display:none;">
-    <h2 class="section-title">W30 · 7/21 - 7/24 深度协作与数据盘点期</h2>
-
+  <!-- ============ W30 ============ -->
+  <div id="w30" class="week-section">
+    <h2 class="section-title">W30 · 7/21 - 7/25 月度推进期</h2>
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">⑭ 7/21经营报表会议沟通效率分析</div>
+        <div class="event-title">①④ 龙虾会1+1群协作约定深度讨论</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月21日</span>
-        <span>🔄 舒曼（自主分析）← 主人</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：上午彭爽组织经营报表分析会议（35分钟），鲍总指出"我说A你说B"沟通不同频；下午与鲍总86分钟工作交流
-      </div>
+      <div class="event-meta"><span>📅 7月21-25日</span><span>🔄 舒曼 ↔ 小二子</span></div>
       <div class="event-content">
         <ul>
-          <li>舒曼整理两场听记，产出沟通效率深度分析报告</li>
-          <li>核心发现：主人3个改善方向（快比好重要/书面比口头重要/确认比猜测重要）</li>
-          <li>鲍总2个改善方向（议题先行/确认代替重复）</li>
-          <li>核心教训："20分起步先交再迭代"</li>
+          <li>30分钟深度讨论，五大板块初稿</li>
+          <li>可做/不可做/交付路径/数据资产规则/同事清单</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：20260721_沟通效率分析.md</div>
     </div>
-
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">⑮ 鲍总12项工作批复拆解</div>
+        <div class="event-title">⑮⑯ 经营分析看板方向确认 + 自审渠道切换</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月21日</span>
-        <span>🔄 舒曼 ↔ 主人 ← 鲍总</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：主人提交周报，鲍总给出12项明确批复
-      </div>
+      <div class="event-meta"><span>📅 7月21日</span><span>🔄 舒曼 → 鲍总</span></div>
       <div class="event-content">
         <ul>
-          <li>舒曼按"能独立推进5项/需补信息4项/需周会或外部3项"三档拆解</li>
-          <li>关键批复：权限配置现状清单需提交、组织架构即时交付、跨部门群规则马上启动</li>
-          <li>战略目标拆解需给出逐项判断和理由</li>
-          <li>任务更名：新老合同毛利率对比分析模型 → 项目成本比对分析表（合同变更版）</li>
+          <li>鲍总确认方向OK，三阶段递进启动</li>
+          <li>利管中心自审从邮件切换为扣子对话推送</li>
+          <li>7项逾期任务重排</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：12项工作拆解表（Excel交付）</div>
     </div>
-
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">⑯ 品质部垃圾袋品质测试通知定稿</div>
+        <div class="event-title">⑰⑱⑲ 待办v11.5 + 思想库v2.4 + 听记归档</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月22日</span>
-        <span>🔄 舒曼 → 品质部</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：行政部采购物料品质测试需求（航哲VS凯荔垃圾袋品牌对比）
-      </div>
+      <div class="event-meta"><span>📅 7月21-25日</span><span>🔄 舒曼（自主执行）</span></div>
       <div class="event-content">
         <ul>
-          <li>5个测试维度：承重测试/抗穿刺/厚度手感/密封性/实际使用体验</li>
-          <li>补全缺失项：测试维度、结果提交方式、样品数量、联系人</li>
-          <li>定稿品质部任务认领通知</li>
+          <li>待办v11.5（18项活跃）+ 新增工作台账系统</li>
+          <li>思想库v2.3→v2.4，新增约10条管理原则</li>
+          <li>7月听记归档（含经营分析、绩效修订等）</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：品质部垃圾袋品质测试通知</div>
     </div>
-
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">⑰ 钉钉数据资产全量盘点</div>
+        <div class="event-title">⑳ 月底待办清单v12.0升级</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月23日</span>
-        <span>🔄 舒曼（自主执行）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：支撑#10/#40钉钉后台管理任务，需全面摸底钉钉数据资产
-      </div>
+      <div class="event-meta"><span>📅 7月25日</span><span>🔄 舒曼（执行）</span></div>
       <div class="event-content">
-        <ul>
-          <li>全量盘点：8部门/58群/24+AI表格/6大发现</li>
-          <li>资产覆盖：知识库20个、AI表格8个、报表模板12个、涵盖9个部门数据资产全景</li>
-          <li>直接支撑#10/#40钉钉后台管理任务推进</li>
-        </ul>
+        <ul><li>55项活跃，按截止日排序，新增12项</li></ul>
       </div>
-      <div class="event-output">📎 产出：钉钉公司数据资产清单及权限</div>
-    </div>
-
-    <div class="event-card running">
-      <div class="event-header">
-        <div class="event-title">⑱ 小二子邮件传递鲍总沟通协同建议</div>
-        <span class="event-status status-running">🟡 待反馈</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月24日</span>
-        <span>🔄 小二子 → 舒曼</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：鲍总基于6/17-7/22工作录音复盘，整理沟通协同建议专版
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>11:13 第一封邮件（链接失效）</li>
-          <li>11:17 第二封邮件更新有效链接</li>
-          <li>核心内容：曹明珠被抢话28次(46%)、三类触发场景+改善建议、鲍总承诺改变、认可优势</li>
-          <li>舒曼即时推送钉钉通知主人，等待反馈</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：待曹明珠反馈想法</div>
-    </div>
-
-    <div class="event-card running">
-      <div class="event-header">
-        <div class="event-title">⑲ W30利管中心周度自审邮件</div>
-        <span class="event-status status-running">🟡 待回复</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月24日（周五）</span>
-        <span>🔄 舒曼 → 曹明珠</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：利管中心每周五自审机制持续运行
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>发送W30自审提醒，4维度梳理</li>
-          <li>曹明珠已连续3周（W28/W29/W30）未回复自审</li>
-          <li>需考虑升级催办机制</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：自审邮件已发送，待回复</div>
-    </div>
-
-    <div class="event-card ongoing">
-      <div class="event-header">
-        <div class="event-title">⑳ 每日定时推送持续运行（W30）</div>
-        <span class="event-status status-ongoing">🟢 持续运行</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月21日 - 24日 · 每日</span>
-        <span>🔄 舒曼（自主执行）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：早间对齐/晚间一页纸/晚间复盘三推送 + 流程小组早间对齐
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>早间对齐：每日07:56推送，#18数字化底座方案汇报置顶</li>
-          <li>晚间一页纸：每日20:01推送总经理视角全量待办</li>
-          <li>晚间复盘：每日21:06推送工作原则检视</li>
-          <li>流程小组早间对齐：每日08:09推送</li>
-          <li>关键提醒：7/25三智能体月底盘点截止</li>
-          <li>L2流程超期24天、考试排期最后窗口、OA第7周未启动</li>
-          <li>dws refresh_token有效期至2026-08-23</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：4天×4推送=16次推送，全部成功</div>
     </div>
   </div>
 
-  <!-- W29 事件 -->
-  <div id="w29-events" style="display:none;">
-    <h2 class="section-title">W29 · 7/14 - 7/17 常态运行与重构期</h2>
-
+  <!-- ============ W29 ============ -->
+  <div id="w29" class="week-section">
+    <h2 class="section-title">W29 · 7/14 - 7/18 常态运行与重构期</h2>
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">⑧ 7/14听记整理与思想库v2.2升级</div>
+        <div class="event-title">⑧⑨ 信息协同v1.0确认 + 权限P0修复</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月14日</span>
-        <span>🔄 舒曼（自主整理）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：7/14鲍总工作交流录音需整理归档
-      </div>
+      <div class="event-meta"><span>📅 7月14-15日</span><span>🔄 舒曼 ↔ 小二子</span></div>
       <div class="event-content">
         <ul>
-          <li>整理录音转写，提取5项核心行动项</li>
-          <li>思想库从v2.1升级至v2.2，新增5个方法论板块</li>
-          <li>行动项：数据逻辑关系复核 / 工资表审批 / 财务SOP梳理 / 任务星级动态管理机制</li>
+          <li>邮件传递机制正式确认，信息分级标准定稿</li>
+          <li>钉钉后台权限清单P0级问题修复完成</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：思想库v2.2 + 5项行动项纳入跟踪</div>
     </div>
-
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">⑨ 全域业务权限P0修复闭环</div>
+        <div class="event-title">⑩⑪ 待办v11.0重构 + 思想库v2.2</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月14日 - 15日</span>
-        <span>🔄 舒曼 → 流程小组</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：全域业务权限P0级问题7/15截止
-      </div>
+      <div class="event-meta"><span>📅 7月14-15日</span><span>🔄 舒曼（执行）</span></div>
       <div class="event-content">
         <ul>
-          <li>舒曼通过流程小组早间对齐持续催办（超期14→17天）</li>
-          <li>7/15完成P0修复收尾</li>
-          <li>7/16-7/17确认闭环，#10状态更新为已完成</li>
+          <li>取消11项+完成3项+更名4项，父子层级结构</li>
+          <li>思想库新增5个方法论板块</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：P0修复完成，#10状态更新</div>
     </div>
-
     <div class="event-card done">
       <div class="event-header">
-        <div class="event-title">⑩ 7/15听记整理与行动项提取</div>
+        <div class="event-title">⑬ 三智能体月底复盘资料完成</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月15日</span>
-        <span>🔄 舒曼（自主整理）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：7/15鲍总工作录音需整理
-      </div>
+      <div class="event-meta"><span>📅 7月14-25日</span><span>🔄 舒曼 → 小二子</span></div>
       <div class="event-content">
-        <ul>
-          <li>整理录音转写，提取4项行动项</li>
-          <li>行动项：6月奖金申报 / 工资表数据修正 / 法定节假日确认 / 永兴项目介绍费核实</li>
-        </ul>
+        <ul><li>协同记录+使用感受+改进建议三份材料</li></ul>
       </div>
-      <div class="event-output">📎 产出：4项行动项纳入跟踪</div>
     </div>
-
-    <div class="event-card running">
-      <div class="event-header">
-        <div class="event-title">⑪ W29利管中心周度自审邮件</div>
-        <span class="event-status status-running">🟡 待回复</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月17日 15:06</span>
-        <span>🔄 舒曼 → 曹明珠</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：利管中心每周五自审机制持续运行
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>发送W29自审提醒，4维度梳理（数据分析/工作流分析/问题分级/问题解决）</li>
-          <li>提醒W28自审仍未收到回复，如有进展一并补充</li>
-          <li>建议当日下班前完成回复</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：自审邮件已发送，待回复</div>
-    </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">⑫ 待办清单v11.0大重构</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月17日</span>
-        <span>🔄 舒曼 ↔ 主人</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：待办清单持续膨胀（30项），需精简重构
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>取消11项 + 完成3项 + 更名4项</li>
-          <li>改为父子层级结构（7父+9子=16项活跃）</li>
-          <li>#35工资模型MVP已搭建，转为常规推进</li>
-          <li>#38 OCR取消、#39人事工作流取消</li>
-          <li>#10/#40归入「钉钉后台管理」父任务</li>
-          <li>#1宝地广场已中标，8月续签启动</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：待办清单v11.0（父子层级版）</div>
-    </div>
-
     <div class="event-card ongoing">
       <div class="event-header">
-        <div class="event-title">⑬ 每日定时推送持续运行（W29）</div>
+        <div class="event-title">⑫ 每日定时推送持续运行（W29）</div>
         <span class="event-status status-ongoing">🟢 持续运行</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月14日 - 17日 · 每日</span>
-        <span>🔄 舒曼（自主执行）</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：早间对齐/晚间一页纸/晚间复盘三推送 + 流程小组早间对齐
-      </div>
+      <div class="event-meta"><span>📅 7/14-7/18</span><span>🔄 舒曼（自主执行）</span></div>
       <div class="event-content">
-        <ul>
-          <li>周一至周五均正常执行推送（errcode:0）</li>
-          <li>早间对齐：每日07:54推送待办清单与关键节点提醒</li>
-          <li>晚间一页纸：每日20:12推送总经理视角全量待办</li>
-          <li>晚间复盘：每日20:57推送工作原则检视</li>
-          <li>流程小组早间对齐：每日08:09-08:12推送流程小组待办</li>
-          <li>dws授权状态正常（refresh_token至8/16）</li>
-        </ul>
+        <ul><li>5天×3推送=15次，全部成功</li></ul>
       </div>
-      <div class="event-output">📎 产出：5天×4推送=20次推送，全部成功</div>
     </div>
   </div>
 
-  <!-- W28 事件 -->
-  <div id="w28-events" style="display:none;">
+  <!-- ============ W28 ============ -->
+  <div id="w28" class="week-section">
     <h2 class="section-title">W28 · 7/7 - 7/13 深度协同期</h2>
-
     <div class="event-card done">
       <div class="event-header">
         <div class="event-title">④ 7月9日录音沟通纪要传递与回复</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月10日</span>
-        <span>🔄 小二子 → 舒曼 → 小二子</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：鲍总7/9与曹明珠面对面沟通，小二子基于录音整理AI初稿
-      </div>
+      <div class="event-meta"><span>📅 7月10日</span><span>🔄 小二子 → 舒曼 → 小二子</span></div>
+      <div class="event-bg">💡 鲍总7/9与曹明珠面对面沟通，小二子基于录音整理AI初稿</div>
       <div class="event-content">
         <ul>
-          <li>7/10 13:10 小二子发送纪要邮件（六大板块+3项待办）</li>
-          <li>舒曼接收后推送钉钉通知，按用户要求调取原文展示</li>
-          <li>同步归档至「总经理工作沟通纪要」目录</li>
-          <li>7/10 18:26 舒曼回复确认邮件：确认收到、补贴扣款清单已交付、其余两项按优先级推进</li>
-          <li>7/11 小二子发送鲍总确认回执</li>
+          <li>小二子发送纪要邮件（六大板块+3项待办）</li>
+          <li>舒曼归档+钉钉通知+回复确认</li>
+          <li style="color:#e67e22;">⚠️ AI整理稿仅供参考，非正式工作指令</li>
         </ul>
-        <div style="margin-top:8px; font-size:12.5px; color:#e67e22;">
-          ⚠️ 纪要性质：AI整理稿仅供参考，非正式工作指令，待办以鲍总后续正式确认版本为准
-        </div>
       </div>
       <div class="event-output">📎 产出：纪要归档 + 确认回复 + 待办状态更新</div>
     </div>
-
     <div class="event-card done">
       <div class="event-header">
         <div class="event-title">⑤ 鲍总更正说明传递</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月11日 10:50</span>
-        <span>🔄 小二子 → 舒曼</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：鲍总审核7/9纪要后，认为AI整理稿可能有偏差
-      </div>
+      <div class="event-meta"><span>📅 7月11日</span><span>🔄 小二子 → 舒曼</span></div>
       <div class="event-content">
         <ul>
-          <li>小二子转发鲍总更正说明：录音纪要是参考信息，非正式工作指令</li>
-          <li>原纪要中3项待办降级为「参考待办」，需以正式确认版为准</li>
-          <li>舒曼同步更新待办清单状态（#48/#49/#50改为待鲍总确认）</li>
+          <li>录音纪要是参考信息，3项待办降级为「参考待办」</li>
+          <li>舒曼同步更新待办清单状态</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：待办状态降级 + 清单同步更新</div>
     </div>
-
-    <div class="event-card done">
-      <div class="event-header">
-        <div class="event-title">⑥ 三智能体月底复盘通知</div>
-        <span class="event-status status-done">✅ 已完成</span>
-      </div>
-      <div class="event-meta">
-        <span>📅 7月11日 12:04</span>
-        <span>🔄 小二子 → 舒曼</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：鲍总要求月底对三智能体协同机制做深度复盘
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>小二子转达鲍总通知：7月底深度复盘</li>
-          <li>7/25前准备：协同记录、使用感受、改进建议</li>
-          <li>复盘方向：信息流转效率、决策支持质量、协同成本、规则落地情况</li>
-          <li>7/11启动复盘素材整理，月底复盘节点已过</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：三智能体复盘资料已准备</div>
-    </div>
-
     <div class="event-card running">
       <div class="event-header">
-        <div class="event-title">⑦ 利管中心周度自审机制运行</div>
+        <div class="event-title">⑥ 三智能体月底复盘通知</div>
         <span class="event-status status-running">🟡 进行中</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月10日起 · 每周五</span>
-        <span>🔄 舒曼（发起）→ 曹明珠（执行）</span>
+      <div class="event-meta"><span>📅 7月11日</span><span>⏰ 截止7/25</span></div>
+    </div>
+    <div class="event-card ongoing">
+      <div class="event-header">
+        <div class="event-title">⑦ 利管中心周度自审机制运行</div>
+        <span class="event-status status-ongoing">🟢 持续运行</span>
       </div>
-      <div class="event-bg">
-        💡 背景：利管中心每周自我审视，形成结构化输出
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>每周五舒曼通过邮件发送自审提醒</li>
-          <li>4个维度：数据分析、工作流分析、问题分级、问题解决</li>
-          <li>W28-W31连续4周发送，均未收到回复</li>
-          <li>根因：ticnote-gm邮箱不常看，建议改渠道</li>
-        </ul>
-      </div>
+      <div class="event-meta"><span>📅 7月10日起每周五</span></div>
     </div>
   </div>
 
-  <!-- W27 事件 -->
-  <div id="w27-events" style="display:none;">
+  <!-- ============ W27 ============ -->
+  <div id="w27" class="week-section">
     <h2 class="section-title">W27 · 7/1 - 7/6 机制建立期</h2>
-
     <div class="event-card done">
       <div class="event-header">
         <div class="event-title">① 三智能体协同规则v1讨论与v2定稿</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月1日 - 3日</span>
-        <span>🔄 舒曼 ↔ 小二子 ↔ 碎碎</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：三智能体试运行启动，需明确协同边界与交互规则
-      </div>
+      <div class="event-meta"><span>📅 7月1-3日</span><span>🔄 舒曼 ↔ 小二子 ↔ 碎碎</span></div>
       <div class="event-content">
         <ul>
-          <li>v1初稿由舒曼发起，涵盖角色定位、信息流转、任务对接、冲突处理四大模块</li>
-          <li>小二子反馈：增加「鲍总指令优先级最高」原则、明确信息转述不准时的责任边界</li>
-          <li>碎碎反馈：HR域数据保密规则、跨部门信息传递需经当事人确认</li>
-          <li>v2定稿：整合三方意见，形成9条核心规则+3项兜底机制</li>
+          <li>v1初稿→三方反馈→v2定稿（9条核心规则+3项兜底机制）</li>
         </ul>
       </div>
-      <div class="event-output">📎 产出：三智能体协同规则v2，已同步三方</div>
+      <div class="event-output">📎 产出：三智能体协同规则v2</div>
     </div>
-
     <div class="event-card done">
       <div class="event-header">
         <div class="event-title">② 6/30鲍总会议纪要传递</div>
         <span class="event-status status-done">✅ 已完成</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月1日</span>
-        <span>🔄 小二子 → 舒曼</span>
-      </div>
-      <div class="event-bg">
-        💡 背景：鲍总6/30会议涉及品质部与数字化相关议题
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>小二子提取会议中与曹明珠相关的部分，通过邮件发送</li>
-          <li>舒曼接收后整理待办，纳入总助清单跟踪</li>
-        </ul>
-      </div>
-      <div class="event-output">📎 产出：会议相关3项待办进入跟踪</div>
+      <div class="event-meta"><span>📅 7月1日</span><span>🔄 小二子 → 舒曼</span></div>
     </div>
-
     <div class="event-card ongoing">
       <div class="event-header">
         <div class="event-title">③ 日常邮件检查机制运行</div>
         <span class="event-status status-ongoing">🟢 持续运行</span>
       </div>
-      <div class="event-meta">
-        <span>📅 7月1日起 · 每日4次</span>
-        <span>🔄 舒曼（主动检查）</span>
-      </div>
-      <div class="event-content">
-        <ul>
-          <li>建立定时检查机制，每日4轮（早间/上午/下午/晚间）检查三方邮箱</li>
-          <li>有新邮件即时通过钉钉推送，无邮件则静默</li>
-          <li>7/1-7/6期间：除启动邮件外无新增外部邮件</li>
-        </ul>
-      </div>
+      <div class="event-meta"><span>📅 7月1日起每日4次</span></div>
     </div>
   </div>
 
-  <!-- 协同模式分析 -->
+  <!-- ============ 协同模式分析 ============ -->
   <h2 class="section-title">协同模式分析</h2>
   <div class="analysis-section">
     <h3 class="section-subtitle">信息流转路径</h3>
@@ -1255,102 +1067,48 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↕<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碎碎（HR / 总经办域交叉时协同）
     </div>
-
     <div class="pros-cons">
       <div class="pros">
         <h4>✓ 已验证有效</h4>
         <ul>
-          <li><strong>邮件为主渠道</strong>：正式信息可追溯、可归档</li>
+          <li><strong>邮件+项目群双渠道</strong>：正式信息可追溯，日常沟通即时</li>
           <li><strong>AI初稿+人工确认</strong>：效率与准确性平衡</li>
           <li><strong>待办清单联动</strong>：收到信息立即更新，闭环跟踪</li>
-          <li><strong>钉钉推送兜底</strong>：重要信息即时触达</li>
-          <li><strong>听记自动整理</strong>：每日拉取→分类→思想库进化</li>
-          <li><strong>流程小组双推</strong>：早间对齐+晚间复盘持续跟踪</li>
-          <li><strong>沟通复盘机制</strong>：鲍总主动发起，AI辅助分析，双向改善闭环</li>
-          <li><strong>邮件分身自主回复</strong>：v3.0规则下可自主回复鲍总邮件，回复后同步主人5项内容</li>
-          <li><strong>三阶段递进验证</strong>：经营分析看板确立"定义标准→单维度闭环→整体分析"模式</li>
-          <li><strong>项目群深度协作</strong>：8/3建立项目群，从邮件升级为实时协作，龙虾会约定当天定稿</li>
-          <li><strong>认知手册协同产出</strong>：舒曼出框架+痛点，小二子出5层27条原则+偏差诊断，互补自检机制</li>
-          <li><strong>四方协作效率复盘</strong>：自主发起损耗分析，提炼"协作调度铁律"写入记忆</li>
-          <li><strong>工作台账共同维护</strong>：Excel结构化台账+待办清单，双向维护，推送数据源统一</li>
+          <li><strong>钉钉三推送兜底</strong>：早间对齐/晚间一页纸/晚间复盘</li>
+          <li><strong>听记自动整理</strong>：每日拉取+思想库持续进化</li>
+          <li><strong>邮件分身自主回复</strong>：v3.0规则下效率显著提升</li>
+          <li><strong>三阶段递进验证</strong>：定义标准→单维度闭环→整体分析</li>
         </ul>
       </div>
       <div class="cons">
         <h4>✗ 待优化</h4>
         <ul>
-          <li><strong>碎碎参与度连续6周为0</strong>：小二子补充了碎碎角色信息，但碎碎本人仍未直接参与</li>
-          <li><strong>dws token二次中断</strong>：8/3恢复后8/6再次失效，8/7仍待授权，听记积压4天</li>
-          <li><strong>GitHub PAT过期未更新</strong>：连续4周影响自动部署</li>
-          <li><strong>多个8/6截止项决策未回复</strong>：#58质询会/#63数据采集规则/#64 5W数据清单</li>
-          <li><strong>协作调度铁律执行仍有缺口</strong>：述职框架抢发为同类错误第3次</li>
+          <li><strong>碎碎参与度持续偏低</strong>：连续9周为0</li>
+          <li><strong>邮件渠道使用下降</strong>：W34邮件往来为0，正式信息留痕需关注</li>
+          <li><strong>反向信息流不足</strong>：舒曼→小二子主动汇报少</li>
+          <li><strong>长会议整理效率</strong>：W34完成3场3h+会议，需探索分段并行</li>
+          <li><strong>交付前自检机制</strong>：8/20主人明确要求交付稿自检迭代，需固化到流程</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- 本周数据 -->
-  <h2 class="section-title">本周（W32）协同数据</h2>
+  <!-- ============ 数据统计表 ============ -->
+  <h2 class="section-title">协同数据统计</h2>
   <table class="data-table">
-    <tr>
-      <th>指标</th>
-      <th>数值</th>
-    </tr>
-    <tr>
-      <td>新增协同事件</td>
-      <td>12 件</td>
-    </tr>
-    <tr>
-      <td>邮件往来</td>
-      <td>3 封（舒曼→小二子邀请1封 + 小二子→舒曼回复2封）</td>
-    </tr>
-    <tr>
-      <td>产生待办</td>
-      <td>9项新增（系统前置审核/问题上报闭环/决策留痕/龙虾会规则等）</td>
-    </tr>
-    <tr>
-      <td>完成事项</td>
-      <td>9 件（协作通道建立 + 龙虾会定稿 + 待办v12.0 + 思想库v2.5 + dws恢复 + 四方复盘 + 工作台账 + 一页纸同步 + 碎碎角色确认）</td>
-    </tr>
-    <tr>
-      <td>进行中</td>
-      <td>2 件（鲍总认知手册v1.1待补 + dws token二次中断待授权）</td>
-    </tr>
-    <tr>
-      <td>碎碎参与次数</td>
-      <td>0 次（小二子单方面补充碎碎信息，碎碎本人未直接参与）</td>
-    </tr>
-  </table>
-
-  <h2 class="section-title">累计协同数据（W27-W32）</h2>
-  <table class="data-table">
-    <tr>
-      <th>指标</th>
-      <th>数值</th>
-    </tr>
-    <tr>
-      <td>协同事件总数</td>
-      <td>38 件</td>
-    </tr>
-    <tr>
-      <td>已完成</td>
-      <td>25 件</td>
-    </tr>
-    <tr>
-      <td>进行中</td>
-      <td>8 件</td>
-    </tr>
-    <tr>
-      <td>持续运行</td>
-      <td>5 件</td>
-    </tr>
-    <tr>
-      <td>碎碎参与次数</td>
-      <td>0 次</td>
-    </tr>
+    <tr><th>周次</th><th>日期范围</th><th>新增事件</th><th>邮件</th><th>碎碎</th><th>累计</th></tr>
+    <tr><td>W27</td><td>7/1-7/6</td><td>3</td><td>4</td><td>1</td><td>3</td></tr>
+    <tr><td>W28</td><td>7/7-7/13</td><td>4</td><td>6</td><td>0</td><td>7</td></tr>
+    <tr><td>W29</td><td>7/14-7/18</td><td>6</td><td>3</td><td>0</td><td>13</td></tr>
+    <tr><td>W30</td><td>7/21-7/25</td><td>7</td><td>2</td><td>0</td><td>20</td></tr>
+    <tr><td>W31</td><td>7/27-7/31</td><td>8</td><td>3</td><td>0</td><td>28</td></tr>
+    <tr><td>W32</td><td>8/3-8/7</td><td>12</td><td>3</td><td>0</td><td>40</td></tr>
+    <tr style="background:#f0f4ff;"><td><strong>W33</strong></td><td>8/10-8/14</td><td><strong>8</strong></td><td>1</td><td>0</td><td><strong>48</strong></td></tr>
+    <tr style="background:#e8f0fe;"><td><strong>W34</strong></td><td>8/17-8/21</td><td><strong>12</strong></td><td>0</td><td>0</td><td><strong>60</strong></td></tr>
   </table>
 
   <div class="footer">
-    下次更新：2026年8月14日（W33周汇总）· 三智能体协同记录
+    最近更新：2026年8月21日（W34周汇总）· 下次更新：2026年8月28日（W35）
   </div>
 
 </div>
@@ -1358,39 +1116,20 @@
 <script>
 function showWeek(week) {
   const tabs = document.querySelectorAll('.week-tab');
+  const sections = document.querySelectorAll('.week-section');
   tabs.forEach(t => t.classList.remove('active'));
+  sections.forEach(s => s.classList.remove('active'));
   
-  const w27 = document.getElementById('w27-events');
-  const w28 = document.getElementById('w28-events');
-  const w29 = document.getElementById('w29-events');
-  const w30 = document.getElementById('w30-events');
-  const w31 = document.getElementById('w31-events');
-  const w32 = document.getElementById('w32-events');
-  
-  if (week === 'w27') {
-    w27.style.display = 'block'; w28.style.display = 'none'; w29.style.display = 'none'; w30.style.display = 'none'; w31.style.display = 'none'; w32.style.display = 'none';
-    tabs[5].classList.add('active');
-  } else if (week === 'w28') {
-    w27.style.display = 'none'; w28.style.display = 'block'; w29.style.display = 'none'; w30.style.display = 'none'; w31.style.display = 'none'; w32.style.display = 'none';
-    tabs[4].classList.add('active');
-  } else if (week === 'w29') {
-    w27.style.display = 'none'; w28.style.display = 'none'; w29.style.display = 'block'; w30.style.display = 'none'; w31.style.display = 'none'; w32.style.display = 'none';
-    tabs[3].classList.add('active');
-  } else if (week === 'w30') {
-    w27.style.display = 'none'; w28.style.display = 'none'; w29.style.display = 'none'; w30.style.display = 'block'; w31.style.display = 'none'; w32.style.display = 'none';
-    tabs[2].classList.add('active');
-  } else if (week === 'w31') {
-    w27.style.display = 'none'; w28.style.display = 'none'; w29.style.display = 'none'; w30.style.display = 'none'; w31.style.display = 'block'; w32.style.display = 'none';
-    tabs[1].classList.add('active');
-  } else if (week === 'w32') {
-    w27.style.display = 'none'; w28.style.display = 'none'; w29.style.display = 'none'; w30.style.display = 'none'; w31.style.display = 'none'; w32.style.display = 'block';
-    tabs[0].classList.add('active');
+  if (week === 'all') {
+    sections.forEach(s => s.classList.add('active'));
+    tabs[tabs.length - 1].classList.add('active');
   } else {
-    w27.style.display = 'block'; w28.style.display = 'block'; w29.style.display = 'block'; w30.style.display = 'block'; w31.style.display = 'block'; w32.style.display = 'block';
-    tabs[6].classList.add('active');
+    const el = document.getElementById(week);
+    if (el) el.classList.add('active');
+    const idx = ['w34','w33','w32','w31','w30','w29','w28','w27'].indexOf(week);
+    if (idx >= 0) tabs[idx].classList.add('active');
   }
 }
 </script>
-
 </body>
 </html>
