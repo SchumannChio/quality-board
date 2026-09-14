@@ -1,5 +1,5 @@
 {
-  "currentMonth": "2026-06",
+  "currentMonth": "2026-08",
   "ogsmt": [
     {
       "id": "big1",
@@ -454,6 +454,196 @@
         "done": 3,
         "doing": 2
       }
+    },
+    "2026-07": {
+      "label": "7月",
+      "updateTime": "2026-08-05",
+      "works": [
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "1688产品测试汇总及新品测试对比",
+              "result": "已提交1688产品测试.xlsx和新品测试对比.xlsx",
+              "status": "done",
+              "person": "余XH",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/31"
+            },
+            {
+              "desc": "高压水枪车测试",
+              "result": "测试视频已分享至群，待评审",
+              "status": "done",
+              "person": "李H",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/20"
+            },
+            {
+              "desc": "皓天、捷尼士两款全能水清洁剂对比测试",
+              "result": "已提交测试文档（皓天、捷尼士全能水测试.doc）",
+              "status": "done",
+              "person": "李H",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/24"
+            }
+          ]
+        },
+        {
+          "category": "本项目优化提升",
+          "catKey": "optim",
+          "items": [
+            {
+              "desc": "品质看板系统建设：集成月度汇总、OGSMT拆解、奖金规则，持续优化功能",
+              "result": "看板系统已上线，功能持续迭代",
+              "status": "doing",
+              "person": "曹MZ",
+              "time": "7月",
+              "ref": "s7",
+              "note": "群消息7/8"
+            }
+          ]
+        },
+        {
+          "category": "好方法分享",
+          "catKey": "help",
+          "items": [
+            {
+              "desc": "除甲醛办法",
+              "result": "已提交除甲醛的办法.doc",
+              "status": "done",
+              "person": "李H",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/27"
+            },
+            {
+              "desc": "刷盘穿线操作方法",
+              "result": "已提交刷盘穿线.doc",
+              "status": "done",
+              "person": "李H",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/31"
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "健力Dr.Dirt吸排一体吸水机新产品了解任务",
+          "std": "提交《新产品了解反馈报告》",
+          "deadline": "2026-08-22",
+          "claimDate": "2026-07-24",
+          "status": "doing",
+          "claimer": "张YQ（宝地广场）",
+          "delivery": "已认领，因项目环境低洼区域较多需防汛应急",
+          "note": "鲍YM提供线索"
+        },
+        {
+          "id": "c2",
+          "desc": "垃圾袋120×140对比测试：航哲（现用）VS 凯荔（新品牌）",
+          "std": "承重测试、抗穿刺、厚度/手感、密封性、实际使用体验对比",
+          "deadline": "2026-08-24",
+          "claimDate": "2026-07-22",
+          "status": "doing",
+          "claimer": "张YQ（宝地广场）",
+          "delivery": "已认领，进行中",
+          "note": "曹MZ发布"
+        },
+        {
+          "id": "c3",
+          "desc": "捷尼士&皓天两款清洁剂对比测试",
+          "std": "按标准稀释比例配置，对比去污力、残留、气味等指标",
+          "deadline": "2026-07-30",
+          "claimDate": "2026-06-17",
+          "status": "done",
+          "claimer": "李H",
+          "delivery": "已提交测试文档（皓天、捷尼士全能水测试.doc）",
+          "note": "7/24提交"
+        },
+        {
+          "id": "c4",
+          "desc": "新产品测试持续跟进",
+          "std": "应用跟进，结果及时反馈",
+          "deadline": "2026-12-31",
+          "claimDate": "2026-06-01",
+          "status": "doing",
+          "claimer": "余XH",
+          "delivery": "7月已提交1688产品测试.xlsx和新品测试对比.xlsx；新产品库选品测试已完成8款产品，待评审",
+          "note": "待反馈（1次/月）"
+        },
+        {
+          "id": "c5",
+          "desc": "金鹰工具的测试与推广",
+          "std": "找到符合需求的工具，推广到项目落地使用",
+          "deadline": "2026-12-31",
+          "claimDate": "2026-04-21",
+          "status": "doing",
+          "claimer": "余XH",
+          "delivery": "测试已完成14款工具，待评审和推广",
+          "note": "待反馈（1次/月）"
+        }
+      ],
+      "summary": {
+        "total": 11,
+        "done": 6,
+        "doing": 5
+      }
+    },
+    "2026-08": {
+      "label": "8月",
+      "updateTime": "2026-09-14",
+      "works": [
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "高压水枪车使用方法整理（7月现场测试的延续交付）",
+              "result": "已提交《高压水枪车的使用方法.doc》",
+              "status": "done",
+              "person": "李H",
+              "time": "8月",
+              "ref": "a9",
+              "note": "群消息8/4"
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "健力Dr.Dirt吸排一体吸水机新产品了解任务",
+          "std": "提交《新产品了解反馈报告》：产品核心功能总结、与现有防汛方式对比、项目点适用性评估、采购建议",
+          "deadline": "2026-08-22",
+          "claimDate": "2026-07-24",
+          "status": "doing",
+          "claimer": "张YQ（宝地广场）",
+          "delivery": "",
+          "note": "鲍YM提供线索"
+        },
+        {
+          "id": "c2",
+          "desc": "垃圾袋120×140对比测试：航哲（现用）VS 凯荔（新品牌）",
+          "std": "承重、抗穿刺、厚度/手感、密封性、实际使用体验对比；行政部邮寄凯荔样品200只/人",
+          "deadline": "2026-08-24",
+          "claimDate": "2026-07-22",
+          "status": "doing",
+          "claimer": "张YQ（宝地广场）",
+          "delivery": "",
+          "note": ""
+        }
+      ],
+      "summary": {
+        "total": 3,
+        "done": 1,
+        "doing": 2
+      }
     }
   },
   "bonus": {
@@ -553,6 +743,6 @@
       ]
     }
   },
-  "lastUpdated": "2026-07-01T00:15:00+08:00",
+  "lastUpdated": "2026-09-14T11:30:00+08:00",
   "updatedBy": "Schumann"
 }
