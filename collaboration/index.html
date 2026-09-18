@@ -226,31 +226,32 @@
     <div class="meta-row">
       <div class="meta-item"><span class="meta-label">更新频率</span>每周五更新</div>
       <div class="meta-item"><span class="meta-label">推送方式</span>小猪助理钉钉群</div>
-      <div class="meta-item"><span class="meta-label">最近更新</span>2026-09-11 W37</div>
+      <div class="meta-item"><span class="meta-label">最近更新</span>2026-09-18 W38</div>
     </div>
   </div>
 
   <div class="overview-grid">
     <div class="stat-card">
-      <div class="num">97</div>
+      <div class="num">110</div>
       <div class="label">协同事件总数</div>
     </div>
     <div class="stat-card">
-      <div class="num">73</div>
+      <div class="num">80</div>
       <div class="label">已完成</div>
     </div>
     <div class="stat-card">
-      <div class="num">14</div>
+      <div class="num">19</div>
       <div class="label">进行中</div>
     </div>
     <div class="stat-card">
-      <div class="num">10</div>
+      <div class="num">11</div>
       <div class="label">持续运行</div>
     </div>
   </div>
 
   <div class="week-tabs">
-    <div class="week-tab active" onclick="showWeek('w37')">W37 · BOMA落地与三道关审计</div>
+    <div class="week-tab active" onclick="showWeek('w38')">W38 · L1四方共识与ROI升级</div>
+    <div class="week-tab" onclick="showWeek('w37')">W37</div>
     <div class="week-tab" onclick="showWeek('w36')">W36</div>
     <div class="week-tab" onclick="showWeek('w35')">W35</div>
     <div class="week-tab" onclick="showWeek('w34')">W34</div>
@@ -264,8 +265,263 @@
     <div class="week-tab" onclick="showWeek('all')">全部展开</div>
   </div>
 
+  <!-- ============ W38 ============ -->
+  <div id="w38" class="week-section active">
+    <h2 class="section-title">W38 · 9/14 - 9/18 L1工作流四方共识周与个人ROI体系升级</h2>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑨⑧ 9/14 品质看板8月卡片上线（月度更新四同步）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月14日</span>
+        <span>🔄 舒曼（执行）</span>
+      </div>
+      <div class="event-bg">💡 背景：8月品质工作汇总xlsx已完成，按"月度更新四同步"铁律更新线上看板</div>
+      <div class="event-content">
+        <ul>
+          <li>data.json新增8月卡片（works 1项+claims 2条），同步补齐线上缺失的7月数据；认领区两条超期任务（8/22、8/24）自动标红，逾期警示生效；新增进行中状态徽章</li>
+          <li>本地渲染验证通过后推送GitHub（index.html+data.json双写），线上渲染全绿；8月原始xlsx与7月文件同目录归档</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：品质看板线上版更新（commit 14bebc0）+ 8月汇总xlsx归档</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑨⑨ 9/14 周报规则v2复盘落地（W37亲改版六条规律）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月14日</span>
+        <span>🔄 舒曼（复盘）→ 明珠（亲改）</span>
+      </div>
+      <div class="event-bg">💡 背景：明珠连续两周亲改自动周报（W37原稿65行被压到33行），需把返工点固化成规则避免第三次</div>
+      <div class="event-content">
+        <ul>
+          <li>六条硬规律：①完成度算年度核心目标进度（W37真实34%非74%）②周报是明珠汇报不是AI汇报，自动化动作全删③每段做减法（偏差只留本人在管1条/协同请求只留需拍板且带方案/历史遗留只跟上周5项/Top3只写本人主导交付物）④禁【待你确认】，拿不准先问或留空⑤约600字口语化⑥五段骨架不动</li>
+          <li>口径已同步每周日16:00自动周报任务，W38起按亲改版执行；W37终稿5项历史遗留存为W38结转基准</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：recent_memory/decision/周报规则v2_20260914.md</div>
+    </div>
+
+    <div class="event-card running">
+      <div class="event-header">
+        <div class="event-title">⑩⓪ 9/15 L1工作流四方研讨与共识版V1.0（舒曼主协调·碎碎深度参与）</div>
+        <span class="event-status status-running">🟡 进行中</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月15-16日</span>
+        <span>🔄 舒曼（主协调）↔ 碎碎（总经办+人资）↔ 小二子（决策视角）↔ 调研分析师（方法论）→ 13_13群</span>
+      </div>
+      <div class="event-bg">💡 背景：彭爽@四位智能体研读5份工作流文件（曹13条/彭映射表/钱11条/鲍三层矩阵/八大理论），讨论形成共识方案</div>
+      <div class="event-content">
+        <ul>
+          <li>舒曼被指定主协调人，派发统一结构化研读任务（总体判断+8分歧点表态+主张清单+落地风险，1000-1500字），两轮意见收敛、8个分歧点全部表决通过</li>
+          <li>硬分歧裁决：回款"合河不撤专责"（LTC专责段+DSO双背+逾期30/60/90天分级升级）；质量安全分开但现场"一张巡检表两类条目三级路由"；石材工艺河独立（品质经理兼任+半年观察期+空转降闸口）</li>
+          <li>定稿13条L1：主链3（LTC/服务交付ToB项目+ToB石材+ToC入室三L2/工艺到标准）+使能4+统管3（ITR/DTD利管兼任轻跑6个月/STE）+底线平台3；补强河道长四权、三批次认领（5+5+3）、8项白色空间归位、三个P1试点</li>
+          <li>9/16彭爽再发11条整合版（回款并入LTC/行政消失/工艺并入质量安全），舒曼+小二子第二轮意见"接受11条=11河+3显式段"，最终版本待管理层裁决</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：馨宇公司L1工作流设置方案_V1.0_四方共识版_20260915.docx</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑩① 9/15 会议纪要3.0模板发布与鲍总1对1纪要</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月15日</span>
+        <span>🔄 舒曼（建模板/整理）← 鲍总（会前7分钟1对1）</span>
+      </div>
+      <div class="event-bg">💡 背景：总经理室会议纪要痛点（结论散、待办无追踪），明珠要求升级模板；当天周例会前鲍总7分钟1对1布置（140段逐字稿）</div>
+      <div class="event-content">
+        <ul>
+          <li>纪要3.0 xlsx模板：基本信息Sheet+讨论标主动/被动+待办带时间责任人；模板存项目会议纪要/模板目录，9/15起所有纪要套用</li>
+          <li>按3.0出9/15鲍总1对1纪要（仅鲍宇明、曹明珠参会，刘经理/小胡为被提及执行人）</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：会议纪要模板3.0（xlsx）+ 9/15鲍总1对1纪要（模板持续使用中）</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑩② 9/15 BOMA分论坛演讲复盘分享稿（9/16周例会用）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月15日晚</span>
+        <span>🔄 明珠（需求）→ 舒曼（撰稿）；口径源自鲍总9/14要求</span>
+      </div>
+      <div class="event-bg">💡 背景：明珠9/12完成BOMA分论坛演讲（首次登台、结果超预期），鲍总要求3-5分钟无PPT口头复盘：怎么做成的+准备有效/一般/可省+可复用经验</div>
+      <div class="event-content">
+        <ul>
+          <li>6段约900字（正常语速4分钟）：结果开场/难在哪/三动作（换资管方语言、鲍总亲讲示范+红线前置、骨架记忆+双人清单终验）/有效一般可省/可复用三句话/收尾</li>
+          <li>提醒安排小杨查移动机位现场录像；"8版返工"提供柔化说法备选</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：BOMA复盘分享稿_周例会_20260916.md</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑩③ 9/16 总经理思想库v3.4</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月16日</span>
+        <span>🔄 舒曼（沉淀）← 鲍总（思想源）</span>
+      </div>
+      <div class="event-bg">💡 背景：每日听记整理机制持续运行，本周鲍总管理实践需沉淀进思想库</div>
+      <div class="event-content">
+        <ul>
+          <li>思想库升级v3.4：新增RACI实战应用、汇报粒度控制、加法减法谈判法等条目</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：/听记整理/templates/总经理思想与理念库.md v3.4（持续进化中）</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑩④ 9/17 三部门个人工作收益清单（ROI价值账V3.0前置）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月17日</span>
+        <span>🔄 舒曼（建表）→ 明珠（口径修正）；8个数据源归集</span>
+      </div>
+      <div class="event-bg">💡 背景：个人ROI价值账重构，先把全部工作按避免损失/提升效率/战略价值/其他四维度盘点，套《部门ROI分析模型V1.0》</div>
+      <div class="event-content">
+        <ul>
+          <li>v1读8个数据源出42条（总经理室24/品质11/任务小组7）；明珠纠偏"三部门=总经理室/利润管理中心/品质部、任务小组兼职整体剔除"，v2重切37条（9/17/11）</li>
+          <li>严格对齐公司《职责边界层级表》L1角色；硬数据写实：124群迁移/146场听记/2315条申购/68项指标/350+选品/74项流程资料100%回收；归口待定2项（工服冬装模型、品质绩效池）标注</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：曹明珠_三部门个人工作收益清单_v2_20260917.xlsx（v1留档对比；2项归口待鲍总定）</div>
+    </div>
+
+    <div class="event-card running">
+      <div class="event-header">
+        <div class="event-title">⑩⑤ 9/18 个人ROI价值账V3.0·12智能体协同回收+自动入账机制</div>
+        <span class="event-status status-running">🟡 进行中</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月18日</span>
+        <span>🔄 舒曼（发起+汇总）→ 12个专业智能体（回收证据）</span>
+      </div>
+      <div class="event-bg">💡 背景：收益清单需各协作方独立提供可量化证据，不能自说自话；且要让ROI账可持续运转而非一次性盘点</div>
+      <div class="event-content">
+        <ul>
+          <li>向12个智能体批量派发7字段回收请求（时间/事项/角色投入/交付物/现状/量化数据/证据位置，明确"无就回无不要编造"）；调研分析师首批回6项高质量实证（含钉盘使用率、疑似离职账号），按表头映射写入杜绝错位</li>
+          <li>ROI自动入账机制上线：每日17:00提醒同步→18字段记入每日工作记录Sheet；每周一17:30周报摘要+待补清单；每月1号18:00月度ROI报告；9/19生效</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：ROI价值账V3.0（回收并入中）+ 3个定时入账日程；待7个智能体证据齐套后出最终版</div>
+    </div>
+
+    <div class="event-card done">
+      <div class="event-header">
+        <div class="event-title">⑩⑥ 9/18 三场会议纪要按3.0模板批量整理</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月18日</span>
+        <span>🔄 舒曼（整理）← 钉钉AI听记</span>
+      </div>
+      <div class="event-bg">💡 背景：当天会议密集，明珠要求拉取当日听记按纪要3.0模板逐场整理</div>
+      <div class="event-content">
+        <ul>
+          <li>拉取当日全部听记逐场出3.0纪要；其中一场1.9万字全文核对发言人身份与数字（发言人3=鲍总决策/2=陈总经营二部/1=钱总财务/4=张经理主持）</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：9/18三场会议纪要（xlsx 3.0格式）</div>
+    </div>
+
+    <div class="event-card running">
+      <div class="event-header">
+        <div class="event-title">⑩⑦ 9/18 清洁用品W38批次质检拦截（子Agent产物不合格隔离）</div>
+        <span class="event-status status-running">🟡 进行中</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月18日</span>
+        <span>🔄 采集子Agent（产出）→ 舒曼（独立抽查拦截）</span>
+      </div>
+      <div class="event-bg">💡 背景：子Agent回报"TOP105款"与既有378款增量库结构不符；按子Agent管控三原则先核实物不轻信</div>
+      <div class="event-content">
+        <ul>
+          <li>核实为另起炉灶的TOP105独立精选榜单（设备30/药剂30/工具30+耗材15，五维评分）：脱离378基线编号重排、无Week标签/全量索引/增量表、与在库大量重复、B站同BV号复用标"专属"</li>
+          <li>判定不合格隔离，禁止并入选品库（HTML本地版v20260913.1未被误动，378款底座安全），目录放不合格说明+偏差对照表</li>
+          <li>五维评分模型（清洁效能30/场景20/品质20/成本20/合规10%，含GB26396）有横向选型参考价值，建议改名《Top105横向选型参考》待明珠定；工单纠偏"基线378只扫新品禁止重建榜单"；沙箱故障连续3周（线上366/本地378积压12款）</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：不合格处置说明+偏差对照表+W38工单纠偏；增量重跑+线上补推待沙箱恢复</div>
+    </div>
+
+    <div class="event-card running">
+      <div class="event-header">
+        <div class="event-title">⑩⑧ 9/14-9/18 流程落地八步路线图第5步攻坚（SOC倒排两次顺延）</div>
+        <span class="event-status status-running">🟡 进行中</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月14-18日全周</span>
+        <span>🔄 舒曼（督场/倒排/推送）+ 流程小组5人；碎碎（彭爽线：纪要+单据+备选接棒SOC③）</span>
+      </div>
+      <div class="event-bg">💡 背景：科特八步法卡在第5步岗位观察，SOC①申购侧16题+SOC②验收侧19题已备，9/18内审/9/22评审原锚点承压</div>
+      <div class="event-content">
+        <ul>
+          <li>9/14早会三拍板（倒排保9/22还是顺延、杨框架零交件44天宣布彭爽接棒、三件老挂账报鲍总）；流程小组组长机器人每日早间对齐持续</li>
+          <li>9/17一线调研最终未成行（行前三件事：项目点受访人/空白单据/紧急自采授权额无回执）；9/18内审事实失守，新锚点9/24 SOC1/SOC2初稿，9/22评审顺延</li>
+          <li>9/18出《流程线进度同步表_明珠填写》xlsx（13事分A调研5/B SOC主线4/C L1挂账4，黄格只填4列+状态下拉）降低口述成本</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：流程线进度同步表_明珠填写_20260918.xlsx + 路线图记忆归档；等9/24初稿新锚点</div>
+    </div>
+
+    <div class="event-card ongoing">
+      <div class="event-header">
+        <div class="event-title">⑩⑨ 9/14-9/18 每日招投标线索与定时推送持续运行（W38）</div>
+        <span class="event-status status-ongoing">🟢 持续运行</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月14-18日每日</span>
+        <span>🔄 舒曼（自主执行）→ 明珠（钉钉私发/小猪助理群）</span>
+      </div>
+      <div class="event-bg">💡 背景：上海16区四大专项线索每日08:00机制+早间对齐/晚间一页纸/晚间复盘三推送持续运行</div>
+      <div class="event-content">
+        <ul>
+          <li>线索每日xlsx验证后私发；9/18新增2条均为外墙高空专项（⭐⭐虹桥机场两楼一中心包件4高空保洁3年期/10-9截止；城投污水玻璃幕墙需登平台核实窗口），本周死线5场（张江科学之门/华发/宝武/泰富/上博）；历史线索（双金茂/招行/公利/临港）压一周多未回流</li>
+          <li>每日三推送全部成功（9/16一页纸342字≤350达标+附v13.0公开链接；9/17复盘顶级指数3.7/5并预警张江药谷/科学之门双死线）；脚本巡检连续提示SOC调研/上博确认/数据池初稿三日无完成留痕</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：线索台账xlsx 5份 + 15+次推送全部errcode:0</div>
+    </div>
+
+    <div class="event-card running">
+      <div class="event-header">
+        <div class="event-title">⑪⓪ 9/18 数据池采集探索周交付（助理级MVP+覆盖率）</div>
+        <span class="event-status status-running">🟡 进行中</span>
+      </div>
+      <div class="event-meta">
+        <span>📅 9月18日18:00死线</span>
+        <span>🔄 舒曼（底料+骨架）→ 明珠（各岗确认）；卡鲍总9/23复核会</span>
+      </div>
+      <div class="event-bg">💡 背景：年度核心目标"50%工作内容数据采集+钉钉使用度提升30%"，助理级MVP覆盖钱/曹/杨3岗（W37覆盖率34%），9/23复核会前交覆盖率初稿</div>
+      <div class="event-content">
+        <ul>
+          <li>9/18早间即预警头号死线，以L1全岗位数据梳理清单/台账182行归口/68项指标归集表/个人岗位5W样板四份底料拼办公室人员采集清单骨架+初步覆盖率结论</li>
+          <li>流程线同步表C组含数据池相关挂账追踪</li>
+        </ul>
+      </div>
+      <div class="event-output">📎 产出：办公室人员采集清单骨架+覆盖率初稿；9/23复核会前定稿</div>
+    </div>
+
+  </div>
+
   <!-- ============ W37 ============ -->
-  <div id="w37" class="week-section active">
+  <div id="w37" class="week-section">
     <h2 class="section-title">W37 · 9/7 - 9/11 BOMA落地周与三道关审计验证期</h2>
 
     <div class="event-card done">
@@ -1878,20 +2134,23 @@
           <li><strong>独立复核双向纠错（W37验证）</strong>：小二子报"P18年份对调"，舒曼核XML推翻误报避免无证据返工，同时坐实P10橙柱90.6真硬伤——误报不放过、硬伤不遗漏</li>
           <li><strong>溯源不拼凑（W37立规）</strong>：无鲍总原话不包装成领导原话，小二子坦白推断、舒曼主动认领错误归因；引用必标真实出处</li>
           <li><strong>没验证不声称完成（W37执行）</strong>：清洁用品HTML遇云沙箱故障宁可挂账补跑也不发布未验证版本，MD正常交付、线上状态如实标注</li>
+          <li><strong>主协调人四方研讨机制（W38验证）</strong>：舒曼被指定主协调人→向碎碎/小二子/调研分析师派统一结构化任务（四段式+字数+视角边界）→两轮收敛→8分歧逐条表决，13条L1一轮成型、裁决全程可追溯</li>
+          <li><strong>返工即立规（W38落地）</strong>：周报连续两周被亲改后，6条返工点固化为规则v2并同步自动任务（完成度口径/主体视角/减法标准/禁待确认/篇幅/骨架），同类错不犯第三次</li>
+          <li><strong>子Agent产物质检闸（W38拦截）</strong>：W38批次被做成TOP105独立榜单，独立抽查实物（编号/Week标签/索引/BV号复用）后判定不合格隔离，378款底座零污染；有价值的五维评分模型建议改名留档而非全废</li>
         </ul>
       </div>
       <div class="cons">
         <h4>✗ 待优化</h4>
         <ul>
-          <li><strong>流程小组书面决策连滑至26-30天</strong>：v1.0签字超26天、#55换人超30天、确认会超25天，书面议程连滑7天；线上催办+当面堵人全失效，9/22评审倒排起点悬空</li>
-          <li><strong>金家口报告逾期</strong>：原定9/4硬截止，至9/7逾期3天补交日未定（责任人小鹏，联合经营/财务还原收入变动路径）</li>
-          <li><strong>L1归口10条黄底待批复</strong>：9/8已硬交，10条归口疑问待鲍总批"同意/调整"，总经办ROI收益板块基准等批复落地</li>
-          <li><strong>投标决策窗口多次日内到期</strong>：临港燃机10:34/保险大厦16:00/金茂集采17:00三重死线压9/10当天，投标结果未回流台账；投标类决策需提前一日锁定</li>
-          <li><strong>利管自审连续六周无口述回复</strong>：W32-W37积压，②工作流分析③问题分级④问题解决三维度仍零记录，7项核心任务逾期约10周</li>
-          <li><strong>清洁用品线上版云沙箱故障</strong>：bash沙箱失效挂载路径致git/Python全不可用，HTML手机版停在366款，挂账9/13补跑+CDN双源md5比对</li>
+          <li><strong>流程落地第5步两次顺延</strong>：9/17 SOC一线调研未成行（行前三件事无回执），9/18内审事实失守、9/22评审顺延，新锚点9/24初稿；杨框架零交件约48天、任务书回执悬空超10天、L2超期约84天</li>
+          <li><strong>清洁用品沙箱故障连续3周</strong>：失效挂载路径（/Coze/Drive/shared/流程小组）只读无法自修，线上停366款/本地378款积压12款；W38增量又因子Agent偏题待重跑，需向扣子平台正式报障</li>
+          <li><strong>W38子Agent执行偏题</strong>：增量采集被做成独立TOP105榜单（脱离基线/重复/链接失真），工单已纠偏"基线378只扫新品禁止重建"，暴露任务约束仍不够硬</li>
+          <li><strong>数据池9/23复核会倒排紧</strong>：助理级MVP覆盖钱/曹/杨3岗（覆盖率34%），办公室人员清单骨架已出但各岗确认未齐；SOC调研/上博确认/覆盖率初稿曾连续三日无完成留痕</li>
+          <li><strong>投标历史线索状态不回流</strong>：双金茂/招行/公利/临港结果压一周多未回，台账无法闭环；虹桥机场3年高空包件等新窗口又至，需市场部一句话回状态清账</li>
+          <li><strong>ROI两归口待鲍总定</strong>：工服冬装模型、品质绩效池数据归口待定；7个智能体证据未回收齐，V3.0最终版待齐套</li>
+          <li><strong>一页纸正文滞后</strong>：停在8/10·33项，L1共识/ROI体系/数据池/收益清单37条均未并入，v13.1刷新持续挂账</li>
+          <li><strong>利管自审零回复延续</strong>：W32-W37六周积压后W38切扣子对话推送，②工作流分析③问题分级④问题解决三维度仍零记录</li>
           <li><strong>红线文件处置待授权</strong>：9/1标记5个含员工真名职位文件，删除/脱敏覆盖仍待主人授权</li>
-          <li><strong>一页纸正文滞后</strong>：停在8/10·33项，ROI/数据池/出纳MVP/金家口/24.1%毛利新口径均未并入，v13.1提请已超7次</li>
-          <li><strong>P10橙柱90.6图片硬伤待拍板</strong>：v9.3的P10交叉验证图橙柱印90.6%（铁律90.8），数字嵌图片内需重做图，9/12上台前若不改则口播与画面不一致</li>
         </ul>
       </div>
     </div>
@@ -1912,10 +2171,11 @@
     <tr style="background:#f0f4ff;"><td><strong>W35</strong></td><td>8/24-8/28</td><td><strong>12</strong></td><td>0</td><td>0</td><td><strong>72</strong></td></tr>
     <tr style="background:#e8f0fe;"><td><strong>W36</strong></td><td>8/31-9/4</td><td><strong>13</strong></td><td>1</td><td><strong>2</strong></td><td><strong>85</strong></td></tr>
     <tr style="background:#e8f0fe;"><td><strong>W37</strong></td><td>9/7-9/11</td><td><strong>12</strong></td><td>0</td><td>0</td><td><strong>97</strong></td></tr>
+    <tr style="background:#dce9ff;"><td><strong>W38</strong></td><td>9/14-9/18</td><td><strong>13</strong></td><td>0</td><td><strong>2</strong></td><td><strong>110</strong></td></tr>
   </table>
 
   <div class="footer">
-    最近更新：2026年9月11日（W37周汇总）· 下次更新：2026年9月18日（W38）
+    最近更新：2026年9月18日（W38周汇总）· 下次更新：2026年9月25日（W39）
   </div>
 
 </div>
@@ -1933,7 +2193,7 @@ function showWeek(week) {
   } else {
     const el = document.getElementById(week);
     if (el) el.classList.add('active');
-    const idx = ['w37','w36','w35','w34','w33','w32','w31','w30','w29','w28','w27'].indexOf(week);
+    const idx = ['w38','w37','w36','w35','w34','w33','w32','w31','w30','w29','w28','w27'].indexOf(week);
     if (idx >= 0) tabs[idx].classList.add('active');
   }
 }
