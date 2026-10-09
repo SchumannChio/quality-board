@@ -407,217 +407,861 @@ const STATUS_KEY_MAP = { 'todo': 0, 'doing': 1, 'done': 2, 'ref': 3, 'pause': 4 
 
 // ==================== DEFAULT DATA ====================
 const DEFAULT_DATA = {
-  currentMonth: "2026-08",
-  ogsmt: [{"id": "big1", "title": "大事一", "full": "大事一：提升品质效率（技术支持+新产品/新技术）", "goal": "通过技术支持和新技术应用，提升品质工作效率", "strategies": [{"id": "s1", "name": "建立技术库-材质库", "target": "完成全部项目材质库建设", "actions": [{"id": "a1", "name": "AI材质识别SKILL训练+1-3个项目手搓", "person": "余XH", "deadline": "8/30(手搓6/30)", "risk": "high", "riskNote": "手搓仅剩18天，需加速"}, {"id": "a2", "name": "带领1-5人完成所有项目材质库", "person": "张YQ/郭LB/马QJ", "deadline": "8/30", "risk": "high"}, {"id": "a3", "name": "分析材质，设置清洁属性并归类", "person": "鲍YM", "deadline": "8月底", "risk": "mid", "riskNote": "依赖材质库收集完成"}]}, {"id": "s2", "name": "建立技术库-污渍库", "target": "完成污渍库汇总与源头减量", "actions": [{"id": "a4", "name": "收集清洁工作内容推导污渍并汇总", "person": "张YQ/郭LB/马QJ", "deadline": "6/30", "risk": "high", "riskNote": "截止仅剩18天，仅1个项目"}, {"id": "a5", "name": "可源头减量污渍再梳理", "person": "张Z", "deadline": "6/30", "risk": "high", "riskNote": "依赖污渍汇总完成"}]}, {"id": "s3", "name": "建立技术库-二库组合", "target": "AI建模组合库，生成清洁工作模型，有效率>=80%", "actions": [{"id": "a6", "name": "AI建模组合库导入清洁方式生成工作模型", "person": "鲍YM/龙虾小组", "deadline": "9月底", "risk": "mid", "riskNote": "依赖材质库+污渍库"}]}, {"id": "s4", "name": "建立技术库-培训辅导", "target": "一线管理人员应用培训+复盘反馈", "actions": [{"id": "a7", "name": "培训一线管理人员应用+复盘反馈", "person": "鲍YM", "deadline": "10月底", "risk": "low", "riskNote": "依赖二库组合完成"}]}, {"id": "s5", "name": "新产品测试", "target": "持续测试新品，每周新增10-30个，推广落地", "actions": [{"id": "a8", "name": "建立测试新品库每周新增10-30个", "person": "曹MZ", "deadline": "每周一", "risk": "low"}, {"id": "a9", "name": "发布测试清单+参与邀请", "person": "余XH", "deadline": "全年", "risk": "low"}, {"id": "a10", "name": "金鹰系列产品测试", "person": "余XH", "deadline": "年底", "risk": "low", "riskNote": "需关注采纳+成本量化"}, {"id": "a11", "name": "玻璃清洁机器人测试", "person": "余XH", "deadline": "-", "risk": "low", "riskNote": "需跟进推广采纳"}, {"id": "a12", "name": "玻璃镜面/石材台面工具试验", "person": "张YQ", "deadline": "-", "risk": "low", "riskNote": "需跟进推广采纳"}]}, {"id": "s6", "name": "技术支持-被动支援", "target": "响应项目现场技术支援需求", "actions": [{"id": "a13", "name": "宝地广场车库顶部胶痕现场指导", "person": "郭LB", "deadline": "-", "risk": "low"}]}, {"id": "s7", "name": "本项目优化提升", "target": "所在项目品质优化与提升", "actions": [{"id": "a14", "name": "启园大堂人造石地面返碱处理", "person": "李H", "deadline": "-", "risk": "low"}, {"id": "a15", "name": "外围麻石台阶防护处理", "person": "李H", "deadline": "-", "risk": "low"}]}]}, {"id": "big2", "title": "大事二", "full": "大事二：使用者满意调研", "goal": "基于人性梳理使用者感受，建立满意度调研体系", "strategies": [{"id": "s8", "name": "基于人性梳理使用者感受", "target": "完成满意调研4个阶段，建立工作流优化+半自动采集系统", "actions": [{"id": "a16", "name": "阶段1：AI推演基础版本1.0", "person": "鲍YM", "deadline": "6/30", "risk": "high", "riskNote": "截止仅剩18天"}, {"id": "a17", "name": "阶段2：现场多维验证+修改2.0", "person": "鲍YM", "deadline": "8/30", "risk": "mid", "riskNote": "依赖1.0完成"}, {"id": "a18", "name": "阶段3：培训普及+抽查", "person": "鲍YM", "deadline": "12/31", "risk": "low", "riskNote": "依赖2.0完成"}, {"id": "a19", "name": "阶段4：工作流优化+半自动采集系统", "person": "鲍YM", "deadline": "长期", "risk": "mid", "riskNote": "策略没想好部分待拆解"}]}]}],
-  risks: [{"id": "r2", "title": "污渍库6/30截止，仅宝地部分完成", "level": "high", "impact": "影响后续组合方案和培训", "actions": ["扩大到3-5个项目点同步采集", "明确每日采集量目标"], "owner": "张Z", "refActions": ["a4", "a5"]}, {"id": "r4", "title": "宝地材质+污渍已超时13天", "level": "high", "impact": "认领看板信用+奖金申报", "actions": ["立即组织交付评审", "确认完成/补充完善/延期"], "owner": "部门负责人", "refActions": ["a2", "a4"]}],
-  months: {
-    "2026-05": {
-        "label": "5月",
-        "updateTime": "2026-06-30",
-        "works": [
+  "currentMonth": "2026-09",
+  "ogsmt": [
+    {
+      "id": "big1",
+      "title": "大事一",
+      "full": "大事一：提升品质效率（技术支持+新产品/新技术）",
+      "goal": "通过技术支持和新技术应用，提升品质工作效率",
+      "strategies": [
+        {
+          "id": "s1",
+          "name": "建立技术库-材质库",
+          "target": "完成全部项目材质库建设",
+          "actions": [
             {
-                "category": "新产品/技术/方法测试",
-                "catKey": "tech",
-                "items": [
-                    {
-                        "desc": "建立测试新品库，系统自动每周更新10-30个",
-                        "result": "已建立，系统自动运行",
-                        "status": "done",
-                        "person": "曹MZ",
-                        "time": "持续",
-                        "ref": "a8"
-                    },
-                    {
-                        "desc": "金鹰系列产品测试",
-                        "result": "测试中，结果待反馈",
-                        "status": "doing",
-                        "person": "余XH",
-                        "time": "5月",
-                        "ref": "a10"
-                    },
-                    {
-                        "desc": "玻璃清洁机器人测试",
-                        "result": "已完成，高楼层窗外1m2约6分钟",
-                        "status": "done",
-                        "person": "余XH",
-                        "time": "5月",
-                        "ref": "a11"
-                    },
-                    {
-                        "desc": "玻璃镜面/石材台面工具试验",
-                        "result": "已完成",
-                        "status": "done",
-                        "person": "张YQ",
-                        "time": "5月",
-                        "ref": "a12"
-                    }
-                ]
+              "id": "a1",
+              "name": "AI材质识别SKILL训练+1-3个项目手搓",
+              "person": "余XH",
+              "deadline": "8/30(手搓6/30)",
+              "risk": "high",
+              "riskNote": "手搓仅剩18天，需加速"
             },
             {
-                "category": "技术支持",
-                "catKey": "support",
-                "items": [
-                    {
-                        "desc": "宝地广场车库顶部胶痕现场指导",
-                        "result": "已完成，胶痕明显淡化",
-                        "status": "done",
-                        "person": "郭LB",
-                        "time": "5月",
-                        "ref": "a13"
-                    }
-                ]
+              "id": "a2",
+              "name": "带领1-5人完成所有项目材质库",
+              "person": "张YQ/郭LB/马QJ",
+              "deadline": "8/30",
+              "risk": "high"
             },
             {
-                "category": "本项目优化提升",
-                "catKey": "optim",
-                "items": [
-                    {
-                        "desc": "启园大堂人造石地面返碱处理",
-                        "result": "已完成",
-                        "status": "done",
-                        "person": "李H",
-                        "time": "4月",
-                        "ref": "a14"
-                    },
-                    {
-                        "desc": "外围麻石台阶防护处理",
-                        "result": "已完成",
-                        "status": "done",
-                        "person": "李H",
-                        "time": "4月",
-                        "ref": "a15"
-                    }
-                ]
+              "id": "a3",
+              "name": "分析材质，设置清洁属性并归类",
+              "person": "鲍YM",
+              "deadline": "8月底",
+              "risk": "mid",
+              "riskNote": "依赖材质库收集完成"
             }
-        ],
-        "claims": [
+          ]
+        },
+        {
+          "id": "s2",
+          "name": "建立技术库-污渍库",
+          "target": "完成污渍库汇总与源头减量",
+          "actions": [
             {
-                "id": "c1",
-                "desc": "协助宝地广场智慧清洁项目完成材质辨识和污渍辨识",
-                "std": "待定",
-                "deadline": "2026-05-29",
-                "claimDate": "2026-04-11",
-                "status": "done",
-                "claimer": "郭LB/马QJ/张YQ",
-                "delivery": "已提交交付链接",
-                "overdue": true,
-                "result": "已完成"
+              "id": "a4",
+              "name": "收集清洁工作内容推导污渍并汇总",
+              "person": "张YQ/郭LB/马QJ",
+              "deadline": "6/30",
+              "risk": "high",
+              "riskNote": "截止仅剩18天，仅1个项目"
             },
             {
-                "id": "c2",
-                "desc": "金鹰工具的测试与推广",
-                "std": "找到符合需求的工具，推广到项目落地使用",
-                "deadline": "2026-12-31",
-                "claimDate": "2026-04-21",
-                "status": "doing",
-                "claimer": "余XH",
-                "delivery": "",
-                "note": "待反馈（1次/月）"
-            },
-            {
-                "id": "c3",
-                "desc": "新产品测试",
-                "std": "应用跟进，结果及时反馈",
-                "deadline": "2026-12-31",
-                "claimDate": "2026-06-01",
-                "status": "doing",
-                "claimer": "余XH",
-                "delivery": "",
-                "note": "待反馈（1次/月）"
+              "id": "a5",
+              "name": "可源头减量污渍再梳理",
+              "person": "张Z",
+              "deadline": "6/30",
+              "risk": "high",
+              "riskNote": "依赖污渍汇总完成"
             }
-        ],
-        "summary": {
-            "total": 10,
-            "done": 7,
-            "doing": 3
+          ]
+        },
+        {
+          "id": "s3",
+          "name": "建立技术库-二库组合",
+          "target": "AI建模组合库，生成清洁工作模型，有效率>=80%",
+          "actions": [
+            {
+              "id": "a6",
+              "name": "AI建模组合库导入清洁方式生成工作模型",
+              "person": "鲍YM/龙虾小组",
+              "deadline": "9月底",
+              "risk": "mid",
+              "riskNote": "依赖材质库+污渍库"
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "name": "建立技术库-培训辅导",
+          "target": "一线管理人员应用培训+复盘反馈",
+          "actions": [
+            {
+              "id": "a7",
+              "name": "培训一线管理人员应用+复盘反馈",
+              "person": "鲍YM",
+              "deadline": "10月底",
+              "risk": "low",
+              "riskNote": "依赖二库组合完成"
+            }
+          ]
+        },
+        {
+          "id": "s5",
+          "name": "新产品测试",
+          "target": "持续测试新品，每周新增10-30个，推广落地",
+          "actions": [
+            {
+              "id": "a8",
+              "name": "建立测试新品库每周新增10-30个",
+              "person": "曹MZ",
+              "deadline": "每周一",
+              "risk": "low"
+            },
+            {
+              "id": "a9",
+              "name": "发布测试清单+参与邀请",
+              "person": "余XH",
+              "deadline": "全年",
+              "risk": "low"
+            },
+            {
+              "id": "a10",
+              "name": "金鹰系列产品测试",
+              "person": "余XH",
+              "deadline": "年底",
+              "risk": "low",
+              "riskNote": "需关注采纳+成本量化"
+            },
+            {
+              "id": "a11",
+              "name": "玻璃清洁机器人测试",
+              "person": "余XH",
+              "deadline": "-",
+              "risk": "low",
+              "riskNote": "需跟进推广采纳"
+            },
+            {
+              "id": "a12",
+              "name": "玻璃镜面/石材台面工具试验",
+              "person": "张YQ",
+              "deadline": "-",
+              "risk": "low",
+              "riskNote": "需跟进推广采纳"
+            }
+          ]
+        },
+        {
+          "id": "s6",
+          "name": "技术支持-被动支援",
+          "target": "响应项目现场技术支援需求",
+          "actions": [
+            {
+              "id": "a13",
+              "name": "宝地广场车库顶部胶痕现场指导",
+              "person": "郭LB",
+              "deadline": "-",
+              "risk": "low"
+            }
+          ]
+        },
+        {
+          "id": "s7",
+          "name": "本项目优化提升",
+          "target": "所在项目品质优化与提升",
+          "actions": [
+            {
+              "id": "a14",
+              "name": "启园大堂人造石地面返碱处理",
+              "person": "李H",
+              "deadline": "-",
+              "risk": "low"
+            },
+            {
+              "id": "a15",
+              "name": "外围麻石台阶防护处理",
+              "person": "李H",
+              "deadline": "-",
+              "risk": "low"
+            }
+          ]
         }
+      ]
+    },
+    {
+      "id": "big2",
+      "title": "大事二",
+      "full": "大事二：使用者满意调研",
+      "goal": "基于人性梳理使用者感受，建立满意度调研体系",
+      "strategies": [
+        {
+          "id": "s8",
+          "name": "基于人性梳理使用者感受",
+          "target": "完成满意调研4个阶段，建立工作流优化+半自动采集系统",
+          "actions": [
+            {
+              "id": "a16",
+              "name": "阶段1：AI推演基础版本1.0",
+              "person": "鲍YM",
+              "deadline": "6/30",
+              "risk": "high",
+              "riskNote": "截止仅剩18天"
+            },
+            {
+              "id": "a17",
+              "name": "阶段2：现场多维验证+修改2.0",
+              "person": "鲍YM",
+              "deadline": "8/30",
+              "risk": "mid",
+              "riskNote": "依赖1.0完成"
+            },
+            {
+              "id": "a18",
+              "name": "阶段3：培训普及+抽查",
+              "person": "鲍YM",
+              "deadline": "12/31",
+              "risk": "low",
+              "riskNote": "依赖2.0完成"
+            },
+            {
+              "id": "a19",
+              "name": "阶段4：工作流优化+半自动采集系统",
+              "person": "鲍YM",
+              "deadline": "长期",
+              "risk": "mid",
+              "riskNote": "策略没想好部分待拆解"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "r2",
+      "title": "污渍库6/30截止，仅宝地部分完成",
+      "level": "high",
+      "impact": "影响后续组合方案和培训",
+      "actions": [
+        "扩大到3-5个项目点同步采集",
+        "明确每日采集量目标"
+      ],
+      "owner": "张Z",
+      "refActions": [
+        "a4",
+        "a5"
+      ]
+    },
+    {
+      "id": "r4",
+      "title": "宝地材质+污渍已超时13天",
+      "level": "high",
+      "impact": "认领看板信用+奖金申报",
+      "actions": [
+        "立即组织交付评审",
+        "确认完成/补充完善/延期"
+      ],
+      "owner": "部门负责人",
+      "refActions": [
+        "a2",
+        "a4"
+      ]
+    }
+  ],
+  "months": {
+    "2026-05": {
+      "label": "5月",
+      "updateTime": "2026-06-30",
+      "works": [
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "建立测试新品库，系统自动每周更新10-30个",
+              "result": "已建立，系统自动运行",
+              "status": "done",
+              "person": "曹MZ",
+              "time": "持续",
+              "ref": "a8"
+            },
+            {
+              "desc": "金鹰系列产品测试",
+              "result": "测试中，结果待反馈",
+              "status": "doing",
+              "person": "余XH",
+              "time": "5月",
+              "ref": "a10"
+            },
+            {
+              "desc": "玻璃清洁机器人测试",
+              "result": "已完成，高楼层窗外1m2约6分钟",
+              "status": "done",
+              "person": "余XH",
+              "time": "5月",
+              "ref": "a11"
+            },
+            {
+              "desc": "玻璃镜面/石材台面工具试验",
+              "result": "完成工具选型与现场测试，效果待项目验证",
+              "status": "done",
+              "person": "张YQ",
+              "time": "5月",
+              "ref": "a12"
+            }
+          ]
+        },
+        {
+          "category": "技术支持",
+          "catKey": "support",
+          "items": [
+            {
+              "desc": "宝地广场车库顶部胶痕现场指导",
+              "result": "已完成，胶痕明显淡化",
+              "status": "done",
+              "person": "郭LB",
+              "time": "5月",
+              "ref": "a13"
+            }
+          ]
+        },
+        {
+          "category": "本项目优化提升",
+          "catKey": "optim",
+          "items": [
+            {
+              "desc": "启园大堂人造石地面返碱处理",
+              "result": "现场处理完毕，返碱状况改善",
+              "status": "done",
+              "person": "李H",
+              "time": "4月",
+              "ref": "a14"
+            },
+            {
+              "desc": "外围麻石台阶防护处理",
+              "result": "完成防护剂涂刷与养护处理",
+              "status": "done",
+              "person": "李H",
+              "time": "4月",
+              "ref": "a15"
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "协助宝地广场智慧清洁项目完成材质辨识和污渍辨识",
+          "std": "待定",
+          "deadline": "2026-05-29",
+          "claimDate": "2026-04-11",
+          "status": "done",
+          "claimer": "郭LB/马QJ/张YQ",
+          "delivery": "已提交交付链接",
+          "overdue": true,
+          "result": "已完成"
+        },
+        {
+          "id": "c2",
+          "desc": "金鹰工具的测试与推广",
+          "std": "找到符合需求的工具，推广到项目落地使用",
+          "deadline": "2026-12-31",
+          "claimDate": "2026-04-21",
+          "status": "doing",
+          "claimer": "余XH",
+          "delivery": "",
+          "note": "待反馈（1次/月）"
+        },
+        {
+          "id": "c3",
+          "desc": "新产品测试",
+          "std": "应用跟进，结果及时反馈",
+          "deadline": "2026-12-31",
+          "claimDate": "2026-06-01",
+          "status": "doing",
+          "claimer": "余XH",
+          "delivery": "",
+          "note": "待反馈（1次/月）"
+        }
+      ],
+      "summary": {
+        "total": 10,
+        "done": 7,
+        "doing": 3
+      }
     },
     "2026-06": {
-        "label": "6月",
-        "updateTime": "2026-06-30",
-        "works": [
+      "label": "6月",
+      "updateTime": "2026-06-30",
+      "works": [
+        {
+          "category": "新产品测试",
+          "catKey": "newtest",
+          "items": [
             {
-                "category": "新产品测试",
-                "catKey": "newtest",
-                "items": [
-                    {
-                        "desc": "第一批新品测试",
-                        "result": "测试结果及时反馈（至少1次/月）",
-                        "status": "doing",
-                        "person": "余XH",
-                        "time": "6月",
-                        "ref": "",
-                        "note": "已发布邀请"
-                    }
-                ]
-            },
-            {
-                "category": "使用者满意",
-                "catKey": "satisfaction",
-                "items": [
-                    {
-                        "desc": "基于人性梳理使用者感受的自然表达规律1.0版本：用AI推演得出基础版本",
-                        "result": "AI推演完成，形成1.0版基础框架，待进一步验证",
-                        "status": "done",
-                        "person": "鲍YM",
-                        "time": "6月",
-                        "ref": "a16"
-                    }
-                ]
-            },
-            {
-                "category": "建立技术库",
-                "catKey": "techlib",
-                "items": [
-                    {
-                        "desc": "建立各项目点材质库+污渍库：1-3个基础项目手搓完成",
-                        "result": "宝地广场等1-3个项目手搓采集进行中，尚未全面铺开",
-                        "status": "done",
-                        "person": "张Z",
-                        "time": "6月",
-                        "ref": "a1"
-                    }
-                ]
-            },
-            {
-                "category": "新产品/技术/方法测试",
-                "catKey": "tech",
-                "items": [
-                    {
-                        "desc": "建立测试新品库，系统自动每周更新10-30个",
-                        "result": "系统自动运行，周更10-30款新品，待深度评估",
-                        "status": "done",
-                        "person": "曹MZ",
-                        "time": "持续",
-                        "ref": "a8"
-                    }
-                ]
+              "desc": "第一批新品测试",
+              "result": "测试结果及时反馈（至少1次/月）",
+              "status": "doing",
+              "person": "余XH",
+              "time": "6月",
+              "ref": "",
+              "note": "已发布邀请"
             }
-        ],
-        "claims": [
+          ]
+        },
+        {
+          "category": "使用者满意",
+          "catKey": "satisfaction",
+          "items": [
             {
-                "id": "c1",
-                "desc": "捷尼士 & 皓天 两款清洁剂对比测试",
-                "std": "测试结果及时反馈",
-                "deadline": "2026-07-30",
-                "claimDate": "2026-06-17",
-                "status": "doing",
-                "claimer": "李H",
-                "delivery": "",
-                "note": "7/30日前反馈"
+              "desc": "基于人性梳理使用者感受的自然表达规律1.0版本：用AI推演得出基础版本",
+              "result": "AI推演完成，形成1.0版基础框架，待进一步验证",
+              "status": "done",
+              "person": "鲍YM",
+              "time": "6月",
+              "ref": "a16"
             }
-        ],
-        "summary": {
-            "total": 5,
-            "done": 3,
-            "doing": 2
+          ]
+        },
+        {
+          "category": "建立技术库",
+          "catKey": "techlib",
+          "items": [
+            {
+              "desc": "建立各项目点材质库+污渍库：1-3个基础项目手搓完成",
+              "result": "宝地广场等1-3个项目手搓采集进行中，尚未全面铺开",
+              "status": "done",
+              "person": "张Z",
+              "time": "6月",
+              "ref": "a1"
+            }
+          ]
+        },
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "建立测试新品库，系统自动每周更新10-30个",
+              "result": "系统自动运行，周更10-30款新品，待深度评估",
+              "status": "done",
+              "person": "曹MZ",
+              "time": "持续",
+              "ref": "a8"
+            }
+          ]
         }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "捷尼士 & 皓天 两款清洁剂对比测试",
+          "std": "测试结果及时反馈",
+          "deadline": "2026-07-30",
+          "claimDate": "2026-06-17",
+          "status": "doing",
+          "claimer": "李H",
+          "delivery": "",
+          "note": "7/30日前反馈"
+        }
+      ],
+      "summary": {
+        "total": 5,
+        "done": 3,
+        "doing": 2
+      }
     },
-    "2026-07": {"label": "7月", "updateTime": "2026-08-05", "works": [{"category": "新产品/技术/方法测试", "catKey": "tech", "items": [{"desc": "1688产品测试汇总及新品测试对比", "result": "已提交1688产品测试.xlsx和新品测试对比.xlsx", "status": "done", "person": "余XH", "time": "7月", "ref": "a9", "note": "群消息7/31"}, {"desc": "高压水枪车测试", "result": "测试视频已分享至群，待评审", "status": "done", "person": "李H", "time": "7月", "ref": "a9", "note": "群消息7/20"}, {"desc": "皓天、捷尼士两款全能水清洁剂对比测试", "result": "已提交测试文档（皓天、捷尼士全能水测试.doc）", "status": "done", "person": "李H", "time": "7月", "ref": "a9", "note": "群消息7/24"}]}, {"category": "本项目优化提升", "catKey": "optim", "items": [{"desc": "品质看板系统建设：集成月度汇总、OGSMT拆解、奖金规则，持续优化功能", "result": "看板系统已上线，功能持续迭代", "status": "doing", "person": "曹MZ", "time": "7月", "ref": "s7", "note": "群消息7/8"}]}, {"category": "好方法分享", "catKey": "help", "items": [{"desc": "除甲醛办法", "result": "已提交除甲醛的办法.doc", "status": "done", "person": "李H", "time": "7月", "ref": "a9", "note": "群消息7/27"}, {"desc": "刷盘穿线操作方法", "result": "已提交刷盘穿线.doc", "status": "done", "person": "李H", "time": "7月", "ref": "a9", "note": "群消息7/31"}]}
-], "claims": [{"id": "c1", "desc": "健力Dr.Dirt吸排一体吸水机新产品了解任务", "std": "提交《新产品了解反馈报告》", "deadline": "2026-08-22", "claimDate": "2026-07-24", "status": "doing", "claimer": "张YQ（宝地广场）", "delivery": "已认领，因项目环境低洼区域较多需防汛应急", "note": "鲍YM提供线索"}, {"id": "c2", "desc": "垃圾袋120×140对比测试：航哲（现用）VS 凯荔（新品牌）", "std": "承重测试、抗穿刺、厚度/手感、密封性、实际使用体验对比", "deadline": "2026-08-24", "claimDate": "2026-07-22", "status": "doing", "claimer": "张YQ（宝地广场）", "delivery": "已认领，进行中", "note": "曹MZ发布"}, {"id": "c3", "desc": "捷尼士&皓天两款清洁剂对比测试", "std": "按标准稀释比例配置，对比去污力、残留、气味等指标", "deadline": "2026-07-30", "claimDate": "2026-06-17", "status": "done", "claimer": "李H", "delivery": "已提交测试文档（皓天、捷尼士全能水测试.doc）", "note": "7/24提交"}, {"id": "c4", "desc": "新产品测试持续跟进", "std": "应用跟进，结果及时反馈", "deadline": "2026-12-31", "claimDate": "2026-06-01", "status": "doing", "claimer": "余XH", "delivery": "7月已提交1688产品测试.xlsx和新品测试对比.xlsx；新产品库选品测试已完成8款产品，待评审", "note": "待反馈（1次/月）"}, {"id": "c5", "desc": "金鹰工具的测试与推广", "std": "找到符合需求的工具，推广到项目落地使用", "deadline": "2026-12-31", "claimDate": "2026-04-21", "status": "doing", "claimer": "余XH", "delivery": "测试已完成14款工具，待评审和推广", "note": "待反馈（1次/月）"}], "summary": {"total": 11, "done": 6, "doing": 5}},
-    "2026-08": {"label": "8月", "updateTime": "2026-09-14", "works": [{"category": "新产品/技术/方法测试", "catKey": "tech", "items": [{"desc": "高压水枪车使用方法整理（7月现场测试的延续交付）", "result": "已提交《高压水枪车的使用方法.doc》", "status": "done", "person": "李H", "time": "8月", "ref": "a9", "note": "群消息8/4"}]}], "claims": [{"id": "c1", "desc": "健力Dr.Dirt吸排一体吸水机新产品了解任务", "std": "提交《新产品了解反馈报告》：产品核心功能总结、与现有防汛方式对比、项目点适用性评估、采购建议", "deadline": "2026-08-22", "claimDate": "2026-07-24", "status": "doing", "claimer": "张YQ（宝地广场）", "delivery": "", "note": "鲍YM提供线索"}, {"id": "c2", "desc": "垃圾袋120×140对比测试：航哲（现用）VS 凯荔（新品牌）", "std": "承重、抗穿刺、厚度/手感、密封性、实际使用体验对比；行政部邮寄凯荔样品200只/人", "deadline": "2026-08-24", "claimDate": "2026-07-22", "status": "doing", "claimer": "张YQ（宝地广场）", "delivery": "", "note": ""}], "summary": {"total": 3, "done": 1, "doing": 2}}
-},
-  bonus: {"2026": {"year": "2026", "title": "品质部2026年度奖金发放规则 V1.0", "totalPackage": "5万元", "effectiveDate": "2026年1月1日", "categories": [{"name": "研发奖", "weight": "60%", "amount": "3万元", "color": "dev", "children": [{"name": "技术支持", "weight": "60%", "amount": "1.8万元（占研发奖）", "subChildren": [{"name": "跨项目帮扶-被动支援", "weight": "50%", "amount": "1.2万元", "desc": "其他部门/项目点有技术问题，给予支持并解决"}, {"name": "跨项目帮扶-主动支持", "weight": "30%", "amount": "0.72万元", "desc": "主动发现其他项目问题，给出解决方法并被采纳"}, {"name": "跨项目帮扶-客户增加需求", "weight": "20%", "amount": "0.48万元", "desc": "客户要求品质部协助解决，并得到客户认可"}]}, {"name": "本项目优化提升", "weight": "20%", "amount": "0.6万元", "desc": "所在项目品质优化与提升"}]}, {"name": "研发奖（新产品/新技术引进）", "weight": "20%", "amount": "1万元", "color": "newtech", "desc": "成功引入新技术、新工具、新方法并被公司采纳"}, {"name": "配合奖", "weight": "20%", "amount": "1万元", "color": "support", "desc": "配合部门各项工作推进，暂未能取得当年可量化成果"}, {"name": "效果奖", "weight": "额外追加", "amount": "上不封顶", "color": "effect", "desc": "产生重大经济效益（≥3万元），视情况额外追加，不计在5万元总包内"}], "rules": ["每季度第一个月申报上一季度的《季度工作内容》", "工作内容中无法量化的成果，由部门协助完成量化", "年度工作内容由四个季度工作内容汇总而成", "第四季度申报内容占比不超过年度工作的50%", "结果导向，数据优先：以现场结果或客户反馈为依据", "一事一报：同一事项只申报一次，不得重复申报", "公平公正公开：评选规则、申报材料、评审结果均会在部门内公示"], "penalty": [{"desc": "伪造相关数据或证明材料", "action": "取消评选资格+通报人事"}, {"desc": "虚构工作事项或夸大成果", "action": "追回所有奖励"}, {"desc": "重复申报未如实说明", "action": "取消资格"}, {"desc": "隐瞒不利信息影响评审", "action": "追究责任"}]}}
+    "2026-07": {
+      "label": "7月",
+      "updateTime": "2026-08-05",
+      "works": [
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "1688产品测试汇总及新品测试对比",
+              "result": "已提交1688产品测试.xlsx和新品测试对比.xlsx",
+              "status": "done",
+              "person": "余XH",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/31"
+            },
+            {
+              "desc": "高压水枪车测试",
+              "result": "测试视频已分享至群，待评审",
+              "status": "done",
+              "person": "李H",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/20"
+            },
+            {
+              "desc": "皓天、捷尼士两款全能水清洁剂对比测试",
+              "result": "已提交测试文档（皓天、捷尼士全能水测试.doc）",
+              "status": "done",
+              "person": "李H",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/24"
+            }
+          ]
+        },
+        {
+          "category": "本项目优化提升",
+          "catKey": "optim",
+          "items": [
+            {
+              "desc": "品质看板系统建设：集成月度汇总、OGSMT拆解、奖金规则，持续优化功能",
+              "result": "看板系统已上线，功能持续迭代",
+              "status": "doing",
+              "person": "曹MZ",
+              "time": "7月",
+              "ref": "s7",
+              "note": "群消息7/8"
+            }
+          ]
+        },
+        {
+          "category": "好方法分享",
+          "catKey": "help",
+          "items": [
+            {
+              "desc": "除甲醛办法",
+              "result": "已提交除甲醛的办法.doc",
+              "status": "done",
+              "person": "李H",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/27"
+            },
+            {
+              "desc": "刷盘穿线操作方法",
+              "result": "已提交刷盘穿线.doc",
+              "status": "done",
+              "person": "李H",
+              "time": "7月",
+              "ref": "a9",
+              "note": "群消息7/31"
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "健力Dr.Dirt吸排一体吸水机新产品了解任务",
+          "std": "提交《新产品了解反馈报告》",
+          "deadline": "2026-08-22",
+          "claimDate": "2026-07-24",
+          "status": "doing",
+          "claimer": "张YQ（宝地广场）",
+          "delivery": "已认领，因项目环境低洼区域较多需防汛应急",
+          "note": "鲍YM提供线索"
+        },
+        {
+          "id": "c2",
+          "desc": "垃圾袋120×140对比测试：航哲（现用）VS 凯荔（新品牌）",
+          "std": "承重测试、抗穿刺、厚度/手感、密封性、实际使用体验对比",
+          "deadline": "2026-08-24",
+          "claimDate": "2026-07-22",
+          "status": "doing",
+          "claimer": "张YQ（宝地广场）",
+          "delivery": "已认领，进行中",
+          "note": "曹MZ发布"
+        },
+        {
+          "id": "c3",
+          "desc": "捷尼士&皓天两款清洁剂对比测试",
+          "std": "按标准稀释比例配置，对比去污力、残留、气味等指标",
+          "deadline": "2026-07-30",
+          "claimDate": "2026-06-17",
+          "status": "done",
+          "claimer": "李H",
+          "delivery": "已提交测试文档（皓天、捷尼士全能水测试.doc）",
+          "note": "7/24提交"
+        },
+        {
+          "id": "c4",
+          "desc": "新产品测试持续跟进",
+          "std": "应用跟进，结果及时反馈",
+          "deadline": "2026-12-31",
+          "claimDate": "2026-06-01",
+          "status": "doing",
+          "claimer": "余XH",
+          "delivery": "7月已提交1688产品测试.xlsx和新品测试对比.xlsx；新产品库选品测试已完成8款产品，待评审",
+          "note": "待反馈（1次/月）"
+        },
+        {
+          "id": "c5",
+          "desc": "金鹰工具的测试与推广",
+          "std": "找到符合需求的工具，推广到项目落地使用",
+          "deadline": "2026-12-31",
+          "claimDate": "2026-04-21",
+          "status": "doing",
+          "claimer": "余XH",
+          "delivery": "测试已完成14款工具，待评审和推广",
+          "note": "待反馈（1次/月）"
+        }
+      ],
+      "summary": {
+        "total": 11,
+        "done": 6,
+        "doing": 5
+      }
+    },
+    "2026-08": {
+      "label": "8月",
+      "updateTime": "2026-09-14",
+      "works": [
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "高压水枪车使用方法整理（7月现场测试的延续交付）",
+              "result": "已提交《高压水枪车的使用方法.doc》",
+              "status": "done",
+              "person": "李H",
+              "time": "8月",
+              "ref": "a9",
+              "note": "群消息8/4"
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "健力Dr.Dirt吸排一体吸水机新产品了解任务",
+          "std": "提交《新产品了解反馈报告》：产品核心功能总结、与现有防汛方式对比、项目点适用性评估、采购建议",
+          "deadline": "2026-08-22",
+          "claimDate": "2026-07-24",
+          "status": "doing",
+          "claimer": "张YQ（宝地广场）",
+          "delivery": "",
+          "note": "鲍YM提供线索"
+        },
+        {
+          "id": "c2",
+          "desc": "垃圾袋120×140对比测试：航哲（现用）VS 凯荔（新品牌）",
+          "std": "承重、抗穿刺、厚度/手感、密封性、实际使用体验对比；行政部邮寄凯荔样品200只/人",
+          "deadline": "2026-08-24",
+          "claimDate": "2026-07-22",
+          "status": "doing",
+          "claimer": "张YQ（宝地广场）",
+          "delivery": "",
+          "note": ""
+        }
+      ],
+      "summary": {
+        "total": 3,
+        "done": 1,
+        "doing": 2
+      }
+    },
+    "2026-09": {
+      "label": "9月",
+      "updateTime": "2026-10-09",
+      "works": [
+        {
+          "category": "新产品/技术/方法测试",
+          "catKey": "tech",
+          "items": [
+            {
+              "desc": "发布《品质部-产品测试评估模板V1.0》：规定测试前（基本信息/环境）、测试中（评分/记录）、测试后（结论）填写节点及提交评审归档要求，绑定群快捷栏《交付文件模板》，历史未按模板交付需补报",
+              "result": "模板已发布并绑定群快捷栏，历史补报要求同步发出",
+              "status": "done",
+              "person": "曹MZ",
+              "time": "9月",
+              "ref": "a9",
+              "note": "群消息9/20"
+            },
+            {
+              "desc": "协同行政部《保洁物品改进试用明细》12项清洁替代产品对比测试：对接测试需求、发布认领通知（群内接龙）、答疑并确认认领",
+              "result": "测试任务已发布并完成认领分配；样品10/14前寄达项目点，测试结果11/5前交付，行政部推广建议11/30前反馈",
+              "status": "doing",
+              "person": "曹MZ/李H/任杰（行政部）",
+              "time": "9月",
+              "ref": "a8/a9",
+              "note": "群消息9/17、9/24、9/29"
+            }
+          ]
+        },
+        {
+          "category": "技术支持",
+          "catKey": "support",
+          "items": [
+            {
+              "desc": "互联宝地《保洁工作实操室》建设：方案通过物业初审，完成房间布局改造、清洁药剂/工具样品制作、产品名称与适用范围铭牌制作，向物业陆总汇报",
+              "result": "实操室首次交付完成，次日开展首次验收",
+              "status": "done",
+              "person": "刘丽",
+              "time": "9月",
+              "ref": "",
+              "note": "群消息9/18、9/27"
+            },
+            {
+              "desc": "宝地广场智慧清洁数据更新机制建立：每周更新一次数据",
+              "result": "每周更新机制建立",
+              "status": "doing",
+              "person": "曹MZ/鲍YM",
+              "time": "9月",
+              "ref": "",
+              "note": "群消息9/18"
+            }
+          ]
+        },
+        {
+          "category": "本项目优化提升",
+          "catKey": "optim",
+          "items": [
+            {
+              "desc": "两库建设_材质库污渍库归类：按张经理提供的14个项目点材质污渍材料按总分结构分类汇总，按鲍总审核意见整改（增加\"未覆盖的项目点\"列、清空材质描述、补充对应照片）",
+              "result": "发布V2基础版及V2含照片版两稿；部分材质（如玻璃仅7个项目点有）覆盖存疑待核实，材质描述由鲍总统一完成",
+              "status": "doing",
+              "person": "曹MZ/张Z（材料）/鲍YM（审核）",
+              "time": "9月",
+              "ref": "a1~a19",
+              "note": "群消息9/1"
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "desc": "清洁产品对比测试（12项保洁物品改进对比测试，行政部筛选：洁厕剂、全能水、测试纸等清洁替代产品）",
+          "std": "按《品质部-产品测试评估模板V1.0》填写测试资料并提交评审，评审通过后作为引进/准入依据",
+          "deadline": "2026-11-05",
+          "claimDate": "2026-09-29",
+          "status": "doing",
+          "claimer": "李H（认领全部12项）",
+          "delivery": "群内接龙认领（截止9/30 17:00，无人认领项由部门另行安排）；样品10/9前由行政部寄达项目点",
+          "note": "行政部任杰提供样品及清单"
+        },
+        {
+          "id": "c2",
+          "desc": "新产品测试持续跟进（每月反馈1次）",
+          "std": "应用跟进，结果及时反馈",
+          "deadline": "2026-12-31",
+          "claimDate": "2026-06-01",
+          "status": "doing",
+          "claimer": "余XH",
+          "delivery": "持续跟进中，9月群内无新增反馈",
+          "note": "待反馈（1次/月）"
+        },
+        {
+          "id": "c3",
+          "desc": "金鹰工具的测试与推广",
+          "std": "找到符合需求的工具，推广到项目落地使用",
+          "deadline": "2026-12-31",
+          "claimDate": "2026-04-21",
+          "status": "doing",
+          "claimer": "余XH",
+          "delivery": "工具已发放试用，持续跟进中，9月群内无新增反馈",
+          "note": "待反馈（1次/月）"
+        }
+      ],
+      "summary": {
+        "total": 8,
+        "done": 2,
+        "doing": 6
+      }
+    }
+  },
+  "bonus": {
+    "2026": {
+      "year": "2026",
+      "title": "品质部2026年度奖金发放规则 V1.0",
+      "totalPackage": "5万元",
+      "effectiveDate": "2026年1月1日",
+      "categories": [
+        {
+          "name": "研发奖",
+          "weight": "60%",
+          "amount": "3万元",
+          "color": "dev",
+          "children": [
+            {
+              "name": "技术支持",
+              "weight": "60%",
+              "amount": "1.8万元（占研发奖）",
+              "subChildren": [
+                {
+                  "name": "跨项目帮扶-被动支援",
+                  "weight": "50%",
+                  "amount": "1.2万元",
+                  "desc": "其他部门/项目点有技术问题，给予支持并解决"
+                },
+                {
+                  "name": "跨项目帮扶-主动支持",
+                  "weight": "30%",
+                  "amount": "0.72万元",
+                  "desc": "主动发现其他项目问题，给出解决方法并被采纳"
+                },
+                {
+                  "name": "跨项目帮扶-客户增加需求",
+                  "weight": "20%",
+                  "amount": "0.48万元",
+                  "desc": "客户要求品质部协助解决，并得到客户认可"
+                }
+              ]
+            },
+            {
+              "name": "本项目优化提升",
+              "weight": "20%",
+              "amount": "0.6万元",
+              "desc": "所在项目品质优化与提升"
+            }
+          ]
+        },
+        {
+          "name": "研发奖（新产品/新技术引进）",
+          "weight": "20%",
+          "amount": "1万元",
+          "color": "newtech",
+          "desc": "成功引入新技术、新工具、新方法并被公司采纳"
+        },
+        {
+          "name": "配合奖",
+          "weight": "20%",
+          "amount": "1万元",
+          "color": "support",
+          "desc": "配合部门各项工作推进，暂未能取得当年可量化成果"
+        },
+        {
+          "name": "效果奖",
+          "weight": "额外追加",
+          "amount": "上不封顶",
+          "color": "effect",
+          "desc": "产生重大经济效益（≥3万元），视情况额外追加，不计在5万元总包内"
+        }
+      ],
+      "rules": [
+        "每季度第一个月申报上一季度的《季度工作内容》",
+        "工作内容中无法量化的成果，由部门协助完成量化",
+        "年度工作内容由四个季度工作内容汇总而成",
+        "第四季度申报内容占比不超过年度工作的50%",
+        "结果导向，数据优先：以现场结果或客户反馈为依据",
+        "一事一报：同一事项只申报一次，不得重复申报",
+        "公平公正公开：评选规则、申报材料、评审结果均会在部门内公示"
+      ],
+      "penalty": [
+        {
+          "desc": "伪造相关数据或证明材料",
+          "action": "取消评选资格+通报人事"
+        },
+        {
+          "desc": "虚构工作事项或夸大成果",
+          "action": "追回所有奖励"
+        },
+        {
+          "desc": "重复申报未如实说明",
+          "action": "取消资格"
+        },
+        {
+          "desc": "隐瞒不利信息影响评审",
+          "action": "追究责任"
+        }
+      ]
+    }
+  },
+  "lastUpdated": "2026-10-09T17:05:00+08:00",
+  "updatedBy": "Schumann"
 };
 
 
