@@ -226,31 +226,32 @@
     <div class="meta-row">
       <div class="meta-item"><span class="meta-label">更新频率</span>每周五更新</div>
       <div class="meta-item"><span class="meta-label">推送方式</span>小猪助理钉钉群</div>
-      <div class="meta-item"><span class="meta-label">最近更新</span>2026-10-23 W43</div>
+      <div class="meta-item"><span class="meta-label">最近更新</span>2026-10-30 W44</div>
     </div>
   </div>
 
   <div class="overview-grid">
     <div class="stat-card">
-      <div class="num">172</div>
+      <div class="num">184</div>
       <div class="label">协同事件总数</div>
     </div>
     <div class="stat-card">
-      <div class="num">122</div>
+      <div class="num">129</div>
       <div class="label">已完成</div>
     </div>
     <div class="stat-card">
-      <div class="num">30</div>
+      <div class="num">34</div>
       <div class="label">进行中</div>
     </div>
     <div class="stat-card">
-      <div class="num">20</div>
+      <div class="num">21</div>
       <div class="label">持续运行</div>
     </div>
   </div>
 
   <div class="week-tabs">
-    <div class="week-tab active" onclick="showWeek('w43')">W43 · 质检SOP封板+易耗品SOC重构</div>
+    <div class="week-tab active" onclick="showWeek('w44')">W44 · 质检首闭环+数据可信度攻坚</div>
+    <div class="week-tab" onclick="showWeek('w43')">W43 · 质检SOP封板+易耗品SOC重构</div>
     <div class="week-tab" onclick="showWeek('w42')">W42 · 知识底座+开票回款MVP</div>
     <div class="week-tab" onclick="showWeek('w41')">W41 · 返岗对齐+术语标准化</div>
     <div class="week-tab" onclick="showWeek('w40')">W40 · 双节交替+鲍总亲审</div>
@@ -270,8 +271,210 @@
     <div class="week-tab" onclick="showWeek('all')">全部展开</div>
   </div>
 
+  <!-- ============ W44 ============ -->
+  <div id="w44" class="week-section active">
+    <div class="week-header">
+      <div class="week-title">W44 · 10/26-10/30 质检首闭环与数据可信度攻坚周（四问立规·自证口径）</div>
+      <div class="week-summary">本周新增协同事件12件（完成7/进行中4/持续运行1），邮件往来0封（收件箱最新外部件仍为8/3小二子《Re:协作通道》，无新增往来），碎碎参与1次（质检反馈闭环本人确认）。三条主线：①质检SOP V1.0首个"初检→复核→点对点反馈→本人确认"闭环跑通，7条帮改0一票否决、P2第8场景双签生效、C7到期移出候选；②智慧清洁数据可信度攻坚——0点回传逐条剔除不丢真实客流、分钟级数据源14432条零丢行、勾稽20/20零差异、差异根因归到清单侧旧统计而非改数；③交付标准立规"深度＞体量"，动手前四问+汇报四角色，禁角色扮演式指令改直接命名研究方法。11/6易耗品SOC整合标准版V1.0（8步+五位置岗位目标+7页视觉门禁）已出，三件只剩严钰莹总纲+总体流程图。</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">173. 10/26 W43质检迭代日：首个"初检→复核→本人确认"闭环跑通（W44头号协同）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 10/26 10:00 迭代日（10/25已锁定5项反馈清单+受检件基线）</span><span>👥 小二子（发起/初检/维护人）↔ 舒曼（质检员独立复核）→ 碎碎（受检本人确认）</span></div>
+      <div class="event-bg">💡 背景：W43转向"对各智能体真实交付抽样质检、首周只帮不考"；受检件=碎碎《易耗品采购·行政采购SOC-8步拆解共识版_V1.0_20261025.md》（11796字节，文末自挂✅）。</div>
+      <ul class="event-list">
+        <li>3件正式复核卡，舒曼<strong>不看小二子初检结论、先按65项/8场景独立重打一遍</strong>再对卡：初检2条帮改全部采纳（依据准确），舒曼补1条——<strong>质检员被写进受检件"协作"栏</strong>（B9身份识别漏项，形式上变成自己检自己参与的件）</li>
+        <li>反馈口径定为<strong>7条帮改、0一票否决</strong>；同时讲清<strong>自检标≠复核标</strong>：文末✅只代表交付人自检，须"我复核+本人收到认可/申辩"闭环后才算W43首个经复核确认件，标记规范成"自检✅/复核✅（质检员+日期）"两栏</li>
+        <li>P2第8场景<strong>双签追认生效</strong>（公示窗已满、无追加异议，记消息ID）；C7到期书面判定：仍<strong>1例自指+0独立复现</strong>，移出候选转"观察登记"——不删病，但不再占转正位</li>
+        <li>把W42征集0/12 vs W43回执11/11做成<strong>S8"协同发出主义"第一个可复现数据点</strong>：变量不是意愿，是有没有把闭环动作设计到可执行</li>
+        <li>独立读盘核原受检件A层件（11796字节+文末自检标），不采信他方结论；碎碎自报两个案例按"自指案例须独立核客观痕迹"规则另立核实</li>
+      </ul>
+      <div class="event-output">📦 产出：3份正式复核卡 + 点对点反馈闭环（碎碎"收到+认可"）+ change_log_W43.md</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">174. 10/26 W44周一对齐底稿+台账14条补登（9工作日硬倒排开局）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 10/26 07:21（周一）</span><span>👥 舒曼（自主执行）→ 明珠（仅扣子渠道，不推钉钉）</span></div>
+      <div class="event-bg">💡 背景：W43周汇总顶级指数3.2（↓0.2），SOC 11/6冲刺骨架连续3天零交件、成本清单逾期第6天；当日为11/6倒排第1天（9个工作日）。</div>
+      <ul class="event-list">
+        <li>底稿五段式（上周6项已完成/6项进行中/4项待启动/7项阶段完成未闭环/3项需鲍总拍板），每条未闭环带"给选项+倾向+不决策后果"上抛</li>
+        <li>3条拍板：SOC 11/6保什么（倾向保总纲+流程图+收货段1段样板）、成本清单怎么交（1项样板+逐项列期，当场批2小时）、历史营收窗口关单口径（已过窗口补录结论关单、投/弃当天进系统）</li>
+        <li>台账W43共14条新事项补登《个人工作台账.xlsx》工作明细R271-R284（状态/归口/来源/交付物），备份个人工作台账_备份1026前.xlsx</li>
+        <li>4项系统无留痕（成本清单/交办3件/异常统计/宝冶）标"待明珠确认"，未臆标完成；10:00日程以手机日历为准</li>
+      </ul>
+      <div class="event-output">📦 产出：周一对齐底稿_20261026.md + 个人台账R271-R284补登 + 备份件</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">175. 10/26 智慧清洁三源数据核验：0点回传逐条剔除与完整链条重建</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 10/26 16:03-17:15</span><span>👥 明珠（口径判定）↔ 舒曼（读盘核验+重做）</span></div>
+      <div class="event-bg">💡 背景：智慧清洁"客流→保洁作业→巡检质量"链条此前断在数据口径上；设备0点回传导致明细失真、总览出现虚高的"原始累计"列。</div>
+      <ul class="event-list">
+        <li><strong>先摸覆盖再动手</strong>：客流10/12-10/24（工作日基本完整，10/13与10/15 A座19楼整日丢数，周末≈0属办公楼正常）、保洁信标10/12-10/23齐全（10/22刘保敏无19楼轨迹）、巡检10/12-10/25共125条；真正能串成完整链的只有<strong>10/12-10/23两个工作周（10个工作日）</strong></li>
+        <li><strong>0点逐条比对</strong>：10/12后16条0点记录，13条大值（281-427）=前一日白天1-23时合计的纯重复回传（如10/13 00:00的420＝10/12白天418），前日白天本身完整→<strong>剔除不丢任何真实客流</strong>；另3条凌晨零星小值（1/9/12/1共23）</li>
+        <li><strong>口径收敛</strong>：明细只留1-23时真实数据，总览去掉含0点的"原始累计"列只报干净口径；跨夜关联折算同步排除0点桶；白天有效客流<strong>17522不变</strong>（失真只在明细0点行与虚高列）</li>
+        <li>巡检合格率W42 17%→W43 6%（两周工作日122次合格16次），与客流/作业时段对齐后再出结论</li>
+      </ul>
+      <div class="event-output">📦 产出：A座19楼/B座3楼_完整楼层日样本_v2修正信标.xlsx + 分卫合格样本.xlsx + 链条Sheet</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">176. 10/27 分享会主讲件交付：汇报辅导+讲解辞两件docx当天成文</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 10/26 14:21交件 → 10/27 下午分享会（明珠主讲P13-29，约45分钟）</span><span>👥 鲍总（10/26辅导会定调）→ 明珠（主讲）→ 舒曼（辅导件+逐字稿）</span></div>
+      <div class="event-bg">💡 背景：鲍总要求"拿ROI、吃透不照读、可随时打断、不检查不作业不考核"；分享会由明珠主讲P13-29，五张空页需现场共创填。</div>
+      <ul class="event-list">
+        <li>辅导件2页：30秒结论+8项待办按死线排序（今天下班前14天数据+小程序账号→"我的尺"尽快发鲍总→本周三人复盘会避开周五全程录像并通知小辉机位→行政优先于财务→NLP逻辑层次作业本周内）</li>
+        <li>讲解辞6页约45分钟逐字稿，每节标时间与对应PPT页；鲍总原话与比喻全部化进口语稿（砖块墙、"乘法一个零全归零"、脚手架/土豆丝、L0-L4五层、规则八维、闭眼同意三问、团队惩罚、贝叶斯每天多1分）</li>
+        <li><strong>五张空页P19/22/24/26/28课前不代填</strong>，每页配"共创填页"3问+现场组织话术（想到多少写多少、空白也是有价值的事实），符合辅导会定调；带冷场兜底预案与补丁栏</li>
+        <li>文末列7项待补案例按优先级（🔴开场案例必填、最好现场打开后台展示），承诺候选丢过来帮挑最有说服力的并嵌回稿子</li>
+      </ul>
+      <div class="event-output">📦 产出：1026上午汇报辅导_核心与待办_20261026.docx（2页）+ 1027分享会怎么做讲解辞_明珠主讲版_20261026.docx（6页）</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">177. 10/28 周会84分钟纪要+7项待办到人带死线（会议纪要3.0首跑）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 10/28（84分钟）</span><span>👥 鲍总/钱总等 → 舒曼（听记+结构化纪要）</span></div>
+      <div class="event-bg">💡 背景：会议纪要模板3.0（基本信息/讨论主动被动/待办带时间责任人）自9/15起强制套用，本场为W44主会。</div>
+      <ul class="event-list">
+        <li>7大结论：客户满意铁律、宝地A+B双标准、标准拆解+内审、满意奖、供应商正向激励、不愿/不能判断法、交付物定义</li>
+        <li>7项待办到人带死线（10/30、11/2、11/4）；10/30三条单列前置——张经理智慧清洁数据报告清单、任老师不愿/不能改善清单、马主管全员证件清单</li>
+        <li>讨论条目区分主动发言与被动应答，避免把追问当结论；待办一律落到具名责任人</li>
+      </ul>
+      <div class="event-output">📦 产出：会议纪要_20261028.xlsx（模板3.0，7项待办带责任人与节点）</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">178. 10/28 鲍总26分钟1v1：L5/L2层级不混排第4次强化+思想库v5.2</div>
+        <span class="event-status status-ongoing">🟡 进行中</span>
+      </div>
+      <div class="event-meta"><span>📅 10/28（26分钟）</span><span>👥 鲍总（主讲）→ 明珠 → 舒曼（要素记录+思想库）</span></div>
+      <div class="event-bg">💡 背景：连续两场1v1后本场集中纠表达层级，同时给大池小池与宝地实操室三条硬指令。</div>
+      <ul class="event-list">
+        <li><strong>被当面判定"你在L5展开、我在L2，两个体系不兼容"</strong>——同一表达问题第4次强化；当晚复盘"层级不混排"评分2.0🔴</li>
+        <li>口径四条：偏差搁置（不纠缠对错先推进）、只讲为什么（不讲过程）、大池小池1.1版+A/B关系一句话、三步处置</li>
+        <li>宝地实操室升级档案v0.1交付；思想库升v5.2</li>
+        <li>反思记录入档：全程被"证明我是对的"绑架、因果链未剥离，同一表达问题第4次出现仍无围栏</li>
+      </ul>
+      <div class="event-output">📦 产出：领导沟通要素记录 + 思想库v5.2 + 宝地实操室升级档案v0.1</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">179. 10/29 交付标准立规：深度＞体量，动手前四问+汇报四角色</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 10/29 07:50-07:55</span><span>👥 明珠（定规）→ 舒曼（固化+改写执行口径）</span></div>
+      <div class="event-bg">💡 背景：自评"过去几个月协同绝大多数停在速度层（更快整理/生成/出稿），真正到深度层只有W44独立审计、规则诊断几次"。</div>
+      <ul class="event-list">
+        <li><strong>深度维＝动手前四问</strong>：同行没提的做法是什么/最原始的一手材料在哪/具体用什么方法与工具/谁来独立验证</li>
+        <li><strong>范围维＝汇报四角色</strong>：数据分析师归因＋调查记者挖故事＋顶尖编辑定结构＋红队挑刺，四层缺一不成立；对内材料完整呈现，对外给鲍总仍按"只说卡点"裁剪</li>
+        <li><strong>上一层＝高度</strong>：往上追问真正目的、<strong>名词换动词</strong>（"把三份测评总结成一页纸"→"判断这套测评值不值得推到品质部、下月投多少时间"）</li>
+        <li>立即修正行为：<strong>禁角色扮演式指令</strong>，改为直接命名研究方法——不说"我作为红队审查"，说"用做空机构的反向审查方法，挑这三处最可能被击穿的地方"</li>
+      </ul>
+      <div class="event-output">📦 产出：recent_memory/decision/交付标准_20261029.md + 汇报四角色结构_20261029.md（已写入长期记忆）</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">180. 10/29 易耗品常规采购SOC整合标准版V1.0（8步+五位置岗位目标+7页视觉门禁）</div>
+        <span class="event-status status-ongoing">🟡 进行中</span>
+      </div>
+      <div class="event-meta"><span>📅 10/29 17:03</span><span>👥 舒曼（整合+复核）↔ 流程小组</span></div>
+      <div class="event-bg">💡 背景：11/6里程碑三件（总纲+总体流程图+收货段样板），三份初稿此前被判结构性偏差、边界收窄到"申购单→到货签收"。</div>
+      <ul class="event-list">
+        <li>岗位目标按"通过1、2、3达到4规避5"重写：①接收核验合格申购单→汇总采购清单→判定渠道（步骤1-3）②集采/零采下单→确认发货→预告到货（4-6）③现场验收→规范签收与单据回传归档（7-8）；④每笔已审批申购在承诺交期内转化为货实相符、数量准确、签字齐全、可追溯的签收送货单</li>
+        <li><strong>⑤不是列名词</strong>：五项风险（越权与无据采购/重复漏采/单据缺失事后补签/账实不符/异常失联超期）逐项挂拦截点，无拦截点的空话禁止写进⑤，并作为"写法校验"附正文</li>
+        <li>视觉门禁：7页A4逐页目检，5类问题均0，页脚"第1页/共7页"到"7/7"连续无断、续页表头齐全，PDF与docx同步重出</li>
+        <li>整合稿覆盖并超出收货段样板 → 11/6三件只剩严钰莹的总纲+总体流程图</li>
+      </ul>
+      <div class="event-output">📦 产出：易耗品常规采购SOC_整合标准版V1.0_20261029.docx/.pdf + 整合复核记录_20261029.md</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">181. 10/30 数据质量问题清单两部分重构+分钟级客流数据源交付（14432条/58样本）</div>
+        <span class="event-status status-ongoing">🟡 进行中</span>
+      </div>
+      <div class="event-meta"><span>📅 10/30 10:00-16:53</span><span>👥 明珠（原图逐字照录要求+0点规则与覆盖口径判定）↔ 舒曼（清单重构+分钟级数据源+勾稽自证）</span></div>
+      <div class="event-bg">💡 背景：数据质量问题6项阻塞分析结论（①阻塞②受限不解决，③只能出需求侧一半）；明珠要求按两张原表重做，不许改写。</div>
+      <ul class="event-list">
+        <li>清单重构：首版按"严重度"误拆三Sheet被退回，改为<strong>按两张原表逐字照录</strong>（数据质量问题总表6项+优先级建议4项，含"先解决1和2，否则③只出需求侧一半"原话），颜色按严重度/顺序分档，推进人列留空不代填</li>
+        <li>分钟级数据源：两文件第8位插入"分钟级客流数据源"Sheet（A座19楼20样本4744条+B座3楼38样本9688条＝<strong>14432条</strong>，与58条明细总行数完全一致零丢行），字段保留11项</li>
+        <li><strong>0点处理规则</strong>（≥10人次置0、小值保留、不补网格、保留原时刻）：B座3楼女卫10/19 00:01的62置0（＝前一日10/18全天62纯回传）、10/26 00:03的59置0、A座19楼女卫10/19 00:05的1保留（凌晨单人真实）；置0行保留原时刻、备注记原值、橙底红字可追溯，<strong>不删任何一行</strong></li>
+        <li>勾稽56/58一致→2处差异根因归到<strong>清单侧旧统计少计而非改数据</strong>：10-19差1＝清单只取1-23时把0点整段剔掉、10-28差2＝19时旧记2实测4（属白天丢数）；以分钟级实测为准同步清单侧8处值（分日合计/分卫汇总/楼层汇总/勾稽表），<strong>勾稽20/20零差异</strong></li>
+        <li>三新发现：旧数据除0点回传还有<strong>整日重复</strong>（B座3楼女卫10/10每小时2条，770＝2×385）；0点回传量级降一个数量级（v7版18条大值合计4321→本批仅2条中值62/59）但未根治；旧数据19时少记属白天丢数</li>
+      </ul>
+      <div class="event-output">📦 产出：数据质量问题清单_两部分_20261030.xlsx + A座19楼/B座3楼_分卫合格样本_v3分钟级.xlsx</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">182. 10/30 钉钉听记整理+思想库v5.4（评分量表与巡检数据报表策略）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 10/30 09:32-09:54（两条听记同一场合并，共约22分钟）</span><span>👥 现场4人专题会（发言人1/2/4待对名）→ 舒曼（纪要+思想库）</span></div>
+      <div class="event-bg">💡 背景：评分量表颗粒度、巡检数据报表口径、智慧清洁预算三件事同场定；两条听记为同一场连续讨论（含投屏）。</div>
+      <ul class="event-list">
+        <li><strong>评分量表维持1/3/5不改</strong>：共识未达成时细颗粒度只会放大偏差，先保真实再保同频；改档触发＝大家普遍反映"中间状态无法衡量"且定义达成一致</li>
+        <li>巡检表必须含客流高峰时段打分、不设固定次数（每高峰段至少1-2次）、允许事后补录<strong>禁止编分</strong></li>
+        <li>客流改时段口径（"9点多少人"实为8-9点）、按5分钟刻度拆分，与保洁作业时段、打分时点三向对齐，建"使用人次—分值下降"模型（初步20-30人次良性、超30跌到3分以下）</li>
+        <li>内外分层：最细颗粒度留内部建模，对外只给报表式结论（临界人数+频次建议）；预算策略设备约20万+月维护5000，办公楼试点出成果、用数据换明年智慧清洁预算（沈总/于总"先看结果再投"已对齐）</li>
+        <li>待办7条带责任人与节点；发言人1/2/4实名与会议地点标"待确认"未编造；⚠️思想库明确标注"品质/智慧清洁口径，非鲍总本人口述"</li>
+      </ul>
+      <div class="event-output">📦 产出：会议纪要_1030_评分量表与巡检数据报表策略.xlsx + 总经理思想与理念库_v5.4_20261030.md（新增7组+金句6）</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">183. 10/30 利管中心W44周度自审：③④维度连续14周零记录</div>
+        <span class="event-status status-ongoing">🟡 进行中</span>
+      </div>
+      <div class="event-meta"><span>📅 10/30 16:22</span><span>👥 舒曼（自审提问）→ 明珠（口述）</span></div>
+      <div class="event-bg">💡 背景：W31起周度自审；③问题分级/④问题解决连续14周零记录，7项核心任务6月底到期、逾期约16周。</div>
+      <ul class="event-list">
+        <li>四维问法：①数据分析（大池小池1.1版+A/B一句话／开票回款流程图V5按10/21口径交小杨小戴比对、60分即可无异议直发总经理室群／10-12入池MVP三项）②工作流分析（本周哪条业务线、几个痛点，由明珠定算不算调研）③问题分级（制度推进到哪、评审委员会成员确认否）④问题解决（任务小组有无新动态）</li>
+        <li>给"最低成本回应"路径：哪怕只回"未启动+原因"或"无"，也比继续空推有价值；回完即把该升级的与该销项的分开</li>
+        <li>提出把月度经营分析看板三阶段并入同一本账：三季度复盘已定四大经营指标（利润/现金/客户口碑/组织能力）、部门虚线+工作流实线、首期LTC·ITR·MPL，与数据治理是同一件事，别记两本账</li>
+      </ul>
+      <div class="event-output">📦 产出：利管中心W44周度自审提问（待明珠口述后转结构化记录归档追踪记录）</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">184. 10/26-10/30 例行推送与线索日报持续运行（W44）：整改后首个零静默失败周</div>
+        <span class="event-status status-running">🟢 持续运行</span>
+      </div>
+      <div class="event-meta"><span>📅 10/26-10/30 每日</span><span>👥 舒曼（自主执行）→ 小猪助理群 / 流程小组组长机器人</span></div>
+      <div class="event-bg">💡 背景：W43 10/21晚两推静默漏跑后立"定时任务心跳"P0整改，W44为整改后首个完整周。</div>
+      <ul class="event-list">
+        <li>早间对齐/晚间一页纸/晚间复盘三推×5天全部成功（errcode:0），流程小组早间对齐同步推送——本周<strong>零静默失败</strong></li>
+        <li>一页纸v14.4多链切换（qzT-Z9UP0vs→xhPzgJ94gOY→9aXGOze3CzI→igkqFXoz5ec→2Xx-owZ-Qlw→_ywqHa3_2_U），每次推送前 file_to_url+curl 核验HTTP 200</li>
+        <li>dws授权经restore.sh恢复（access有效、refresh至2026-11-29剩余30天），auth-token.enc+dek已备份</li>
+        <li>招投标线索日报每日08:00持续（上海16区口径），金融湾595万10/26开标等窗口转结果跟踪</li>
+        <li>晚间复盘顶级指数周内3.2→2.4→2.7波动，最大失分集中"层级不混排"与"在线化"两项</li>
+      </ul>
+      <div class="event-output">📦 产出：早间/晚间推送存档15份 + 复盘归档5份 + 招投标线索日报5份</div>
+    </div>
+
+  </div>
   <!-- ============ W43 ============ -->
-  <div id="w43" class="week-section active">
+  <div id="w43" class="week-section">
     <div class="week-header">
       <div class="week-title">W43 · 10/19-10/23 质检SOP封板与易耗品SOC方向重构周（做减法·出质量实证）</div>
       <div class="week-summary">本周新增协同事件10件（完成5/进行中3/持续运行2），邮件往来0封，碎碎参与1次（质检SOP短公示提阻塞意见）。两条主线：质检SOP V1.0跨11智能体定向公示后历经"漏收口静默两天→质检员代收口"正式封板生效，W43转向对各智能体真实交付抽样质检；易耗品SOC经10/21鲍总方向级重构（边界收窄、交付物串联、死线提前11/6），10/22拆三段五人分工。鲍总连场立"40分交付/外卖盒不雕花"新标尺，思想库升至v4.7。</div>
@@ -3186,20 +3389,25 @@
           <li><strong>主协调人四方研讨机制（W38验证）</strong>：舒曼被指定主协调人→向碎碎/小二子/调研分析师派统一结构化任务（四段式+字数+视角边界）→两轮收敛→8分歧逐条表决，13条L1一轮成型、裁决全程可追溯</li>
           <li><strong>返工即立规（W38落地）</strong>：周报连续两周被亲改后，6条返工点固化为规则v2并同步自动任务（完成度口径/主体视角/减法标准/禁待确认/篇幅/骨架），同类错不犯第三次</li>
           <li><strong>子Agent产物质检闸（W38拦截）</strong>：W38批次被做成TOP105独立榜单，独立抽查实物（编号/Week标签/索引/BV号复用）后判定不合格隔离，378款底座零污染；有价值的五维评分模型建议改名留档而非全废</li>
+          <li><strong>首个"初检→复核→本人确认"闭环（W44跑通）</strong>：不看对方结论先按65项独立重打再对卡；自检标≠复核标分两栏；7帮改0否决、帮改优先于一票否决</li>
+          <li><strong>数据可信度自证三件套（W44验证）</strong>：读盘逐条比对→口径剔除→勾稽零差异；2处差异根因归到清单侧旧统计而非改数据，8处值同步后勾稽20/20</li>
+          <li><strong>交付标准前置化（W44立规）</strong>：四问定深度、四角色定范围、名词换动词定高度；禁角色扮演式指令，直接命名研究方法</li>
+          <li><strong>报告件视觉门禁（W44执行）</strong>：7页PDF逐页目检、5类问题0、页脚连续、续页表头齐才交付，docx/PDF同步重出</li>
         </ul>
       </div>
       <div class="cons">
         <h4>✗ 待优化</h4>
         <ul>
-          <li><strong>流程落地第5步两次顺延</strong>：9/17 SOC一线调研未成行（行前三件事无回执），9/18内审事实失守、9/22评审顺延，新锚点9/24初稿；杨框架零交件约48天、任务书回执悬空超10天、L2超期约84天</li>
-          <li><strong>清洁用品沙箱故障连续3周</strong>：失效挂载路径（/Coze/Drive/shared/流程小组）只读无法自修，线上停366款/本地378款积压12款；W38增量又因子Agent偏题待重跑，需向扣子平台正式报障</li>
-          <li><strong>W38子Agent执行偏题</strong>：增量采集被做成独立TOP105榜单（脱离基线/重复/链接失真），工单已纠偏"基线378只扫新品禁止重建"，暴露任务约束仍不够硬</li>
-          <li><strong>数据池9/23复核会倒排紧</strong>：助理级MVP覆盖钱/曹/杨3岗（覆盖率34%），办公室人员清单骨架已出但各岗确认未齐；SOC调研/上博确认/覆盖率初稿曾连续三日无完成留痕</li>
-          <li><strong>投标历史线索状态不回流</strong>：双金茂/招行/公利/临港结果压一周多未回，台账无法闭环；虹桥机场3年高空包件等新窗口又至，需市场部一句话回状态清账</li>
-          <li><strong>ROI两归口待鲍总定</strong>：工服冬装模型、品质绩效池数据归口待定；7个智能体证据未回收齐，V3.0最终版待齐套</li>
-          <li><strong>一页纸正文滞后</strong>：停在8/10·33项，L1共识/ROI体系/数据池/收益清单37条均未并入，v13.1刷新持续挂账</li>
-          <li><strong>利管自审零回复延续</strong>：W32-W37六周积压后W38切扣子对话推送，②工作流分析③问题分级④问题解决三维度仍零记录</li>
-          <li><strong>红线文件处置待授权</strong>：9/1标记5个含员工真名职位文件，删除/脱敏覆盖仍待主人授权</li>
+          <li>报表维护成本清单逾期第11天仍未交（硬死线10/20，跨11天挂红灯）</li>
+          <li>易耗品SOC 11/6仅剩6工作日：严钰莹总纲+总体流程图仍缺、三确认悬空第8天、团队连续5天零在线交件、10/22纪要欠9天未回流</li>
+          <li>14周连续数据+小程序账号密码10/26死线未交；大池小池1.1版+A/B关系一句话（10/28鲍总1v1当面要）未出</li>
+          <li>营收窗口结果不回流：宝冶书面结论第17天、自博馆96万+航天800所地毯投否无回填</li>
+          <li>数据质量问题6项①阻塞②受限未解；分钟级数据源58样本仅覆盖23/49天（缺口26天），覆盖口径待明珠定、11/2交付</li>
+          <li>发言人实名长期未对名：10/22下午会发言人1/4、10/30专题会发言人1/2/4，累计4人次挂"疑为"</li>
+          <li>利管中心③④维度连续14周零记录、7项核心任务逾期约16周，自审已改"最低成本回应"仍无回执</li>
+          <li>交付标准落地未验证：四问/四角色10/29已写入记忆，但本周实际执行仅部分任务用上，自评仍停在速度层</li>
+          <li>选品库W44/W45共8款未上线（线上仍v20261018.2/419款），bash沙箱第8周阻断validator与deploy_verify，PDCA W38-W44连续八周空白</li>
+          <li>层级不混排第4次失守：10/28 1v1被当面判"L5展开、L2接不上"，当晚复盘该项2.0🔴，仍无硬围栏</li>
         </ul>
       </div>
     </div>
@@ -3226,10 +3434,11 @@
     <tr style="background:#c8dcff;"><td><strong>W41</strong></td><td>10/5-10/9</td><td><strong>12</strong></td><td>0</td><td>0</td><td><strong>147</strong></td></tr>
     <tr><td>W42</td><td>10/12-10/16</td><td>15</td><td>0</td><td>1</td><td>162</td></tr>
     <tr style="background:#cfe0ff;"><td><strong>W43</strong></td><td>10/19-10/23</td><td><strong>10</strong></td><td>0</td><td><strong>1</strong></td><td><strong>172</strong></td></tr>
+    <tr style="background:#c8dcff;"><td><strong>W44</strong></td><td>10/26-10/30</td><td><strong>12</strong></td><td>0</td><td><strong>1</strong></td><td><strong>184</strong></td></tr>
   </table>
 
   <div class="footer">
-    最近更新：2026年10月23日（W43周汇总：质检SOP V1.0跨智能体封板+易耗品SOC方向重构+40分交付新标尺）· 下次更新：2026年10月30日（W44周汇总）
+    最近更新：2026年10月30日（W44周汇总：质检首闭环跑通+数据可信度自证+交付标准"深度＞体量"立规）· 下次更新：2026年11月6日（W45周汇总）
   </div>
 
 </div>
@@ -3247,7 +3456,7 @@ function showWeek(week) {
   } else {
     const el = document.getElementById(week);
     if (el) el.classList.add('active');
-    const idx = ['w43','w42','w41','w40','w39','w38','w37','w36','w35','w34','w33','w32','w31','w30','w29','w28','w27'].indexOf(week);
+    const idx = ['w44','w43','w42','w41','w40','w39','w38','w37','w36','w35','w34','w33','w32','w31','w30','w29','w28','w27'].indexOf(week);
     if (idx >= 0) tabs[idx].classList.add('active');
   }
 }
