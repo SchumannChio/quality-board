@@ -407,7 +407,7 @@ const STATUS_KEY_MAP = { 'todo': 0, 'doing': 1, 'done': 2, 'ref': 3, 'pause': 4 
 
 // ==================== DEFAULT DATA ====================
 const DEFAULT_DATA = {
-  "currentMonth": "2026-09",
+  "currentMonth": "2026-10",
   "ogsmt": [
     {
       "id": "big1",
@@ -1152,6 +1152,17 @@ const DEFAULT_DATA = {
         "done": 1,
         "doing": 6
       }
+    },
+    "2026-10": {
+      "label": "10月",
+      "updateTime": "2026-11-20",
+      "works": [],
+      "claims": [],
+      "summary": {
+        "total": 0,
+        "done": 0,
+        "doing": 0
+      }
     }
   },
   "bonus": {
@@ -1251,7 +1262,7 @@ const DEFAULT_DATA = {
       ]
     }
   },
-  "lastUpdated": "2026-10-13T09:20:00+08:00",
+  "lastUpdated": "2026-11-20T15:20:00+08:00",
   "updatedBy": "Schumann"
 };
 
@@ -1806,7 +1817,7 @@ function renderMonthly(d) {
   // Hero section with key stats
   html += `<div class="hero hero-green">
     <div class="h-label">${d.label}工作盘点</div>
-    <div class="h-sub" style="margin-top:8px">共开展 ${allItems} 项工作 · ${allDone} 项有明确进展 · ${allDoing} 项持续推进</div>
+    <div class="h-sub" style="margin-top:8px">${allItems ? `共开展 ${allItems} 项工作 · ${allDone} 项有明确进展 · ${allDoing} 项持续推进` : '本月暂无新增工作事项'}</div>
     <div class="hero-stats c3">
       <div class="hs"><div class="num">${allItems}</div><div class="lbl">开展事项</div></div>
       <div class="hs"><div class="num" style="color:#7dffb3">${allDone}</div><div class="lbl">有进展</div></div>
@@ -1831,6 +1842,7 @@ function renderMonthly(d) {
   }
   
   // Work type distribution bar
+  if (catStats.length) {
   html += `<div class="card"><div class="card-body">
     <div style="font-size:14px;font-weight:600;margin-bottom:10px">工作类型分布</div>`;
   catStats.forEach(cat => {
@@ -1846,6 +1858,15 @@ function renderMonthly(d) {
     </div>`;
   });
   html += `</div></div>`;
+  }
+  
+  // Placeholder card when month has no items
+  if (allItems === 0) {
+    html += `<div class="card"><div class="card-body" style="text-align:center;padding:36px 20px">
+      <div style="font-size:15px;font-weight:600;color:var(--text-sec);margin-bottom:8px">${d.label}暂无新进展</div>
+      <div style="font-size:12px;color:var(--gray-500);line-height:1.8">本月未记录新增工作事项<br>待有实质进展后更新</div>
+    </div></div>`;
+  }
   
   // Category cards with items
   d.works.forEach((cat, catIdx) => {

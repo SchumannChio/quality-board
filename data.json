@@ -1,5 +1,5 @@
 {
-  "currentMonth": "2026-09",
+  "currentMonth": "2026-10",
   "ogsmt": [
     {
       "id": "big1",
@@ -744,6 +744,17 @@
         "done": 1,
         "doing": 6
       }
+    },
+    "2026-10": {
+      "label": "10月",
+      "updateTime": "2026-11-20",
+      "works": [],
+      "claims": [],
+      "summary": {
+        "total": 0,
+        "done": 0,
+        "doing": 0
+      }
     }
   },
   "bonus": {
@@ -843,6 +854,6 @@
       ]
     }
   },
-  "lastUpdated": "2026-10-13T09:20:00+08:00",
+  "lastUpdated": "2026-11-20T15:20:00+08:00",
   "updatedBy": "Schumann"
 }
