@@ -226,21 +226,21 @@
     <div class="meta-row">
       <div class="meta-item"><span class="meta-label">更新频率</span>每周五更新</div>
       <div class="meta-item"><span class="meta-label">推送方式</span>小猪助理钉钉群</div>
-      <div class="meta-item"><span class="meta-label">最近更新</span>2026-11-13 W46</div>
+      <div class="meta-item"><span class="meta-label">最近更新</span>2026-11-20 W47</div>
     </div>
   </div>
 
   <div class="overview-grid">
     <div class="stat-card">
-      <div class="num">209</div>
+      <div class="num">220</div>
       <div class="label">协同事件总数</div>
     </div>
     <div class="stat-card">
-      <div class="num">144</div>
+      <div class="num">153</div>
       <div class="label">已完成</div>
     </div>
     <div class="stat-card">
-      <div class="num">41</div>
+      <div class="num">43</div>
       <div class="label">进行中</div>
     </div>
     <div class="stat-card">
@@ -250,7 +250,8 @@
   </div>
 
   <div class="week-tabs">
-    <div class="week-tab active" onclick="showWeek('w46')">W46 · 标准升维+协同面收窄</div>
+    <div class="week-tab active" onclick="showWeek('w47')">W47 · 通道自愈+口径收口</div>
+    <div class="week-tab" onclick="showWeek('w46')">W46 · 标准升维+协同面收窄</div>
     <div class="week-tab" onclick="showWeek('w45')">W45 · 反向质检+协同机制纠偏</div>
     <div class="week-tab" onclick="showWeek('w44')">W44 · 质检首闭环+数据可信度攻坚</div>
     <div class="week-tab" onclick="showWeek('w43')">W43 · 质检SOP封板+易耗品SOC重构</div>
@@ -273,8 +274,193 @@
     <div class="week-tab" onclick="showWeek('all')">全部展开</div>
   </div>
 
+  <!-- ============ W47 ============ -->
+  <div id="w47" class="week-section active">
+    <div class="week-header">
+      <div class="week-title">W47 · 11/16-11/20 通道自愈与口径收口周（沙箱11周故障恢复·推送不过滤立规·三处口径统一）</div>
+      <div class="week-summary">本周新增协同事件11件（完成9/进行中2/持续运行0）。三条主线：①<strong>通道自愈</strong>——沙箱连续11周（W38-W48）故障于11/20 09:29恢复，dws token 自动续期机制实测确认，6个定时任务断线风险排除；②<strong>推送立规</strong>——明珠明确「结构化不代表要过滤事项」，每日卡片 v1.x→v2.0 重构为57项零过滤，推送铁律写入记忆；③<strong>口径收口</strong>——清洁用品三处版本（443/W47、452/W48、401/W41）统一为452/W48并补推 GitHub Pages 共7期51款，三处日程缺陷同批修正。未闭环：钉钉机器人模板待明珠上线（7个全部400104）、品质看板10/11月数据源待补。</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">210. 11/16-11/19 六天日报连续判读（W46新口径落地验证）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/16-11/19</span><span>👥 舒曼（自主执行）→ 明珠（扣子渠道）</span></div>
+      <div class="event-bg">💡 背景：W46 交付标准由「产物」升到「理解」，日报需连续验证新口径是否真的落地，而非文件变厚。</div>
+      <ul class="event-list">
+        <li>11/14-11/19 六天日报逐日判读，标记口径漂移项与重复项</li>
+        <li>发现日报生成端连续第4次截断，断点位置每天不同——判定为必然而非偶发，建议改附件制</li>
+        <li>日报内容与待办总表交叉核对，发现日报进展与主表状态不同步项</li>
+      </ul>
+      <div class="event-output">📦 产出：六日判读记录 + 截断必然性判定</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">211. 11/17-11/19 W46 MD 报告全量审计（核出三处行号错+期号冲突+目录错位）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/17-11/19</span><span>👥 舒曼（审计）→ 明珠</span></div>
+      <div class="event-bg">💡 背景：W46 协同报告 291KB 手写，历史存在引用错位，需在 W47 出报前把底稿核干净。</div>
+      <ul class="event-list">
+        <li><strong>三处行号错</strong>：第177／209行实为L181；「步骤8」根本不存在、实为L206；「第180行」实为L181；卡①状态行「第6行」实为L4——连带卡③D1是误触发、帮改项数也错</li>
+        <li><strong>期号冲突</strong>：报告标「第24期／2026W45」，但 20261108/ 已有正式产物「第23期／2026W45／427条／#424-#427」，第24期实为W46（#428-#435），同一ISO周出现两份正式报告且占用了W46期号</li>
+        <li><strong>保存目录错</strong>：产物落 20261106/，W45 正式产物在 20261108/，后续按目录取数必取错</li>
+        <li><strong>日期判断自相矛盾</strong>：同一文件第16行称 20261115（W46）是 shell 不可用时的周次外推、非真实采集日，但第5行写「W22–W46批次累积」、第73行写「澳汀SW55 A已在库#431」，一边引用W46编号一边否定W46真实性</li>
+      </ul>
+      <div class="event-output">📦 产出：W46 MD 审计结论（4类硬伤）+ W47 出报底稿修正清单</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">212. 11/19 SOC V3.0 五项卡点对照（交付前夜盘点 + 写手门槛硬规则）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/19</span><span>👥 舒曼 → 明珠</span></div>
+      <div class="event-bg">💡 背景：SOC 交付节点临近，写手资格标准由「绩效前10%」改为「知识考核达标」，门槛下调换覆盖率。</div>
+      <ul class="event-list">
+        <li>五项卡点逐项对照，标清哪项可交、哪项必须砍</li>
+        <li><strong>硬规则配套</strong>：考核不通过不给写手资格，无过渡期、无例外——否则写手数量上去、SOC质量下来，正好与鲍总「烂流程不写SOC」对着干</li>
+        <li>11/27 只做最小可用版：智能体搭建+一条辅助撰写链路跑通，术语清单/文件关系图/全量内部测试全部第二轮</li>
+      </ul>
+      <div class="event-output">📦 产出：SOC 卡点对照清单 + 写手门槛硬规则建议</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">213. 11/19 W48 增量采集失控判定（期号冲突+日期自相矛盾+目录错位三连）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/19</span><span>👥 舒曼（判定）→ 明珠</span></div>
+      <div class="event-bg">💡 背景：W48 采集产物与 W45/W46 期号、目录、日期三重对不上，需判定是执行偏差还是口径失控。</div>
+      <ul class="event-list">
+        <li>判定结论：同一 ISO 周出现两份正式报告且占用 W46 期号，属采集链路失控而非单次失误</li>
+        <li>三处硬伤逐条列证：期号冲突、日期判断自相矛盾、保存目录错</li>
+        <li>连带影响：后续按目录取数必取错版本，需先清目录再采</li>
+      </ul>
+      <div class="event-output">📦 产出：W48 失控判定结论（三处硬伤 + 取数风险提示）</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">214. 11/20 09:29 沙箱连续11周故障恢复（W38-W48 全智能体执行能力解冻）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/20 09:29</span><span>👥 系统级 → 全部智能体</span></div>
+      <div class="event-bg">💡 背景：自 W38 起沙箱 plan 校验持续失败，报错指向 <code>/Coze/Drive/shared/流程小组</code> 路径不存在，所有 bash 执行被拒，连续 11 周只能靠纯文本+记忆作业，无法实地核数。</div>
+      <ul class="event-list">
+        <li>11/20 09:29 <code>date</code> 恢复正常返回，<code>ls</code>／<code>find</code>／<code>grep</code>／<code>diff</code>／<code>gh</code>／<code>dws</code> 全部可用</li>
+        <li><strong>路径差异仍在</strong>：<code>/Coze/Drive/shared/流程小组</code> 仍 MISS，<code>/Coze/Drive/流程小组</code> OK；<code>/Coze/Drive/舒曼/所有对话/主对话</code> 与 <code>/app/data/所有对话/主对话</code> 双路径并存</li>
+        <li>能力解冻后第一批实测：dws token 续期、gh 认证、清洁用品三处口径、品质看板数据源、recent_memory 完整性</li>
+        <li><strong>顺带核出子Agent假回报</strong>：<code>recent_memory/todo/2026-11-20-曹明珠待办总表.md</code> 三次声称已建，实际不存在，导致每日卡片 fallback 到流程小组内容</li>
+      </ul>
+      <div class="event-output">📦 产出：沙箱可用性确认 + 路径差异清单 + 假回报实例</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">215. 11/20 dws token 自动续期机制实测确认（6个定时任务断线风险排除）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/20 10:13-10:16</span><span>👥 舒曼（实测）→ 明珠</span></div>
+      <div class="event-bg">💡 背景：08:15 签发的 access token 于 10:15:10 到期，6 个依赖 dws 的定时任务（早间对齐/晚间复盘/一页纸/听记/线索/数据资产月报）面临集体断线。</div>
+      <ul class="event-list">
+        <li><strong>10:13:06 自动续期到 12:13:06</strong>，无需人工干预</li>
+        <li><strong>10:16:08（过到期点 3 分钟）实测</strong>：<code>dws contact user me</code> 正常返回，<code>token_valid=true</code>，续期真实生效</li>
+        <li>机制确认：access 2小时 / refresh 30天（至 2026-12-20），无 <code>dws auth refresh</code> 子命令，<code>dws auth login</code> 自带自动续</li>
+        <li>顺带确认：<code>isAdmin: true</code>——明珠是钉钉管理员，机器人模板可由本人开通</li>
+      </ul>
+      <div class="event-output">📦 产出：token 续期机制结论 + 6 任务断线风险排除 + 管理员权限确认</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">216. 11/20 每日钉钉卡片 v2.0 重构（从「必做3件」到「57项零过滤」）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/20 10:12-10:20</span><span>👥 舒曼 → 明珠（钉钉私聊）</span></div>
+      <div class="event-bg">💡 背景：明珠当面纠正——「结构化不代表要给我过滤事项」。v1.x 把 31 项在办压成「必须做3件／可以缓3件」属判断越界。</div>
+      <ul class="event-list">
+        <li><strong>数据源换根</strong>：从 todo/project 目录碰运气找当日 md，改为直接解析一页纸 v17.0 HTML（权威源），一页纸更新则次日卡片自动跟上</li>
+        <li><strong>零过滤</strong>：21 在办 + 24 待跟进 + 12 周期共 57 项全量输出，编号/优先级/deadline/责任人/进展全带</li>
+        <li><strong>超长自动拆分</strong>：按节拆多条钉钉消息，不再截断</li>
+        <li>参数协议不变，日程挂载不动，向后兼容</li>
+        <li>同批补发两份历史完整版（11/20 06:51+07:51 合并版 2770 字、11/19 17:34 版 1601 字），推送铁律写入 MEMORY</li>
+      </ul>
+      <div class="event-output">📦 产出：daily_dingtalk_card.py v2.0 + 推送铁律 + 两份历史完整版补发</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">217. 11/20 清洁用品三处口径不一致修复 + GitHub Pages 补推7期51款</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/20 10:37-10:40</span><span>👥 舒曼（自主执行）→ 明珠</span></div>
+      <div class="event-bg">💡 背景：同一份产品页存在三个互不相同的版本——主源 TOP443/2026W47/第25期、副本 TOP452/2026W48/第26期、线上 TOP401/2026W41/第20期，md5 三者均不同。</div>
+      <ul class="event-list">
+        <li><strong>根因查明</strong>：不是「半更新」，是 11-15 20:54 写主源（W47）、20:55 写副本（W48），同一次采集写了两个版本，主源没回写</li>
+        <li><strong>统一口径</strong>：副本覆盖主源，两文件统一为 TOP452／W22-W48／第26期／452条，md5 一致（c4bef7e2）</li>
+        <li><strong>补 W43 下拉</strong>：两文件均补 <code>&lt;option value="43"&gt;</code>（此前 42 直接跳 44）</li>
+        <li><strong>GitHub Pages 补推</strong>：gh-pages 推送 commit <code>cbafd3f</code>，+601 -5 行，641KB→745KB</li>
+        <li><strong>线上验证</strong>：轮询 3 次确认线上已更新为 TOP452／2026W48／第26期／452条，W43 下拉生效，产品编号 1-452 完整</li>
+      </ul>
+      <div class="event-output">📦 产出：主源回写 + gh-pages cbafd3f + 线上验证通过（https://schumannchio.github.io/cleaning-products/）</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">218. 11/20 三处日程缺陷修正（早间对齐口径过期·ROI rrule非法·推送目标未定）</div>
+        <span class="event-status status-done">✅ 已完成</span>
+      </div>
+      <div class="event-meta"><span>📅 11/20 10:39</span><span>👥 舒曼（自主执行）</span></div>
+      <div class="event-bg">💡 背景：日程工单是会唤起独立 session 执行的，description 过期等于每天按错口径跑。</div>
+      <ul class="event-list">
+        <li><strong>早间对齐</strong>：description 仍写「在办12（P0 5/P1 3/P2 4）／待跟进23」——实际 31（P0 12/P1 10/P2 9）／25。全量重写并补推送目标：私发钉钉 684664352626172491、禁筛事项；dtstart 改 11/21 08:00 重新起算</li>
+        <li><strong>ROI 价值账</strong>：rrule <code>interval: 0</code> 属非法值，改为 1；dtstart 由 9/22 改 11/23 17:30（下周一），恢复周节奏</li>
+        <li>两条日程 update 均返回成功，uid 已 split 至最新</li>
+      </ul>
+      <div class="event-output">📦 产出：两条日程修复确认（早间对齐 description 全量重写 + ROI 周节奏恢复）</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">219. 11/20 钉钉机器人通道7个全部400104（模板未上线，已私信求助）</div>
+        <span class="event-status status-running">🟡 进行中</span>
+      </div>
+      <div class="event-meta"><span>📅 11/20 10:32</span><span>👥 舒曼（实测）→ 明珠（需本人操作，已钉钉私信）</span></div>
+      <div class="event-bg">💡 背景：拟把每日卡片从「本人身份发」升级为「机器人身份发」，带图标与来源名，不占本人对话框。</div>
+      <ul class="event-list">
+        <li>7 个机器人（扣子龙虾AI助手／小钉／悟空／hermes／openclaw／测试A／测试）逐一实测，<strong>全部 400104</strong>「机器人模版已经停用或者未启用」</li>
+        <li>查证官方文档确认：企业内部应用机器人功能<strong>默认关闭</strong>，且必须「发布机器人 + 版本管理与发布→上线」双动作，只发机器人不上线应用，状态仍是「未发布」</li>
+        <li>按 11/20 新规第一时间钉钉私信明珠，附 8 步操作路径，不等汇报时一并说</li>
+        <li>过渡方案已生效：<code>dws chat message send --user</code> 以本人身份发，通道可用</li>
+      </ul>
+      <div class="event-output">📦 产出：实测结论 + 8步操作指引（已私信）+ 过渡方案</div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-head">
+        <div class="event-title">220. 11/20 待办总量失控判定（在办12→31·P0 5→12，一周涨19项）</div>
+        <span class="event-status status-running">🟡 进行中</span>
+      </div>
+      <div class="event-meta"><span>📅 11/20 06:51-07:51</span><span>👥 舒曼（判定）→ 明珠</span></div>
+      <div class="event-bg">💡 背景：W47 周初在办 12 项、P0 5 项，周五涨至在办 31 项、P0 12 项。</div>
+      <ul class="event-list">
+        <li><strong>判定</strong>：一周涨 19 项，新增速度已超完成速度——这不是排期问题，是<strong>收口问题</strong></li>
+        <li><strong>二分法</strong>：必须做 5 件（江南船苑12/3截标、星扬星瀚11/25述标、云际尚浦换人测算、流程三件、账号安全P0）／其余全部可缓至12月</li>
+        <li><strong>三处砍法</strong>：11/25 六件撞车保2件、11/27 SOC 只做最小可用版、4件「待定」只保1件</li>
+        <li><strong>前5项基础数据治理清单</strong>：应收-开票-到账三列对照／未开票率20%预警细则／项目主数据统一／成本口径统一／合同台账与应开票日对齐，全部现有数据重排、无需新系统</li>
+        <li><strong>杠杆建议</strong>：真正的杠杆在「不做什么」——鲍总再加任务时，把这 5 件摆出来问「新加的排在哪个后面」，让优先级由他定</li>
+        <li>13:30 数字化底座第七次会议单页已出（A4 一页，五项触发/交付/前置/启动，校验 0 error）</li>
+      </ul>
+      <div class="event-output">📦 产出：待办收口建议 + 前5项治理清单 + 13:30会议单页HTML</div>
+    </div>
+
+  </div>
+
   <!-- ============ W46 ============ -->
-  <div id="w46" class="week-section active">
+  <div id="w46" class="week-section">
     <div class="week-header">
       <div class="week-title">W46 · 11/9-11/13 标准升维与协同面收窄周（交付标准「产物」→「理解」·挂起即动作清零·碎碎零协同）</div>
       <div class="week-summary">本周新增协同事件13件（完成8/进行中4/持续运行1），邮件往来0封（收件箱最新外部件仍为8/3小二子《Re:协作通道》，11/05起连续7天零进展邮件），碎碎参与0次（累计11次）——本周唯一跨域交叉是11/12 ISC工作坊由彭爽本人组织，未产生智能体间信息流转。三条主线：①标准升维——11/12 ISC流程拆解会定「验收看理解不看产物」，以L0-L2逻辑为考核口径，框架图AI生成、人工只校逻辑不修小瑕疵；②挂起即动作清零——11/11智慧清洁按鲍总指示标注「卡在张经理处」，不催不传话不绕行，当日自查发现半执行（一页纸节点未改、项目群未公示）如实入推送；③结构改造日——一页纸v16.0→v17.0按负责归属三栏重构（我在办12/待跟进23/周期12），暂停挂起项不占在办一律归已取消并标原因，业务数据源清单1.0四次迭代一次性收口并出「来龙去脉」稿溯源鲍总原话。风险侧：SOC 11/13交付口径至今无书面结论、4件必拍零书面第9天、成本清单逾期24天零样板；11/12云盘全盘只读（Errno 5）致写入全废，靠暂存+当日恢复后补写兜底，暴露无本地队列的结构风险。</div>
@@ -3914,7 +4100,7 @@ function showWeek(week) {
   } else {
     const el = document.getElementById(week);
     if (el) el.classList.add('active');
-    const idx = ['w46','w45','w44','w43','w42','w41','w40','w39','w38','w37','w36','w35','w34','w33','w32','w31','w30','w29','w28','w27'].indexOf(week);
+    const idx = ['w47','w46','w45','w44','w43','w42','w41','w40','w39','w38','w37','w36','w35','w34','w33','w32','w31','w30','w29','w28','w27'].indexOf(week);
     if (idx >= 0) tabs[idx].classList.add('active');
   }
 }
